@@ -27,6 +27,9 @@ public class Paciente {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-    
+    public void andre(String asd){
+        
+        this.apellido = asd;
+    }
     
 }
