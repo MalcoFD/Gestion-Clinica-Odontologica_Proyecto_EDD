@@ -14,5 +14,6 @@ public class Proyecto_Edd {
         System.out.println("Hello World!");
         System.out.println("Morning especial!");
         System.out.println("fino filipino");
+        System.out.println("asdas");
     }
 }
