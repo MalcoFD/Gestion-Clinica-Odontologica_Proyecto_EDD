@@ -15,5 +15,8 @@ public class Proyecto_Edd {
         System.out.println("Morning especial!");
         System.out.println("fino filipino");
         System.out.println("asdas");
+        System.out.println("PREPARAD VUESTROS ARTENTOXX");
+        System.out.println("Comedme los pandas");
+
     }
 }
