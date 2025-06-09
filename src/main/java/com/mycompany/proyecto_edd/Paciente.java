@@ -6,30 +6,44 @@ package com.mycompany.proyecto_edd;
 
 /**
  *
- * @author Juan
+ * @author Kike DIaz
  */
 public class Paciente {
-    private String nombre;
-    private String apellido;
+    private String id_paciente;
+    private String alergia;
+    private String grupoSanguineo;
+    private Boolean seguro;
+    private String facultad;
 
-    public String getNombre() {
-        return nombre;
+    public String getId_Paciente(){
+        return id_paciente;
     }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setId_Paciente(String id_Paciente){
+        this.id_paciente =id_Paciente;
     }
-
-    public String getApellido() {
-        return apellido;
+    public String getAlergia(){
+        return alergia;
     }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setAlergia(String alergia){
+        this.alergia =alergia;
     }
-    public void andre(String asd){
-        
-        this.apellido = asd;
+    public String getGrupo_Sanguineo(){
+        return grupoSanguineo;
+    }
+    public void setGrupo_Sanguineo(String grupoSanguineo){
+        this.grupoSanguineo =grupoSanguineo;
+    }   
+    public Boolean getSeguro(){
+        return seguro;
+    }
+    public void setSeguro(Boolean seguro){
+        this.seguro =seguro;
+    }   
+    public String getFacultad(){
+        return facultad;
+    }
+    public void setFacultad(String facultad){
+        this.facultad =facultad;
     }
     
 }
