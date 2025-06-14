@@ -18,6 +18,7 @@ public class Cita {
     private Paciente paciente;
     private Odontologo odontologo;
     private String observacion;
+    
 
     public Cita() {}
     public Cita(String id, Paciente paciente, Odontologo odontologo,String motivo,Fecha fecha, Hora hora, String alergias, String estadoCita) {
