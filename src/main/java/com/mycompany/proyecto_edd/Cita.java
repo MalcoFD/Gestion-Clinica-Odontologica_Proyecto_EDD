@@ -17,6 +17,8 @@ public class Cita {
     private String alergias;
     private Paciente paciente;
     private Odontologo odontologo;
+    private String observacion;
+    
 
     public Cita() {}
     public Cita(String id, Paciente paciente, Odontologo odontologo,String motivo,Fecha fecha, Hora hora, String alergias, String estadoCita) {
@@ -78,6 +80,15 @@ public class Cita {
     public void setOdontologo(Odontologo odontologo){
         this.odontologo = odontologo;
     }
+    
+    public String getObservacion() {
+        return observacion;
+    }
+
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
+    }
+    
     public String consultarEstado(){
         return "Estado Cita: " + estadoCita;
     }
