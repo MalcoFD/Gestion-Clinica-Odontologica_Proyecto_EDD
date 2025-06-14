@@ -18,7 +18,7 @@ import java.util.Stack;
 import java.util.ArrayList;
 
 public class ArchivoCita {
-
+    //Escribir en el archivo
     public void escribir(Stack<Cita> Citas) throws IOException {
         FileWriter fw = new FileWriter("Citas.txt");
         BufferedWriter bw = new BufferedWriter(fw);
