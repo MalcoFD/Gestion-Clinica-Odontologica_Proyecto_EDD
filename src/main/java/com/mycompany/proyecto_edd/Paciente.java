@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.proyecto_edd;
+import java.util.LinkedList;
 
 /**
  *
@@ -57,54 +58,41 @@ public class Paciente extends Persona {
     public void setFacultad(String facultad){
         this.facultad =facultad;
     }
-    // Arreglo estático de pacientes
-public static void agregarPaciente(Paciente[] listaPacientes, Paciente nuevo) {
-    for (int i = 0; i < listaPacientes.length; i++) {
-        if (listaPacientes[i] == null) {
-            listaPacientes[i] = nuevo;
-            System.out.println("Paciente agregado correctamente en la posición " + i + ".");
-            return;
-        }
+// Agregar paciente
+    public static void agregarPaciente(LinkedList<Paciente> lista, Paciente nuevo) {
+        lista.add(nuevo);
+        System.out.println("Paciente agregado correctamente.");
     }
-    System.out.println("Error: La lista de pacientes está llena.");
-}
 
-    // Editar paciente por ID
-public static void editarPaciente(Paciente[] listaPacientes, String idPaciente, Paciente datosActualizados) {
-    for (int i = 0; i < listaPacientes.length; i++) {
-        if (listaPacientes[i] != null && listaPacientes[i].getId_Paciente().equals(idPaciente)) {
-            // Actualizar campos (puedes ajustar según lo necesario)
-            listaPacientes[i].setNombres(datosActualizados.getNombres());
-            listaPacientes[i].setApellidos(datosActualizados.getApellidos());
-            listaPacientes[i].setAlergia(datosActualizados.getAlergia());
-            listaPacientes[i].setGrupo_Sanguineo(datosActualizados.getGrupo_Sanguineo());
-            listaPacientes[i].setSeguro(datosActualizados.getSeguro());
-            listaPacientes[i].setFacultad(datosActualizados.getFacultad());
-
-
-            System.out.println("Paciente con ID " + idPaciente + " actualizado correctamente.");
-            return;
-        }
-    }
-    System.out.println("Paciente con ID " + idPaciente + " no encontrado.");
-}
-
-
-    // Eliminar paciente por ID 
-    public static void eliminarPaciente(Paciente[] listaPacientes, String idPaciente) {
-        for (int i = 0; i < listaPacientes.length; i++) {
-            if (listaPacientes[i] != null && listaPacientes[i].getId_Paciente().equals(idPaciente)) {
-                // Desplazar hacia la izquierda
-                for (int j = i; j < listaPacientes.length - 1; j++) {
-                    listaPacientes[j] = listaPacientes[j + 1];
-                }
-                listaPacientes[listaPacientes.length - 1] = null;
-                System.out.println("Paciente con ID " + idPaciente + " eliminado correctamente.");
+    // Editar paciente
+    public static void editarPaciente(LinkedList<Paciente> lista, String idPaciente, Paciente datosActualizados) {
+        for (Paciente p : lista) {
+            if (p.getId_Paciente().equals(idPaciente)) {
+                p.setAlergia(datosActualizados.getAlergia());
+                p.setGrupo_Sanguineo(datosActualizados.getGrupo_Sanguineo());
+                p.setSeguro(datosActualizados.getSeguro());
+                p.setFacultad(datosActualizados.getFacultad());
+                p.setNombres(datosActualizados.getNombres());
+                p.setApellidos(datosActualizados.getApellidos());
+                p.setTelefono(datosActualizados.getTelefono());
+                p.setDireccion(datosActualizados.getDireccion());
+                System.out.println("Paciente con ID " + idPaciente + " actualizado correctamente.");
                 return;
             }
         }
         System.out.println("Paciente con ID " + idPaciente + " no encontrado.");
     }
 
+    // Eliminar paciente
+    public static void eliminarPaciente(LinkedList<Paciente> lista, String idPaciente) {
+        for (int i = 0; i < lista.size(); i++) {
+            if (lista.get(i).getId_Paciente().equals(idPaciente)) {
+                lista.remove(i);
+                System.out.println("Paciente con ID " + idPaciente + " eliminado correctamente.");
+                return;
+            }
+        }
+        System.out.println("Paciente con ID " + idPaciente + " no encontrado.");
+    }
 
 }
