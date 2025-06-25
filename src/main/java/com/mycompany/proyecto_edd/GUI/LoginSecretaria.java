@@ -14,6 +14,7 @@ public class LoginSecretaria extends javax.swing.JFrame {
      */
     public LoginSecretaria() {
         initComponents();
+        
     }
 
     /**
@@ -28,7 +29,6 @@ public class LoginSecretaria extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
         background = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -49,11 +49,7 @@ public class LoginSecretaria extends javax.swing.JFrame {
         background.setMinimumSize(new java.awt.Dimension(1024, 600));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/proyecto_edd/Pictures/sm.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 190, 190));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/proyecto_edd/Pictures/LoginImagen.jpeg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/diente.jpeg"))); // NOI18N
         background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 600));
 
         jLabel3.setFont(new java.awt.Font("Cambria", 1, 36)); // NOI18N
@@ -148,7 +144,6 @@ public class LoginSecretaria extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
