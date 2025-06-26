@@ -42,9 +42,4 @@ public class Odontologo {
             System.out.println("Cita: " + c.getMotivo() + " - " + c.getFecha());
         }
     }
-
-    public void observacionCita(Cita cita, String observacion) {
-        cita.setObservacion(observacion);
-    }
 }
-
