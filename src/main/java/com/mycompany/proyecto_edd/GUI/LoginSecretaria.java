@@ -5,7 +5,9 @@
 package com.mycompany.proyecto_edd.GUI;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
+import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Color;
+import javax.swing.UIManager;
 
 
 public class LoginSecretaria extends javax.swing.JFrame {
@@ -68,7 +70,7 @@ public class LoginSecretaria extends javax.swing.JFrame {
         userTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         userTxt.setForeground(new java.awt.Color(204, 204, 204));
         userTxt.setText("Ingrese su código de acceso");
-        userTxt.setBorder(null);
+        userTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         userTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 userTxtMousePressed(evt);
@@ -94,7 +96,7 @@ public class LoginSecretaria extends javax.swing.JFrame {
         passTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         passTxt.setForeground(new java.awt.Color(204, 204, 204));
         passTxt.setText("********");
-        passTxt.setBorder(null);
+        passTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         passTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 passTxtMousePressed(evt);
@@ -190,7 +192,12 @@ public class LoginSecretaria extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        FlatIntelliJLaf.setup();
+        FlatLightLaf.setup();
+        UIManager.put( "TextComponent.arc", 5 );
+        UIManager.put( "Button.arc", 3 );
+        UIManager.put( "Button.arc", 999 );
+        UIManager.put( "Component.arc", 999 );
+        UIManager.put( "ProgressBar.arc", 999 );
         
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
