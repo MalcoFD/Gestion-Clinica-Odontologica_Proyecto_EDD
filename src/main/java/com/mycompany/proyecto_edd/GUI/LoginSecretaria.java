@@ -17,7 +17,7 @@ public class LoginSecretaria extends javax.swing.JFrame {
      */
     public LoginSecretaria() {
         initComponents();
-        
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -67,10 +67,10 @@ public class LoginSecretaria extends javax.swing.JFrame {
         jLabel4.setText("CÓDIGO");
         background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 170, -1, -1));
 
-        userTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        userTxt.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         userTxt.setForeground(new java.awt.Color(204, 204, 204));
         userTxt.setText("Ingrese su código de acceso");
-        userTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        userTxt.setBorder(null);
         userTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 userTxtMousePressed(evt);
@@ -93,10 +93,10 @@ public class LoginSecretaria extends javax.swing.JFrame {
         jLabel5.setText("CONTRASEÑA");
         background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, -1, -1));
 
-        passTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        passTxt.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         passTxt.setForeground(new java.awt.Color(204, 204, 204));
         passTxt.setText("********");
-        passTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        passTxt.setBorder(null);
         passTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 passTxtMousePressed(evt);
