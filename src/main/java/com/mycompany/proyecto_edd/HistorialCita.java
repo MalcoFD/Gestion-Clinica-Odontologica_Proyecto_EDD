@@ -9,6 +9,7 @@ package com.mycompany.proyecto_edd;
  * @author FAS
  */
 
+
 public class HistorialCita {
     private String nombrePaciente;
     private String nombreOdontologo;
@@ -55,7 +56,7 @@ public class HistorialCita {
         this.alergias = alergias;
     }
     public void añadirCitaAlHistorial(Cita c){
-        this.nombrePaciente = c.getPaciente().getNombre();
+        this.nombrePaciente = c.getPaciente().getNombres();
         this.nombreOdontologo = c.getOdontologo().getNombre();
         this.codigoCita = c.getId();
         this.fechaConsulta = c.getFecha().toString();
