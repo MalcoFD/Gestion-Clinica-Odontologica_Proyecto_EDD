@@ -20,12 +20,92 @@ import java.util.ArrayList;
 
 public class ArchivoCita {
 
-    public void escribir(Stack<Cita> Citas) throws IOException {
+    // Contador estático para generar ID único de citas
+    private static int contadorId = 1;
+
+    // Método para generar ID único
+    private String generarIdCita() {
+        return String.valueOf(contadorId++);
+    }
+    public void añadirCita(Paciente paciente, Odontologo odontologo, String motivo,
+                           Fecha fecha, Hora hora, String alergias, Stack<Cita> citas) throws IOException {
+        String idCita = generarIdCita();
+        String estado = "Pendiente";
+        Cita nuevaCita = new Cita(idCita, paciente, odontologo, motivo, fecha, hora, alergias, estado);
+        citas.push(nuevaCita);
+        escribir(citas);
+        System.out.println("Cita añadida correctamente.");
+        HistorialCita historial = new HistorialCita();
+        historial.generarHistorialDeCitas(paciente.getDni(), citas);
+    }
+
+
+    public Cita buscarCitaPorDni(String dniPaciente, Stack<Cita> citas) {
+        for(Cita cita : citas) {
+            if(cita.getPaciente().getDni().equals(dniPaciente)) {
+                return cita;
+            }
+        }
+        return null; // Si no se encuentra la cita
+    }
+    public void actualizarCita(String dniPaciente, Fecha nuevaFecha, Hora nuevaHora, Stack<Cita> citas) throws IOException {
+        boolean citaActualizada = false;
+
+        // Buscar la cita correspondiente al paciente
+        for (Cita cita : citas) {
+            if (cita.getPaciente().getDni().equals(dniPaciente)) {
+                // Actualizar solo la fecha y la hora
+                cita.setFecha(nuevaFecha);
+                cita.setHora(nuevaHora);
+
+                // Mantenemos el estado como "Pendiente"
+                cita.setEstadoCita("Pendiente");
+
+                citaActualizada = true;
+                System.out.println("Cita actualizada correctamente");
+                break;  // Salir del ciclo una vez que se actualizó la cita
+            }
+        }
+
+        // Si la cita fue actualizada, escribir las citas al archivo
+        if (citaActualizada) {
+            // Actualizar el archivo "Citas.txt" con las citas modificadas
+            escribir(citas);
+
+            // También actualizamos el historial del paciente con los cambios reflejados
+            Paciente paciente = citas.peek().getPaciente();  // Obtenemos el paciente de la cita actualizada
+            HistorialCita historial = new HistorialCita();
+            historial.generarHistorialDeCitas(paciente.getDni(), citas);
+        } else {
+            System.out.println("No se encontró una cita para el paciente con DNI: " + dniPaciente);
+        }
+    }
+    public void cancelarCita(String dniPaciente, Stack<Cita> citas) throws IOException {
+        // Buscar la última cita del paciente (la más reciente)
+        Cita citaACancelar = buscarCitaPorDni(dniPaciente, citas);
+
+        if (citaACancelar != null) {
+            // Cambiar el estado de la cita a "Cancelada"
+            citaACancelar.setEstadoCita("Cancelada");
+
+            // Escribir los cambios en el archivo "Citas.txt"
+            escribir(citas);
+
+            // Actualizar el archivo del historial del paciente
+            HistorialCita historial = new HistorialCita();
+            historial.generarHistorialDeCitas(dniPaciente, citas);
+
+            System.out.println("Cita con DNI " + dniPaciente + " cancelada correctamente.");
+        } else {
+            System.out.println("No se encontró una cita para el paciente con DNI: " + dniPaciente);
+        }
+    }
+    public void escribir(Stack<Cita> citas) throws IOException {
         try (FileWriter fw = new FileWriter("Citas.txt");
              BufferedWriter bw = new BufferedWriter(fw);
              PrintWriter salida = new PrintWriter(bw)) {
 
-            for (Cita c : Citas) {
+            for (Cita c : citas) {
                 salida.println(c.getId() + "-"
                         + c.getPaciente().getDni() + "-"
                         + c.getPaciente().getNombres() + "-"
@@ -36,7 +116,6 @@ public class ArchivoCita {
                         + c.getAlergias() + "-"
                         + c.getEstadoCita());
             }
-            salida.close();
         }
     }
 
@@ -46,9 +125,9 @@ public class ArchivoCita {
              BufferedReader entrada = new BufferedReader(fr)) {
 
             String s;
-            while((s = entrada.readLine()) != null){
+            while ((s = entrada.readLine()) != null) {
                 String[] informacion = s.split("-");
-                if (informacion.length == 9){
+                if (informacion.length == 9) {  // Verificación de la longitud
                     String idCita = informacion[0];
                     String dniPaciente = informacion[1];
                     String nombrePaciente = informacion[2];
@@ -59,10 +138,10 @@ public class ArchivoCita {
                     String alergias = informacion[7];
                     String estado = informacion[8];
 
-                    Paciente paciente = buscarPacientePorNombre(nombrePaciente, pacientes);
+                    Paciente paciente = buscarPacientePorDni(dniPaciente, pacientes);
                     Odontologo odontologo = buscarOdontologoPorNombre(nombreOdontologo, odontologos);
 
-                    if(paciente != null && odontologo != null){
+                    if (paciente != null && odontologo != null) {
                         String[] partesFecha = fechaAbreviada.split("/");
                         int dia = Integer.parseInt(partesFecha[0]);
                         int mes = Integer.parseInt(partesFecha[1]);
@@ -82,29 +161,10 @@ public class ArchivoCita {
         }
         return citas;
     }
-    public void actualizarCita(String dniPaciente, Fecha nuevaFecha, Hora nuevaHora, String nuevoEstado, Stack<Cita> citas) throws IOException {
-        boolean citaActualizada = false;
-        for(Cita cita : citas) {
-            if(cita.getPaciente().getDni().equals(dniPaciente)) {
-                cita.setFecha(nuevaFecha);
-                cita.setHora(nuevaHora);
-                cita.setEstadoCita(nuevoEstado);
-                citaActualizada = true;
-                System.out.println("Cita actualizada correctamente");
-                break;
-            }
-        }
 
-        if(citaActualizada){
-            // Si la cita fue encontrada y actualizada, escribir las citas al archivo
-            escribir(citas);
-        }else{
-            System.out.println("No se encontró una cita para el paciente con DNI: " + dniPaciente);
-        }
-    }
-    private Paciente buscarPacientePorNombre(String nombre, LinkedList<Paciente> pacientes) {
+    private Paciente buscarPacientePorDni(String dni, LinkedList<Paciente> pacientes) {
         for (Paciente paciente : pacientes) {
-            if (paciente.getNombres().equals(nombre)) {
+            if (paciente.getNombres().equals(dni)) {
                 return paciente;
             }
         }
@@ -119,10 +179,4 @@ public class ArchivoCita {
         }
         return null;
     }
-
-    public void guardarCita(Cita nuevaCita, Stack<Cita> citas) throws IOException {
-        citas.push(nuevaCita);
-        escribir(citas);
-    }
 }
-
