@@ -6,7 +6,9 @@ package com.mycompany.proyecto_edd.GUI;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.formdev.flatlaf.FlatLightLaf;
+import com.mycompany.proyecto_edd.Secretaria;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 
@@ -64,7 +66,7 @@ public class LoginSecretaria extends javax.swing.JFrame {
         background.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 70, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Cambria", 1, 24)); // NOI18N
-        jLabel4.setText("CÓDIGO");
+        jLabel4.setText("NOMBRE DE USUARIO O CÓDIGO");
         background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 170, -1, -1));
 
         userTxt.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -110,8 +112,11 @@ public class LoginSecretaria extends javax.swing.JFrame {
         loginBtn.setForeground(new java.awt.Color(255, 255, 255));
         loginBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         loginBtn.setText("ENTRAR");
-        loginBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        loginBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         loginBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loginBtnMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 loginBtnMouseEntered(evt);
             }
@@ -186,6 +191,22 @@ public class LoginSecretaria extends javax.swing.JFrame {
 
 ;
     }//GEN-LAST:event_passTxtMousePressed
+
+    private void loginBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseClicked
+        Secretaria.cargarSecretarias();
+        String usuario = userTxt.getText().trim();
+        String contrasena = String.valueOf(passTxt.getPassword()).trim();
+        if (Secretaria.validarLogin(usuario, contrasena)) {
+            JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso");
+            // Abre el dashboard y cierra el login
+            Dashboard dash = new Dashboard();
+            dash.setVisible(true);
+            this.dispose(); // Cierra la ventana de login actual
+        } 
+        else {
+            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
+        }
+    }//GEN-LAST:event_loginBtnMouseClicked
 
     /**
      * @param args the command line arguments

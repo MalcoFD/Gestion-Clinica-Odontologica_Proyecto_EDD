@@ -25,6 +25,7 @@
             <groupId>com.formdev</groupId>
             <artifactId>flatlaf-intellij-themes</artifactId>
             <version>3.6</version>
+            <type>jar</type>
         </dependency>
     </dependencies>    
 </project>
