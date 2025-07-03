@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.mycompany.proyecto_edd.GUI;
-
+import com.mycompany.proyecto_edd.Paciente;
+import java.util.LinkedList;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Juan
@@ -44,23 +46,23 @@ public class RegistroPaciente extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        dni = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        nombres = new javax.swing.JTextField();
+        apellidos = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        sexo = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         btDate = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        ciudad = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        nacionalidad = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        provincia = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         otraAlergia = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
@@ -68,18 +70,18 @@ public class RegistroPaciente extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         labelAlergia = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        grupoSanguineo = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        seguro = new javax.swing.JCheckBox();
         jLabel19 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        facultad = new javax.swing.JComboBox<>();
         jLabel20 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton1.putClientProperty("JButton.arc", 25);
-        comboAlergia = new javax.swing.JComboBox<>();
+        alergia = new javax.swing.JComboBox<>();
         jLabel21 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
+        direccion = new javax.swing.JTextField();
+        telefono = new javax.swing.JTextField();
 
         jLabel10.setText("jLabel10");
 
@@ -127,9 +129,9 @@ public class RegistroPaciente extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel3.setText("DNI:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        dni.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                dniActionPerformed(evt);
             }
         });
 
@@ -142,7 +144,7 @@ public class RegistroPaciente extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel6.setText("Sexo:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
+        sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel7.setText("Fecha de nacimiento:");
@@ -195,21 +197,21 @@ public class RegistroPaciente extends javax.swing.JPanel {
         labelAlergia.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         labelAlergia.setText("Especifique:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "AB", "O" }));
+        grupoSanguineo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "AB", "O" }));
 
         jLabel18.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel18.setText("Facultad:");
 
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        seguro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                seguroActionPerformed(evt);
             }
         });
 
         jLabel19.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel19.setText("Seguro:");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Facultad de Ciencias Matemáticas", "Facultad de Ingeniería de Sistemas e Informática", "Facultad de Ingeniería Electrónica y Eléctrica", "Facultad de Ingeniería Geológica, Minera, Metalúrgica y Geográfica", "Facultad de Ingeniería Industrial", "Facultad de Ingeniería Química y Textil", "Facultad de Arquitectura, Urbanismo y Artes", "Facultad de Ciencias Físicas", "Facultad de Ciencias Biológicas", "Facultad de Farmacia y Bioquímica", "Facultad de Química e Ingeniería Química", "Facultad de Ciencias Económicas", "Facultad de Ciencias Sociales", "Facultad de Educación", "Facultad de Letras y Ciencias Humanas", "Facultad de Psicología", "Facultad de Derecho y Ciencia Política", "Facultad de Medicina", "Facultad de Medicina Veterinaria", "Facultad de Odontología", "Otra" }));
+        facultad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Facultad de Ciencias Matemáticas", "Facultad de Ingeniería de Sistemas e Informática", "Facultad de Ingeniería Electrónica y Eléctrica", "Facultad de Ingeniería Geológica, Minera, Metalúrgica y Geográfica", "Facultad de Ingeniería Industrial", "Facultad de Ingeniería Química y Textil", "Facultad de Arquitectura, Urbanismo y Artes", "Facultad de Ciencias Físicas", "Facultad de Ciencias Biológicas", "Facultad de Farmacia y Bioquímica", "Facultad de Química e Ingeniería Química", "Facultad de Ciencias Económicas", "Facultad de Ciencias Sociales", "Facultad de Educación", "Facultad de Letras y Ciencias Humanas", "Facultad de Psicología", "Facultad de Derecho y Ciencia Política", "Facultad de Medicina", "Facultad de Medicina Veterinaria", "Facultad de Odontología", "Otra" }));
 
         jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LogoDatosClinicos.png"))); // NOI18N
 
@@ -220,11 +222,16 @@ public class RegistroPaciente extends javax.swing.JPanel {
         jButton2.setBorder(null);
         jButton2.setBorderPainted(false);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        comboAlergia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguna", "Penicilina", "Lidocaína", "Ibuprofeno", "Paracetamol", "Látex", "Clorhexidina", "Anestesia local", "Antibióticos en general", "Antiinflamatorios", "Metales dentales (níquel, cromo, etc.)", "Pasta dental con flúor", "Enjuagues bucales", "Otra" }));
-        comboAlergia.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboAlergiaActionPerformed(evt);
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        alergia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguna", "Penicilina", "Lidocaína", "Ibuprofeno", "Paracetamol", "Látex", "Clorhexidina", "Anestesia local", "Antibióticos en general", "Antiinflamatorios", "Metales dentales (níquel, cromo, etc.)", "Pasta dental con flúor", "Enjuagues bucales", "Otra" }));
+        alergia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alergiaActionPerformed(evt);
             }
         });
 
@@ -251,20 +258,20 @@ public class RegistroPaciente extends javax.swing.JPanel {
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(contenidoPanelLayout.createSequentialGroup()
                                 .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1)
+                                    .addComponent(dni)
                                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(109, 109, 109))
-                                    .addComponent(jTextField2)
+                                    .addComponent(nombres)
                                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(108, 108, 108))
-                                    .addComponent(jTextField3)
+                                    .addComponent(apellidos)
                                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(148, 148, 148))
                                     .addGroup(contenidoPanelLayout.createSequentialGroup()
-                                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(sexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(100, 100, 100))
                                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -275,46 +282,46 @@ public class RegistroPaciente extends javax.swing.JPanel {
                                 .addGap(47, 47, 47)
                                 .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(contenidoPanelLayout.createSequentialGroup()
-                                        .addComponent(jTextField7)
+                                        .addComponent(nacionalidad)
                                         .addGap(1, 1, 1))
                                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(128, 128, 128))
                                     .addGroup(contenidoPanelLayout.createSequentialGroup()
-                                        .addComponent(jTextField6)
+                                        .addComponent(ciudad)
                                         .addGap(1, 1, 1))
                                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(108, 108, 108))
                                     .addGroup(contenidoPanelLayout.createSequentialGroup()
-                                        .addComponent(jTextField9)
+                                        .addComponent(provincia)
                                         .addGap(1, 1, 1))
                                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(108, 108, 108))
                                     .addGroup(contenidoPanelLayout.createSequentialGroup()
-                                        .addComponent(jTextField11)
+                                        .addComponent(direccion)
                                         .addGap(1, 1, 1))
                                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(113, 113, 113))
                                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                                         .addGap(1, 1, 1)
-                                        .addComponent(jTextField12)))
+                                        .addComponent(telefono)))
                                 .addGap(77, 77, 77)
                                 .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(37, 37, 37))
                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                         .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(contenidoPanelLayout.createSequentialGroup()
-                                .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(grupoSanguineo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(390, 390, 390))
                             .addGroup(contenidoPanelLayout.createSequentialGroup()
                                 .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(152, 152, 152))
-                                    .addComponent(comboAlergia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(alergia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                                         .addComponent(labelAlergia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(152, 152, 152))
@@ -327,7 +334,7 @@ public class RegistroPaciente extends javax.swing.JPanel {
                                 .addGap(49, 49, 49)
                                 .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(contenidoPanelLayout.createSequentialGroup()
-                                        .addComponent(jCheckBox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(seguro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(148, 148, 148))
                                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -335,7 +342,7 @@ public class RegistroPaciente extends javax.swing.JPanel {
                                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(105, 105, 105))
-                                    .addComponent(jComboBox3, 0, 0, Short.MAX_VALUE))))
+                                    .addComponent(facultad, 0, 0, Short.MAX_VALUE))))
                         .addGap(32, 32, 32)
                         .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenidoPanelLayout.createSequentialGroup()
@@ -362,19 +369,19 @@ public class RegistroPaciente extends javax.swing.JPanel {
                 .addGap(6, 6, 6)
                 .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(contenidoPanelLayout.createSequentialGroup()
-                        .addComponent(jTextField1)
+                        .addComponent(dni)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(6, 6, 6)
-                        .addComponent(jTextField2)
+                        .addComponent(nombres)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(6, 6, 6)
-                        .addComponent(jTextField3)
+                        .addComponent(apellidos)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(6, 6, 6)
-                        .addComponent(jComboBox1)
+                        .addComponent(sexo)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(6, 6, 6)
@@ -383,23 +390,23 @@ public class RegistroPaciente extends javax.swing.JPanel {
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(2, 2, 2))
                     .addGroup(contenidoPanelLayout.createSequentialGroup()
-                        .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                        .addComponent(nacionalidad, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                         .addGap(6, 6, 6)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                        .addComponent(ciudad, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                         .addGap(6, 6, 6)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                        .addComponent(provincia, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                         .addGap(6, 6, 6)
-                        .addComponent(jTextField11, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                        .addComponent(direccion, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                         .addGap(10, 10, 10)
-                        .addComponent(jTextField12, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                        .addComponent(telefono, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
                         .addGap(6, 6, 6))
                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                         .addGap(2, 2, 2)
@@ -414,16 +421,16 @@ public class RegistroPaciente extends javax.swing.JPanel {
                             .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(comboAlergia, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                            .addComponent(alergia, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                             .addGroup(contenidoPanelLayout.createSequentialGroup()
                                 .addGap(1, 1, 1)
-                                .addComponent(jCheckBox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(seguro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(contenidoPanelLayout.createSequentialGroup()
                                 .addGap(25, 25, 25)
                                 .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox3, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                                .addComponent(facultad, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
                                 .addGap(80, 80, 80))
                             .addGroup(contenidoPanelLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
@@ -433,7 +440,7 @@ public class RegistroPaciente extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(grupoSanguineo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(37, 37, 37))))
                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                         .addGap(4, 4, 4)
@@ -472,16 +479,16 @@ public class RegistroPaciente extends javax.swing.JPanel {
         date.showPopup();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void dniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dniActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_dniActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void seguroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seguroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_seguroActionPerformed
 
-    private void comboAlergiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboAlergiaActionPerformed
-            if ("Otra".equals(comboAlergia.getSelectedItem())) {
+    private void alergiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alergiaActionPerformed
+            if ("Otra".equals(alergia.getSelectedItem())) {
                  otraAlergia.setVisible(true);
                  labelAlergia.setVisible(true);
             }
@@ -489,21 +496,55 @@ public class RegistroPaciente extends javax.swing.JPanel {
                 otraAlergia.setVisible(false);
                 labelAlergia.setVisible(false);
             }
-    }//GEN-LAST:event_comboAlergiaActionPerformed
+    }//GEN-LAST:event_alergiaActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+           // Cargar la lista actual de pacientes
+    LinkedList<Paciente> lista = Paciente.cargarDesdeArchivo();
+    int numero = lista.size() + 1;
+    String id=String.format("P%03d", numero);
+    // Crear el nuevo paciente
+    Paciente nuevo = new Paciente(
+        id,                            // id_paciente
+        (alergia.getSelectedItem().equals("Otra") ? otraAlergia.getText() : (String) alergia.getSelectedItem()), // alergia
+        (String) grupoSanguineo.getSelectedItem(), // grupo sanguíneo
+        seguro.isSelected(),                       // seguro
+        (String) facultad.getSelectedItem(),       // facultad
+        dni.getText(),                             // dni
+        nombres.getText(),                         // nombres
+        apellidos.getText(),                       // apellidos
+        (String) sexo.getSelectedItem(),           // sexo
+        direccion.getText(),                       // dirección
+        telefono.getText(),                        // teléfono
+        btDate.getText(),                          // fecha nacimiento
+        ciudad.getText(),                          // ciudad
+        provincia.getText(),                       // provincia
+        nacionalidad.getText()                     // nacionalidad
+    );
+
+    // Agregar el nuevo paciente a la lista y guardar en archivo
+    Paciente.agregarPaciente(lista, nuevo);
+
+    // Mostrar mensaje de éxito
+    JOptionPane.showMessageDialog(this, "Paciente registrado correctamente.");
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> alergia;
+    private javax.swing.JTextField apellidos;
     private javax.swing.JPanel bg;
     private javax.swing.JTextField btDate;
-    private javax.swing.JComboBox<String> comboAlergia;
+    private javax.swing.JTextField ciudad;
     private javax.swing.JPanel contenidoPanel;
     private com.raven.datechooser.DateChooser date;
+    private javax.swing.JTextField direccion;
+    private javax.swing.JTextField dni;
+    private javax.swing.JComboBox<String> facultad;
+    private javax.swing.JComboBox<String> grupoSanguineo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -527,15 +568,13 @@ public class RegistroPaciente extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel labelAlergia;
+    private javax.swing.JTextField nacionalidad;
+    private javax.swing.JTextField nombres;
     private javax.swing.JTextField otraAlergia;
+    private javax.swing.JTextField provincia;
+    private javax.swing.JCheckBox seguro;
+    private javax.swing.JComboBox<String> sexo;
+    private javax.swing.JTextField telefono;
     // End of variables declaration//GEN-END:variables
 }

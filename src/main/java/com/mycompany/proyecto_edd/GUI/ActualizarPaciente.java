@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.mycompany.proyecto_edd.GUI;
-
+import com.mycompany.proyecto_edd.Paciente;
+import java.util.LinkedList;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Juan
@@ -42,30 +44,30 @@ public class ActualizarPaciente extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        nombres = new javax.swing.JTextField();
+        apellidos = new javax.swing.JTextField();
+        telefono = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        dni = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         otraAlergia = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         labelAlergia = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        seguro = new javax.swing.JCheckBox();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        comboAlergia = new javax.swing.JComboBox<>();
+        alergia = new javax.swing.JComboBox<>();
         jLabel21 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
+        direccion = new javax.swing.JTextField();
+        ciudad = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
+        provincia = new javax.swing.JTextField();
         comprobar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        actualizar = new javax.swing.JButton();
 
         jLabel10.setText("jLabel10");
 
@@ -148,9 +150,9 @@ public class ActualizarPaciente extends javax.swing.JPanel {
         labelAlergia.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         labelAlergia.setText("Especifique:");
 
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        seguro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                seguroActionPerformed(evt);
             }
         });
 
@@ -159,10 +161,10 @@ public class ActualizarPaciente extends javax.swing.JPanel {
 
         jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LogoDatosClinicos.png"))); // NOI18N
 
-        comboAlergia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguna", "Penicilina", "Lidocaína", "Ibuprofeno", "Paracetamol", "Látex", "Clorhexidina", "Anestesia local", "Antibióticos en general", "Antiinflamatorios", "Metales dentales (níquel, cromo, etc.)", "Pasta dental con flúor", "Enjuagues bucales", "Otra" }));
-        comboAlergia.addActionListener(new java.awt.event.ActionListener() {
+        alergia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguna", "Penicilina", "Lidocaína", "Ibuprofeno", "Paracetamol", "Látex", "Clorhexidina", "Anestesia local", "Antibióticos en general", "Antiinflamatorios", "Metales dentales (níquel, cromo, etc.)", "Pasta dental con flúor", "Enjuagues bucales", "Otra" }));
+        alergia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboAlergiaActionPerformed(evt);
+                alergiaActionPerformed(evt);
             }
         });
 
@@ -182,29 +184,20 @@ public class ActualizarPaciente extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(1, 36, 86));
-        jButton1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("ACTUALIZAR");
+        actualizar.setBackground(new java.awt.Color(1, 36, 86));
+        actualizar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        actualizar.setForeground(new java.awt.Color(255, 255, 255));
+        actualizar.setText("ACTUALIZAR");
+        actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout contenidoPanelLayout = new javax.swing.GroupLayout(contenidoPanel);
         contenidoPanel.setLayout(contenidoPanelLayout);
         contenidoPanelLayout.setHorizontalGroup(
             contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenidoPanelLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(contenidoPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 131, Short.MAX_VALUE))
-                    .addGroup(contenidoPanelLayout.createSequentialGroup()
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(65, 65, 65)
-                        .addComponent(comprobar, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addGroup(contenidoPanelLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 626, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 86, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenidoPanelLayout.createSequentialGroup()
                 .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(contenidoPanelLayout.createSequentialGroup()
@@ -215,50 +208,50 @@ public class ActualizarPaciente extends javax.swing.JPanel {
                         .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(contenidoPanelLayout.createSequentialGroup()
                                 .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField2)
-                                    .addComponent(jTextField3)
+                                    .addComponent(nombres)
+                                    .addComponent(apellidos)
                                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                                         .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(contenidoPanelLayout.createSequentialGroup()
                                                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addGap(104, 104, 104))
-                                            .addGroup(contenidoPanelLayout.createSequentialGroup()
-                                                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                                                .addGap(127, 127, 127))
-                                            .addComponent(jTextField8)
+                                            .addComponent(ciudad)
                                             .addGroup(contenidoPanelLayout.createSequentialGroup()
                                                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGap(105, 105, 105)))
+                                                .addGap(105, 105, 105))
+                                            .addGroup(contenidoPanelLayout.createSequentialGroup()
+                                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE)))
                                         .addGap(4, 4, 4)))
                                 .addGap(74, 74, 74)
                                 .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(contenidoPanelLayout.createSequentialGroup()
-                                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+                                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(107, 107, 107))
-                                    .addComponent(jTextField10)
+                                    .addComponent(provincia)
                                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(107, 107, 107))
-                                    .addComponent(jTextField11)
+                                    .addComponent(direccion)
                                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(112, 112, 112))
-                                    .addComponent(jTextField6))
+                                    .addComponent(telefono))
                                 .addGap(83, 83, 83)
-                                .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
+                                .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenidoPanelLayout.createSequentialGroup()
                                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(9, 9, 9))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenidoPanelLayout.createSequentialGroup()
                                 .addGap(280, 280, 280)
-                                .addComponent(jButton1)
+                                .addComponent(actualizar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel20)
                                 .addGap(22, 22, 22))))
                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comboAlergia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(alergia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(contenidoPanelLayout.createSequentialGroup()
                                 .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(otraAlergia)
@@ -269,13 +262,24 @@ public class ActualizarPaciente extends javax.swing.JPanel {
                             .addComponent(labelAlergia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(49, 49, 49)
                         .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(contenidoPanelLayout.createSequentialGroup()
-                                .addComponent(jCheckBox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(324, 324, 324))
-                            .addGroup(contenidoPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(324, 324, 324)))))
+                            .addComponent(seguro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(324, 324, 324)))
                 .addGap(32, 32, 32))
+            .addGroup(contenidoPanelLayout.createSequentialGroup()
+                .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contenidoPanelLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(contenidoPanelLayout.createSequentialGroup()
+                                .addComponent(dni, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(65, 65, 65)
+                                .addComponent(comprobar, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(contenidoPanelLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 626, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         contenidoPanelLayout.setVerticalGroup(
             contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,7 +291,7 @@ public class ActualizarPaciente extends javax.swing.JPanel {
                 .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                         .addGap(7, 7, 7)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(dni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(comprobar, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(15, 15, 15)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -303,8 +307,8 @@ public class ActualizarPaciente extends javax.swing.JPanel {
                         .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(contenidoPanelLayout.createSequentialGroup()
                                 .addGap(1, 1, 1)
-                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(provincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(contenidoPanelLayout.createSequentialGroup()
@@ -315,16 +319,16 @@ public class ActualizarPaciente extends javax.swing.JPanel {
                         .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(contenidoPanelLayout.createSequentialGroup()
                                 .addGap(1, 1, 1)
-                                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(ciudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -338,8 +342,8 @@ public class ActualizarPaciente extends javax.swing.JPanel {
                             .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox1)
-                            .addComponent(comboAlergia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(seguro)
+                            .addComponent(alergia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(contenidoPanelLayout.createSequentialGroup()
@@ -348,7 +352,7 @@ public class ActualizarPaciente extends javax.swing.JPanel {
                                 .addComponent(otraAlergia)
                                 .addGap(114, 114, 114))
                             .addGroup(contenidoPanelLayout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                         .addComponent(jLabel20)
@@ -380,12 +384,12 @@ public class ActualizarPaciente extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void seguroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seguroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_seguroActionPerformed
 
-    private void comboAlergiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboAlergiaActionPerformed
-        if ("Otra".equals(comboAlergia.getSelectedItem())){
+    private void alergiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alergiaActionPerformed
+        if ("Otra".equals(alergia.getSelectedItem())){
             otraAlergia.setVisible(true);
             labelAlergia.setVisible(true);
         }
@@ -393,21 +397,79 @@ public class ActualizarPaciente extends javax.swing.JPanel {
             otraAlergia.setVisible(false);
             labelAlergia.setVisible(false);
         }
-    }//GEN-LAST:event_comboAlergiaActionPerformed
+    }//GEN-LAST:event_alergiaActionPerformed
+
 
     private void comprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprobarActionPerformed
-        // TODO add your handling code here:
+        LinkedList<Paciente> lista = Paciente.cargarDesdeArchivo();
+        Boolean encontrado ;
+        encontrado = false;
+        for (Paciente p : lista) {
+            if (p.getDni().equals(dni.getText())) {
+                encontrado = true; 
+            }
+        }
+        if (encontrado){
+            JOptionPane.showMessageDialog(this, "Paciente encontrado");
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Paciente no encontrado");
+        }
+        
     }//GEN-LAST:event_comprobarActionPerformed
+
+    private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
+        LinkedList<Paciente> lista = Paciente.cargarDesdeArchivo();
+        Boolean encontrado ;
+        encontrado = false;
+        for (Paciente p : lista) {
+            if (p.getDni().equals(dni.getText())) {
+                encontrado = true; 
+            }
+        }
+        if (encontrado){
+            // Crear el nuevo paciente
+            Paciente nuevo = new Paciente(
+                null,                                       // id_paciente
+                (alergia.getSelectedItem().equals("Otra") ? otraAlergia.getText() : (String) alergia.getSelectedItem()), // alergia-
+                null,                                       // grupo sanguíneo-
+                seguro.isSelected(),                       // seguro-
+                null,                                       // facultad-
+                null,                                        // dni
+                nombres.getText(),                         // nombres-
+                apellidos.getText(),                       // apellidos-
+                null,                                       // sexo-
+                direccion.getText(),                       // dirección-
+                telefono.getText(),                        // teléfono-
+                null,                                       // fecha nacimiento-
+                ciudad.getText(),                          // ciudad-
+                provincia.getText(),                       // provincia-
+                null                                       // nacionalidad-
+            ); 
+            // Editar el paciente a la lista y guardar en archivo
+            Paciente.editarPaciente(lista,dni.getText(),nuevo);
+            // Muestra mensaje de operacion exitosa
+            JOptionPane.showMessageDialog(this, "Paciente actualizado correctamente");
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "No se pudo completar la operacion porque el paciente no existe");
+        }
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_actualizarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton actualizar;
+    private javax.swing.JComboBox<String> alergia;
+    private javax.swing.JTextField apellidos;
     private javax.swing.JPanel bg;
-    private javax.swing.JComboBox<String> comboAlergia;
+    private javax.swing.JTextField ciudad;
     private javax.swing.JButton comprobar;
     private javax.swing.JPanel contenidoPanel;
     private com.raven.datechooser.DateChooser date;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JTextField direccion;
+    private javax.swing.JTextField dni;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -426,14 +488,11 @@ public class ActualizarPaciente extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel labelAlergia;
+    private javax.swing.JTextField nombres;
     private javax.swing.JTextField otraAlergia;
+    private javax.swing.JTextField provincia;
+    private javax.swing.JCheckBox seguro;
+    private javax.swing.JTextField telefono;
     // End of variables declaration//GEN-END:variables
 }

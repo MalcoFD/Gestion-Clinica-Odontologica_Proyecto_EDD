@@ -79,23 +79,23 @@ public class Paciente extends Persona {
     }
 
     // Editar paciente
-    public static void editarPaciente(LinkedList<Paciente> lista, String idPaciente, Paciente datosActualizados) {
+    public static void editarPaciente(LinkedList<Paciente> lista, String dni, Paciente datosActualizados) {
         for (Paciente p : lista) {
-            if (p.getId_Paciente().equals(idPaciente)) {
+            if (p.getDni().equals(dni)) {
+                p.setProvincia(datosActualizados.getProvincia());
                 p.setAlergia(datosActualizados.getAlergia());
-                p.setGrupo_Sanguineo(datosActualizados.getGrupo_Sanguineo());
+                p.setCiudad(datosActualizados.getCiudad());
                 p.setSeguro(datosActualizados.getSeguro());
-                p.setFacultad(datosActualizados.getFacultad());
                 p.setNombres(datosActualizados.getNombres());
                 p.setApellidos(datosActualizados.getApellidos());
                 p.setTelefono(datosActualizados.getTelefono());
                 p.setDireccion(datosActualizados.getDireccion());
                 guardarEnArchivo(lista);
-                System.out.println("Paciente con ID " + idPaciente + " actualizado correctamente.");
+                System.out.println("Paciente con DNI " + dni + " actualizado correctamente.");
                 return;
             }
         }
-        System.out.println("Paciente con ID " + idPaciente + " no encontrado.");
+        System.out.println("Paciente con ID " + dni + " no encontrado.");
     }
 
     // Eliminar paciente
