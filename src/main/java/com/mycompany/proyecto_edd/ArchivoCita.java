@@ -109,7 +109,7 @@ public class ArchivoCita {
                 salida.println(c.getId() + "-"
                         + c.getPaciente().getDni() + "-"
                         + c.getPaciente().getNombres() + "-"
-                        + c.getOdontologo().getNombre() + "-"
+                        + c.getOdontologo().getNombres() + "-"
                         + c.getMotivo() + "-"
                         + c.getFecha().fechaAbreviada() + "-"
                         + c.getHora().horaAbreviada() + "-"
@@ -173,7 +173,7 @@ public class ArchivoCita {
 
     private Odontologo buscarOdontologoPorNombre(String nombre, ArrayList<Odontologo> odontologos) {
         for (Odontologo odontologo : odontologos) {
-            if (odontologo.getNombre().equals(nombre)) {
+            if (odontologo.getNombres().equals(nombre)) {
                 return odontologo;
             }
         }
