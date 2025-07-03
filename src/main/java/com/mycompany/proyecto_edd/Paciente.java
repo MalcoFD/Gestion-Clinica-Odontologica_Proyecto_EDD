@@ -166,7 +166,8 @@ public class Paciente extends Persona {
             System.out.println("Error al guardar pacientes: " + e.getMessage());
         }
     }
-
+  
+    
     // Cargar lista desde archivo
     public static LinkedList<Paciente> cargarDesdeArchivo() {
         LinkedList<Paciente> lista = new LinkedList<>();
