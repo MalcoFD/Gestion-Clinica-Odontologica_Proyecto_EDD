@@ -3,6 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.mycompany.proyecto_edd.GUI;
+import com.mycompany.proyecto_edd.Cita;
+import com.mycompany.proyecto_edd.Fecha;
+import com.mycompany.proyecto_edd.Paciente;
+import java.util.LinkedList;
+import javax.swing.JOptionPane;
+import com.mycompany.proyecto_edd.Hora;
+import com.mycompany.proyecto_edd.Odontologo;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Stack;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,6 +29,52 @@ public class BuscarHistorialPaciente extends javax.swing.JPanel {
     public BuscarHistorialPaciente() {
         initComponents();
     }
+    // Método para cargar las citas de un paciente (deberás implementarlo según tu estructura)
+private Stack<Cita> cargarCitasPorPaciente(Paciente paciente) {
+    Stack<Cita> citas = new Stack<>();
+    String archivoHistorial = paciente.getDni() + "-citas.txt";
+    File archivo = new File(archivoHistorial);
+
+    if (archivo.exists()) {
+        try (BufferedReader br = new BufferedReader(new FileReader(archivoHistorial))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] datos = line.split("-");
+                // Verifica que los datos estén completos antes de crear la cita
+                if (datos.length >= 9) {
+                    // Instanciamos el paciente con los datos del archivo
+                    Paciente p = new Paciente(
+                        datos[1], datos[2], datos[3], Boolean.parseBoolean(datos[4]), datos[5],
+                        datos[6], datos[7], datos[8], datos[9], datos[10],
+                        datos[11], datos[12], datos[13], datos[14], datos[15]
+                    );
+
+                    // Instanciamos el odontólogo con los datos del archivo
+                    Odontologo o = new Odontologo(
+                        datos[16], datos[17], datos[18], datos[19], datos[20], 
+                        datos[21], datos[22], datos[23], datos[24], datos[25],
+                        datos[26], datos[27]
+                    );
+
+                    // Instanciamos la fecha y la hora
+                    Fecha fecha = new Fecha(Integer.parseInt(datos[5]), Integer.parseInt(datos[6]), Integer.parseInt(datos[7]));
+                    Hora hora = new Hora(Integer.parseInt(datos[8]), Integer.parseInt(datos[9]));
+
+                    // Crear la cita
+                    Cita cita = new Cita(
+                        datos[0], p, o, datos[4], fecha, hora, datos[10], datos[11]
+                    );
+
+                    // Añadir la cita a la pila
+                    citas.push(cita);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    return citas;
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,16 +92,14 @@ public class BuscarHistorialPaciente extends javax.swing.JPanel {
         jTextField11 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        comprobar1 = new javax.swing.JButton();
-        jTextField10 = new javax.swing.JTextField();
+        buscar = new javax.swing.JButton();
+        dni = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
+        tablaCitas = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField12 = new javax.swing.JTextField();
-        jTextField13 = new javax.swing.JTextField();
-        jTextField14 = new javax.swing.JTextField();
+        id_paciente = new javax.swing.JTextField();
+        paciente_name = new javax.swing.JTextField();
 
         jLabel1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel1.setText("Ingrese DNI o código de paciente:");
@@ -68,18 +125,18 @@ public class BuscarHistorialPaciente extends javax.swing.JPanel {
         jLabel18.setFont(new java.awt.Font("Poppins SemiBold", 1, 24)); // NOI18N
         jLabel18.setText("Historial de citas del paciente");
 
-        comprobar1.setBackground(new java.awt.Color(1, 37, 70));
-        comprobar1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        comprobar1.setForeground(new java.awt.Color(255, 255, 255));
-        comprobar1.setText("BUSCAR");
-        comprobar1.addActionListener(new java.awt.event.ActionListener() {
+        buscar.setBackground(new java.awt.Color(1, 37, 70));
+        buscar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        buscar.setForeground(new java.awt.Color(255, 255, 255));
+        buscar.setText("BUSCAR");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comprobar1ActionPerformed(evt);
+                buscarActionPerformed(evt);
             }
         });
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 204));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaCitas.setBackground(new java.awt.Color(255, 255, 204));
+        tablaCitas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -98,10 +155,7 @@ public class BuscarHistorialPaciente extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-
-        jLabel3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jLabel3.setText("DNI:");
+        jScrollPane1.setViewportView(tablaCitas);
 
         jLabel4.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel4.setText("Id paciente:");
@@ -109,14 +163,16 @@ public class BuscarHistorialPaciente extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel5.setText("Paciente:");
 
-        jTextField12.setEditable(false);
-        jTextField12.setBackground(new java.awt.Color(204, 255, 204));
+        id_paciente.setEditable(false);
+        id_paciente.setBackground(new java.awt.Color(204, 255, 204));
+        id_paciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                id_pacienteActionPerformed(evt);
+            }
+        });
 
-        jTextField13.setEditable(false);
-        jTextField13.setBackground(new java.awt.Color(204, 255, 204));
-
-        jTextField14.setEditable(false);
-        jTextField14.setBackground(new java.awt.Color(204, 255, 204));
+        paciente_name.setEditable(false);
+        paciente_name.setBackground(new java.awt.Color(204, 255, 204));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -128,33 +184,29 @@ public class BuscarHistorialPaciente extends javax.swing.JPanel {
                         .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 626, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(60, 60, 60)
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(44, 44, 44)
-                                        .addComponent(comprobar1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 626, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 674, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(dni, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(paciente_name, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
+                                .addGap(33, 33, 33)
+                                .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(id_paciente, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(44, 44, 44)
+                                .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -166,19 +218,14 @@ public class BuscarHistorialPaciente extends javax.swing.JPanel {
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comprobar1))
-                .addGap(0, 8, Short.MAX_VALUE)
+                    .addComponent(dni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(id_paciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(paciente_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46))
@@ -189,28 +236,72 @@ public class BuscarHistorialPaciente extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_comprobarActionPerformed
 
-    private void comprobar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprobar1ActionPerformed
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+LinkedList<Paciente> lista = Paciente.cargarDesdeArchivo();
+    Boolean encontrado = false;
+
+    // Limpiar la tabla antes de agregar nuevas filas
+    DefaultTableModel modelo = (DefaultTableModel) tablaCitas.getModel();
+    modelo.setRowCount(0);
+
+    for (Paciente p : lista) {
+        if (p.getDni().equals(dni.getText())) {
+            encontrado = true;
+            id_paciente.setText(p.getId_Paciente());
+            paciente_name.setText(p.getNombres());
+            
+            // Buscar las citas del paciente
+            Stack<Cita> citasPaciente = cargarCitasPorPaciente(p);
+            if (citasPaciente != null && !citasPaciente.isEmpty()) {
+                // Llenar la tabla con las citas del paciente
+                for (Cita cita : citasPaciente) {
+                    Object[] fila = {
+                        cita.getId(),
+                        cita.getOdontologo().getNombres(),
+                        cita.getMotivo(),
+                        cita.getFecha().fechaAbreviada(),
+                        cita.getHora().horaAbreviada(),
+                        cita.getAlergias(),
+                        cita.getEstadoCita()
+                    };
+                    modelo.addRow(fila);
+                }
+            }
+            break;
+        }
+    }
+
+    if (encontrado) {
+        JOptionPane.showMessageDialog(this, "Paciente encontrado");
+    } else {
+        JOptionPane.showMessageDialog(this, "Paciente no encontrado");
+        id_paciente.setText("");
+        paciente_name.setText("");
+    }
+
+
+    }//GEN-LAST:event_buscarActionPerformed
+
+    private void id_pacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_pacienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_comprobar1ActionPerformed
+    }//GEN-LAST:event_id_pacienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buscar;
     private javax.swing.JButton comprobar;
-    private javax.swing.JButton comprobar1;
+    private javax.swing.JTextField dni;
+    private javax.swing.JTextField id_paciente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField paciente_name;
+    private javax.swing.JTable tablaCitas;
     // End of variables declaration//GEN-END:variables
 }
