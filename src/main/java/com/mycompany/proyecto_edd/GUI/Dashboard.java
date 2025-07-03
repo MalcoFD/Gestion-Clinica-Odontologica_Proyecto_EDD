@@ -21,7 +21,7 @@ import javax.swing.UIManager;
 public class Dashboard extends javax.swing.JFrame {
 
     private MenuOdontologos menuOdontologos;
-
+    private DashboardCitas dashboardCitas;
     /**
      * Creates new form Dashboard
      */
@@ -185,6 +185,11 @@ public class Dashboard extends javax.swing.JFrame {
         jButton5.setBorderPainted(false);
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -338,7 +343,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        Showpanel(new RegistroCita());// TODO add your handling code here:
+        Showpanel(new RegistroCita());    // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -354,6 +359,13 @@ public class Dashboard extends javax.swing.JFrame {
         menuOdontologos.setVisible(true);            // Lo muestras
         this.dispose();                       // Cierras la ventana actual (MenuOdontologos)
     }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        dashboardCitas = new DashboardCitas(); // Instancia tu dashboard
+        dashboardCitas.setVisible(true);            // Lo muestras
+        this.dispose();// TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton5MouseClicked
 
     /**
      * @param args the command line arguments
