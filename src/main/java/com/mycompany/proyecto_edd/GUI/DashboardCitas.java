@@ -8,9 +8,6 @@ import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMTMaterialLigh
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Insets;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
@@ -18,15 +15,14 @@ import javax.swing.UIManager;
  *
  * @author Juan
  */
-public class Dashboard extends javax.swing.JFrame {
+public class DashboardCitas extends javax.swing.JFrame {
 
     /**
      * Creates new form Dashboard
      */
-    public Dashboard() {
+    public DashboardCitas() {
         initComponents();
         initStyles();
-        SetDate();
         InitContent();
         setLocationRelativeTo(null);
     }
@@ -38,7 +34,6 @@ public class Dashboard extends javax.swing.JFrame {
     private void Showpanel(JPanel p){
         p.setLocation(0,0);
         
-        
         content.removeAll();
         content.setLayout(new BorderLayout());
         content.add(p, BorderLayout.CENTER);
@@ -46,18 +41,11 @@ public class Dashboard extends javax.swing.JFrame {
         content.repaint();
     }
     
-    private void SetDate(){
-        LocalDate now = LocalDate.now();
-        Locale spanishLocale = new Locale("es", "ES");
-        dateText.setText(now.format(DateTimeFormatter.ofPattern(" 'Hoy es' EEEE dd 'de' MMMM 'de' yyyy", spanishLocale)));
-    }
     
     private void initStyles(){
         navtext.putClientProperty( "FlatLaf.style", "font: bold $h1.regular.font" );
         navtext.setForeground(Color.white);
         
-        dateText.putClientProperty( "FlatLaf.style", "font: 24 $light.font" );
-        dateText.setForeground(Color.white);
         
         title.putClientProperty( "FlatLaf.style", "font: bold $h1.regular.font" );
         title.setForeground(Color.white);
@@ -84,7 +72,6 @@ public class Dashboard extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         header = new javax.swing.JPanel();
         navtext = new javax.swing.JLabel();
-        dateText = new javax.swing.JLabel();
         content = new javax.swing.JPanel();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -102,8 +89,6 @@ public class Dashboard extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1024, 600));
 
         background.setBackground(new java.awt.Color(255, 255, 255));
-        background.setMinimumSize(new java.awt.Dimension(1024, 600));
-        background.setPreferredSize(new java.awt.Dimension(1024, 600));
 
         menu.setBackground(new java.awt.Color(2, 69, 122));
 
@@ -117,12 +102,12 @@ public class Dashboard extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(2, 69, 122));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/registro.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RegistroCita.png"))); // NOI18N
+        jButton1.setText("Registrar cita");
         jButton1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         jButton1.setBorderPainted(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton1.setLabel("Registrar paciente");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -132,8 +117,8 @@ public class Dashboard extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(2, 69, 122));
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/actualizar.png"))); // NOI18N
-        jButton2.setText("Actualizar datos de paciente");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cambiarCita.png"))); // NOI18N
+        jButton2.setText("Cambiar cita");
         jButton2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         jButton2.setBorderPainted(false);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -147,8 +132,8 @@ public class Dashboard extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(2, 69, 122));
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mostrar.png"))); // NOI18N
-        jButton3.setText("Mostrar pacientes ");
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cancelarCita.png"))); // NOI18N
+        jButton3.setText("Cancelar cita");
         jButton3.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         jButton3.setBorderPainted(false);
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -162,8 +147,8 @@ public class Dashboard extends javax.swing.JFrame {
         jButton4.setBackground(new java.awt.Color(2, 69, 122));
         jButton4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buscar.png"))); // NOI18N
-        jButton4.setText("Buscar historial de paciente");
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buscarCita.png"))); // NOI18N
+        jButton4.setText("Mostrar citas ");
         jButton4.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         jButton4.setBorderPainted(false);
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -177,8 +162,8 @@ public class Dashboard extends javax.swing.JFrame {
         jButton5.setBackground(new java.awt.Color(2, 69, 122));
         jButton5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/citas.png"))); // NOI18N
-        jButton5.setText("Menú de citas");
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/verHistorialCita.png"))); // NOI18N
+        jButton5.setText("Revisar historial");
         jButton5.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         jButton5.setBorderPainted(false);
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -192,8 +177,8 @@ public class Dashboard extends javax.swing.JFrame {
         jButton6.setBackground(new java.awt.Color(2, 69, 122));
         jButton6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/doctor.png"))); // NOI18N
-        jButton6.setText("Menú de odontólogos");
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menuPrincipal.png"))); // NOI18N
+        jButton6.setText("Menú principal");
         jButton6.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         jButton6.setBorderPainted(false);
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -243,34 +228,27 @@ public class Dashboard extends javax.swing.JFrame {
 
         header.setBackground(new java.awt.Color(5, 103, 179));
 
+        navtext.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         navtext.setText("Clínica odontológica UNMSM");
-
-        dateText.setText("Hoy es {dayname} {day} de {month} de {year}");
 
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
         header.setLayout(headerLayout);
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(navtext, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addComponent(navtext, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(131, Short.MAX_VALUE))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(27, 27, 27)
                 .addComponent(navtext, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
-        content.setMinimumSize(new java.awt.Dimension(750, 500));
-        content.setPreferredSize(new java.awt.Dimension(750, 500));
-        content.setVerifyInputWhenFocusTarget(false);
+        content.setMinimumSize(new java.awt.Dimension(750, 490));
 
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
         content.setLayout(contentLayout);
@@ -290,18 +268,18 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(backgroundLayout.createSequentialGroup()
                 .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(backgroundLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
-                        .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         backgroundLayout.setVerticalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(backgroundLayout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
+                .addGap(90, 90, 90)
+                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -319,15 +297,15 @@ public class Dashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Showpanel(new RegistroPaciente());
+        Showpanel(new RegistroCita());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Showpanel(new MostrarPaciente());// TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        Showpanel(new BuscarHistorialPaciente());// TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -360,7 +338,7 @@ public class Dashboard extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Dashboard().setVisible(true);
+                new DashboardCitas().setVisible(true);
             }
         });
     }
@@ -368,7 +346,6 @@ public class Dashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
     private javax.swing.JPanel content;
-    private javax.swing.JLabel dateText;
     private javax.swing.JPanel header;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

@@ -10,15 +10,21 @@ package com.mycompany.proyecto_edd.GUI;
  */
 public class RegistroPaciente extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Principal
-     */
+    
     public RegistroPaciente() {
         initComponents();
         
         jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
+        
+       
+        otraAlergia.setVisible(false);
+        labelAlergia.setVisible(false);
+            
+        
 
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -92,7 +98,7 @@ public class RegistroPaciente extends javax.swing.JPanel {
         jScrollPane2.setPreferredSize(new java.awt.Dimension(745, 500));
 
         contenidoPanel.setBackground(new java.awt.Color(255, 255, 255));
-        contenidoPanel.setMinimumSize(new java.awt.Dimension(745, 760));
+        contenidoPanel.setMinimumSize(new java.awt.Dimension(745, 800));
         contenidoPanel.setPreferredSize(new java.awt.Dimension(745, 800));
 
         jLabel1.setFont(new java.awt.Font("Poppins SemiBold", 1, 24)); // NOI18N
@@ -115,7 +121,7 @@ public class RegistroPaciente extends javax.swing.JPanel {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
         );
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
@@ -180,7 +186,7 @@ public class RegistroPaciente extends javax.swing.JPanel {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
         );
 
         jLabel16.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
@@ -346,12 +352,12 @@ public class RegistroPaciente extends javax.swing.JPanel {
             contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenidoPanelLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(6, 6, 6)
                 .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -372,69 +378,69 @@ public class RegistroPaciente extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(6, 6, 6)
-                        .addComponent(btDate)
+                        .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btDate)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(2, 2, 2))
                     .addGroup(contenidoPanelLayout.createSequentialGroup()
-                        .addGap(280, 280, 280)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
-                        .addGap(2, 2, 2))
-                    .addGroup(contenidoPanelLayout.createSequentialGroup()
-                        .addComponent(jTextField7)
+                        .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                         .addGap(6, 6, 6)
-                        .addComponent(jTextField6)
+                        .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                         .addGap(6, 6, 6)
-                        .addComponent(jTextField9)
+                        .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                         .addGap(6, 6, 6)
-                        .addComponent(jTextField11)
+                        .addComponent(jTextField11, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                         .addGap(10, 10, 10)
-                        .addComponent(jTextField12)
+                        .addComponent(jTextField12, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
                         .addGap(6, 6, 6))
                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(16, 16, 16)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
                 .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(contenidoPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(17, 17, 17))
-                    .addGroup(contenidoPanelLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
                         .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(comboAlergia, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                            .addComponent(comboAlergia, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                             .addGroup(contenidoPanelLayout.createSequentialGroup()
                                 .addGap(1, 1, 1)
                                 .addComponent(jCheckBox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(25, 25, 25)
                         .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(contenidoPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                                .addGap(25, 25, 25)
+                                .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox3, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                                .addGap(29, 29, 29))
+                                .addComponent(jComboBox3, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                                .addGap(80, 80, 80))
                             .addGroup(contenidoPanelLayout.createSequentialGroup()
-                                .addComponent(labelAlergia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(labelAlergia, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(otraAlergia)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(37, 37, 37))))
+                    .addGroup(contenidoPanelLayout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel20)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                        .addGap(18, 18, 18))))
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         jScrollPane2.setViewportView(contenidoPanel);
@@ -475,14 +481,14 @@ public class RegistroPaciente extends javax.swing.JPanel {
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void comboAlergiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboAlergiaActionPerformed
-        if ("Otra".equals(comboAlergia.getSelectedItem())){
-            otraAlergia.setVisible(true);
-            otraAlergia.setVisible(true);
-        }
-        else{
-            otraAlergia.setVisible(false);
-            otraAlergia.setVisible(false);
-        }
+            if ("Otra".equals(comboAlergia.getSelectedItem())) {
+                 otraAlergia.setVisible(true);
+                 labelAlergia.setVisible(true);
+            }
+            else {
+                otraAlergia.setVisible(false);
+                labelAlergia.setVisible(false);
+            }
     }//GEN-LAST:event_comboAlergiaActionPerformed
 
 
