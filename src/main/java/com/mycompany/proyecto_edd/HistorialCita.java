@@ -58,7 +58,7 @@ public class HistorialCita {
                         salida.println(cita.getId() + "-"
                                 + cita.getPaciente().getDni() + "-"
                                 + cita.getPaciente().getNombres() + "-"
-                                + cita.getOdontologo().getNombre() + "-"
+                                + cita.getOdontologo().getNombres() + "-"
                                 + cita.getMotivo() + "-"
                                 + cita.getFecha().fechaAbreviada() + "-"
                                 + cita.getHora().horaAbreviada() + "-"
