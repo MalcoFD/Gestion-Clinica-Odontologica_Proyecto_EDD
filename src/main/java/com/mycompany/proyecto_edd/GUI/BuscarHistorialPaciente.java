@@ -238,7 +238,7 @@ private Stack<Cita> cargarCitasPorPaciente(Paciente paciente) {
                     cita.getMotivo(),
                     cita.getFecha().fechaAbreviada(),
                     cita.getHora().horaAbreviada(),
-                    cita.getAlergias(),
+                    p.getAlergia(),
                     cita.getEstadoCita()
                 });
             }

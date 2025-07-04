@@ -177,7 +177,6 @@ public class CancelarCita extends javax.swing.JPanel {
             // Completar los campos con los datos de la cita
             jTextField3.setText(cita.getOdontologo().getNombres());  // Completar Doctor
             jTextField2.setText(cita.getMotivo());  // Completar Motivo
-            btDate1.setText(cita.getAlergias());  // Completar Alergias
             
             // Completar Fecha y Hora
             btDate2.setText(cita.getFecha().fechaAbreviada());  // Completar Fecha
