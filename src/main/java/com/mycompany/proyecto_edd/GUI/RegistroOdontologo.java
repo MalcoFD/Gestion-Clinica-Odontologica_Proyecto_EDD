@@ -83,8 +83,9 @@ public class RegistroOdontologo extends javax.swing.JPanel {
         jScrollPane2.setPreferredSize(new java.awt.Dimension(745, 500));
 
         contenidoPanel.setBackground(new java.awt.Color(255, 255, 255));
-        contenidoPanel.setMinimumSize(new java.awt.Dimension(745, 500));
-        contenidoPanel.setPreferredSize(new java.awt.Dimension(745, 750));
+        contenidoPanel.setMinimumSize(new java.awt.Dimension(745, 700));
+        contenidoPanel.setName(""); // NOI18N
+        contenidoPanel.setPreferredSize(new java.awt.Dimension(745, 700));
         contenidoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Poppins SemiBold", 1, 24)); // NOI18N
@@ -102,16 +103,14 @@ public class RegistroOdontologo extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        contenidoPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 64, 740, -1));
+        contenidoPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 64, 660, -1));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel3.setText("DNI:");
@@ -194,7 +193,7 @@ public class RegistroOdontologo extends javax.swing.JPanel {
         jButton2.setBorder(null);
         jButton2.setBorderPainted(false);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        contenidoPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 500, 190, 60));
+        contenidoPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 470, 190, 60));
 
         jScrollPane2.setViewportView(contenidoPanel);
 
