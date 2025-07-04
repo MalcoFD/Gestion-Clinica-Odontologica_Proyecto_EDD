@@ -34,7 +34,7 @@ public class CancelarCita extends javax.swing.JPanel {
     private void initComponents() {
 
         date = new com.raven.datechooser.DateChooser();
-        jPanel1 = new PanelConFondo("/CitaFondo.jpg") ;
+        jPanel1 = new PanelConFondo("/FondoPanelCita.png") ;
         jLabel1 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -160,6 +160,7 @@ public class CancelarCita extends javax.swing.JPanel {
 
     private void botonBuscarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarCitaActionPerformed
         // Obtener el DNI ingresado por el usuario
+        /*
         String dniPaciente = jTextField1.getText().trim();  // Obtener el DNI desde el campo de texto
 
         // Validar que el DNI no esté vacío
@@ -185,6 +186,7 @@ public class CancelarCita extends javax.swing.JPanel {
             // Si no se encuentra la cita, mostrar un mensaje de error
             JOptionPane.showMessageDialog(this, "No se encontró una cita con ese DNI.");
         }
+*/
     }//GEN-LAST:event_botonBuscarCitaActionPerformed
 
 

@@ -30,22 +30,26 @@ public class BuscarHistorialPaciente extends javax.swing.JPanel {
         initComponents();
     }
     // Método para cargar las citas de un paciente (deberás implementarlo según tu estructura)
+// Método para cargar las citas de un paciente
 private Stack<Cita> cargarCitasPorPaciente(Paciente paciente) {
-    // 1) Asegúrate de cargar todas las citas en la pila global
-    Cita.cargarCitas();                // llena Cita.listaCitas
+    // 1) Cargar todas las citas en la pila global
+    Stack<Cita> listaCitas = Cita.cargarCitas();  // Llamamos a Cita.cargarCitas para obtener la pila de citas
 
-    // 2) Filtrar solo las del DNI buscado
+    // 2) Filtrar solo las citas del paciente con el DNI buscado
     Stack<Cita> resultado = new Stack<>();
-    String dniBuscado = paciente.getDni();
+    String dniBuscado = paciente.getDni();  // Obtener el DNI del paciente
 
-    for (Cita c : Cita.listaCitas) {
+    // 3) Recorrer las citas y agregar las que coincidan con el DNI
+    for (Cita c : listaCitas) {
         if (c.getPaciente().getDni().equals(dniBuscado)) {
-            resultado.push(c);
+            resultado.push(c);  // Agregar la cita al resultado si el DNI coincide
         }
     }
 
+    // 4) Retornar las citas del paciente
     return resultado;
 }
+
 
 
 
