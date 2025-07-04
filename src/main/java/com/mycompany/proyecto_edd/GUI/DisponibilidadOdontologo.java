@@ -68,6 +68,8 @@ public class DisponibilidadOdontologo extends javax.swing.JPanel {
         jLabel17 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton3 = new javax.swing.JButton();
+        jButton1.putClientProperty("JButton.arc", 25);
 
         jLabel10.setText("jLabel10");
 
@@ -125,7 +127,8 @@ public class DisponibilidadOdontologo extends javax.swing.JPanel {
         jButton2.setBackground(new java.awt.Color(2, 69, 122));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("GUARDAR");
+        jButton2.setText("VER");
+        jButton2.setToolTipText("");
         jButton2.setBorder(null);
         jButton2.setBorderPainted(false);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -134,12 +137,12 @@ public class DisponibilidadOdontologo extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        contenidoPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 440, 150, 30));
-        contenidoPanel.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 440, 253, -1));
+        contenidoPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 440, 150, 30));
+        contenidoPanel.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 440, 253, -1));
 
         jLabel17.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel17.setText("ID Odontólogo:");
-        contenidoPanel.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, 146, -1));
+        contenidoPanel.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 146, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -152,6 +155,20 @@ public class DisponibilidadOdontologo extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         contenidoPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 660, 320));
+
+        jButton3.setBackground(new java.awt.Color(2, 69, 122));
+        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("GUARDAR");
+        jButton3.setBorder(null);
+        jButton3.setBorderPainted(false);
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        contenidoPanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 440, 150, 30));
 
         jScrollPane2.setViewportView(contenidoPanel);
 
@@ -188,12 +205,17 @@ public class DisponibilidadOdontologo extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
     private javax.swing.JPanel contenidoPanel;
     private com.raven.datechooser.DateChooser date;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel17;

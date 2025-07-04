@@ -156,7 +156,6 @@ public class MenuOdontologos extends javax.swing.JFrame {
         jButton6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Menú principal");
-        jButton6.setActionCommand("Menú principal");
         jButton6.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         jButton6.setBorderPainted(false);
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -203,7 +202,8 @@ public class MenuOdontologos extends javax.swing.JFrame {
         jButton5.setBackground(new java.awt.Color(2, 69, 122));
         jButton5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("DIsponibilidad de un odontólogo");
+        jButton5.setText("Disponibilidad de un odontólogo");
+        jButton5.setActionCommand("Disponibilidad de un odontólogo");
         jButton5.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         jButton5.setBorderPainted(false);
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));

@@ -4,6 +4,9 @@
  */
 package com.mycompany.proyecto_edd.GUI;
 
+import com.mycompany.proyecto_edd.Odontologo;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Juan
@@ -15,7 +18,34 @@ public class BuscarOdontologo extends javax.swing.JPanel {
      */
     public BuscarOdontologo() {
         initComponents();
-        
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+modelo.setRowCount(0); // Limpiar la tabla
+
+for (Odontologo o : Odontologo.listaOdontologos) {
+    modelo.addRow(new Object[]{
+        o.getIdOdontologo(),
+        o.getNombres(),
+        o.getApellidos(),
+        o.getEspecialidad(),
+        "Ver" // Este será tu "botón"
+    });
+}
+jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+    public void mouseClicked(java.awt.event.MouseEvent evt) {
+        int fila = jTable1.rowAtPoint(evt.getPoint());
+        int columna = jTable1.columnAtPoint(evt.getPoint());
+        // Suponiendo que la columna 4 es "Ver"
+        if (columna == 4 && fila != -1) {
+            String id = (String) jTable1.getValueAt(fila, 0);
+            Odontologo o = Odontologo.buscarOdontologoPorId(id);
+            if (o != null) {
+                o.cargarDisponibilidad();
+                //mostrarVentanaMatrizDisponibilidad(o);
+            }
+        }
+    }
+});
+
         jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
     }
 
