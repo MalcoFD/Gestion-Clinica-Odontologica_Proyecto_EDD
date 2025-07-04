@@ -248,9 +248,9 @@ public class RegistroCita extends javax.swing.JPanel {
     String[] partesFecha = fechaSeleccionada.split("-");
 
     // Extraer el año, mes y día
-    int anio = Integer.parseInt(partesFecha[0]);
+    int dia = Integer.parseInt(partesFecha[0]);
     int mes = Integer.parseInt(partesFecha[1]);
-    int dia = Integer.parseInt(partesFecha[2]);
+    int anio = Integer.parseInt(partesFecha[2]);
 
     // Crear el objeto Fecha con los valores obtenidos
     Fecha fechaCita = new Fecha(dia, mes, anio);
