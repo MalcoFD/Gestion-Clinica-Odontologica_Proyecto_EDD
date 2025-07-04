@@ -214,7 +214,7 @@ public class MenuOdontologos extends javax.swing.JFrame {
         jButton5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DisponibilidadOdontologo.png"))); // NOI18N
-        jButton5.setText("DIsponibilidad de un odontólogo");
+        jButton5.setText("Disponibilidad de un odontólogo");
         jButton5.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         jButton5.setBorderPainted(false);
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
