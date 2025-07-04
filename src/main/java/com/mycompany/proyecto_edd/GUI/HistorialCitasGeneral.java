@@ -93,7 +93,7 @@ public class HistorialCitasGeneral extends javax.swing.JPanel {
                 ordenarPorActionPerformed(evt);
             }
         });
-        add(ordenarPor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
+        add(ordenarPor, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void comprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprobarActionPerformed

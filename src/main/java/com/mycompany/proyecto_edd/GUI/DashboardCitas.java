@@ -4,11 +4,9 @@
  */
 package com.mycompany.proyecto_edd.GUI;
 
-import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMTMaterialLighterIJTheme;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Insets;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
@@ -18,6 +16,7 @@ import javax.swing.UIManager;
  * @author Juan
  */
 public class DashboardCitas extends javax.swing.JFrame {
+
     /**
      * Creates new form Dashboard
      */
@@ -27,8 +26,6 @@ public class DashboardCitas extends javax.swing.JFrame {
         InitContent();
         setLocationRelativeTo(null);
     }
-    
-    private Dashboard dashboard;
     
     private void InitContent(){
         Showpanel(new Principal());
@@ -186,11 +183,6 @@ public class DashboardCitas extends javax.swing.JFrame {
         jButton6.setBorderPainted(false);
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton6MouseClicked(evt);
-            }
-        });
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -321,20 +313,12 @@ public class DashboardCitas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      
+        Showpanel(new ActualizarPaciente());
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        dashboard = new Dashboard();
-        dashboard.setVisible(true);
-        this.dispose();
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
-        dashboard = new Dashboard(); // Instancia tu dashboard
-        dashboard.setVisible(true);            // Lo muestras
-        this.dispose();// TODO add your handling code here:
-    }//GEN-LAST:event_jButton6MouseClicked
 
     /**
      * @param args the command line arguments
@@ -349,10 +333,6 @@ public class DashboardCitas extends javax.swing.JFrame {
         UIManager.put("ScrollBar.trackInsets", new Insets(1, 1, 1, 1));
         UIManager.put("ScrollBar.trackArc", 8);
         UIManager.put("ScrollBar.showButtons", true);
-        UIManager.put("Label.foreground", new Color(30, 30, 30)); 
-        UIManager.put("Label.font", new Font("Poppins", Font.BOLD, 16)); 
-        
-        FlatLaf.updateUI();
         
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

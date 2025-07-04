@@ -31,20 +31,49 @@ public class BuscarHistorialPaciente extends javax.swing.JPanel {
     }
     // Método para cargar las citas de un paciente (deberás implementarlo según tu estructura)
 private Stack<Cita> cargarCitasPorPaciente(Paciente paciente) {
-    // 1) Asegúrate de cargar todas las citas en la pila global
-    Cita.cargarCitas();                // llena Cita.listaCitas
+    Stack<Cita> citas = new Stack<>();
+    String archivoHistorial = paciente.getDni() + "-citas.txt";
+    File archivo = new File(archivoHistorial);
 
-    // 2) Filtrar solo las del DNI buscado
-    Stack<Cita> resultado = new Stack<>();
-    String dniBuscado = paciente.getDni();
+    if (archivo.exists()) {
+        try (BufferedReader br = new BufferedReader(new FileReader(archivoHistorial))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] datos = line.split("-");
+                // Verifica que los datos estén completos antes de crear la cita
+                if (datos.length >= 9) {
+                    // Instanciamos el paciente con los datos del archivo
+                    Paciente p = new Paciente(
+                        datos[1], datos[2], datos[3], Boolean.parseBoolean(datos[4]), datos[5],
+                        datos[6], datos[7], datos[8], datos[9], datos[10],
+                        datos[11], datos[12], datos[13], datos[14], datos[15]
+                    );
 
-    for (Cita c : Cita.listaCitas) {
-        if (c.getPaciente().getDni().equals(dniBuscado)) {
-            resultado.push(c);
+                    // Instanciamos el odontólogo con los datos del archivo
+                    Odontologo o = new Odontologo(
+                        datos[16], datos[17], datos[18], datos[19], datos[20], 
+                        datos[21], datos[22], datos[23], datos[24], datos[25],
+                        datos[26], datos[27]
+                    );
+
+                    // Instanciamos la fecha y la hora
+                    Fecha fecha = new Fecha(Integer.parseInt(datos[5]), Integer.parseInt(datos[6]), Integer.parseInt(datos[7]));
+                    Hora hora = new Hora(Integer.parseInt(datos[8]), Integer.parseInt(datos[9]));
+
+                    // Crear la cita
+                    Cita cita = new Cita(
+                        datos[0], p, o, datos[4], fecha, hora, datos[10], datos[11]
+                    );
+
+                    // Añadir la cita a la pila
+                    citas.push(cita);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
-
-    return resultado;
+    return citas;
 }
 
     /**
@@ -208,39 +237,49 @@ private Stack<Cita> cargarCitasPorPaciente(Paciente paciente) {
     }//GEN-LAST:event_comprobarActionPerformed
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
-        String dniBuscado = dni.getText().trim();
-        Paciente p = Paciente.buscarPacientePorDni(dniBuscado);
-        if (p == null) {
-            JOptionPane.showMessageDialog(this, "Paciente no encontrado");
-            id_paciente.setText("");
-            paciente_name.setText("");
-            DefaultTableModel modelo = (DefaultTableModel) tablaCitas.getModel();
-            modelo.setRowCount(0);
-        }
-        else{
-            JOptionPane.showMessageDialog(this, "Paciente encontrado");
-            // Mostrar datos del paciente
+LinkedList<Paciente> lista = Paciente.cargarDesdeArchivo();
+    Boolean encontrado = false;
+
+    // Limpiar la tabla antes de agregar nuevas filas
+    DefaultTableModel modelo = (DefaultTableModel) tablaCitas.getModel();
+    modelo.setRowCount(0);
+
+    for (Paciente p : lista) {
+        if (p.getDni().equals(dni.getText())) {
+            encontrado = true;
             id_paciente.setText(p.getId_Paciente());
-            paciente_name.setText(p.getNombres() + " " + p.getApellidos());
-
-            // Obtener citas desde la pila global
+            paciente_name.setText(p.getNombres());
+            
+            // Buscar las citas del paciente
             Stack<Cita> citasPaciente = cargarCitasPorPaciente(p);
-
-            // Volcar en la tabla
-            DefaultTableModel modelo = (DefaultTableModel) tablaCitas.getModel();
-            modelo.setRowCount(0);
-            for (Cita cita : citasPaciente) {
-                modelo.addRow(new Object[]{
-                    cita.getId(),
-                    cita.getOdontologo().getNombres(),
-                    cita.getMotivo(),
-                    cita.getFecha().fechaAbreviada(),
-                    cita.getHora().horaAbreviada(),
-                    cita.getAlergias(),
-                    cita.getEstadoCita()
-                });
+            if (citasPaciente != null && !citasPaciente.isEmpty()) {
+                // Llenar la tabla con las citas del paciente
+                for (Cita cita : citasPaciente) {
+                    Object[] fila = {
+                        cita.getId(),
+                        cita.getOdontologo().getNombres(),
+                        cita.getMotivo(),
+                        cita.getFecha().fechaAbreviada(),
+                        cita.getHora().horaAbreviada(),
+                        cita.getAlergias(),
+                        cita.getEstadoCita()
+                    };
+                    modelo.addRow(fila);
+                }
             }
+            break;
         }
+    }
+
+    if (encontrado) {
+        JOptionPane.showMessageDialog(this, "Paciente encontrado");
+    } else {
+        JOptionPane.showMessageDialog(this, "Paciente no encontrado");
+        id_paciente.setText("");
+        paciente_name.setText("");
+    }
+
+
     }//GEN-LAST:event_buscarActionPerformed
 
     private void id_pacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_pacienteActionPerformed
