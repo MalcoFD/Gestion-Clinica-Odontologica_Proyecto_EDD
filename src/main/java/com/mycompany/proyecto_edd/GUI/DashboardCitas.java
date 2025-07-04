@@ -18,7 +18,6 @@ import javax.swing.UIManager;
  * @author Juan
  */
 public class DashboardCitas extends javax.swing.JFrame {
-    private Dashboard dashboard;
     /**
      * Creates new form Dashboard
      */
