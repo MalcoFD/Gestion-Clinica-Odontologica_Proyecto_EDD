@@ -1,7 +1,18 @@
 
 package com.mycompany.proyecto_edd.GUI;
 
+import com.mycompany.proyecto_edd.Cita;
+import com.mycompany.proyecto_edd.Fecha;
+import com.mycompany.proyecto_edd.HistorialCita;
+import com.mycompany.proyecto_edd.Hora;
+import com.mycompany.proyecto_edd.Odontologo;
+import com.mycompany.proyecto_edd.Paciente;
 import com.mycompany.proyecto_edd.PanelConFondo;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Stack;
+import javax.swing.JOptionPane;
 
 
 
@@ -48,6 +59,11 @@ public class RegistroCita extends javax.swing.JPanel {
         jLabel11.setText("DNI del paciente:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
 
@@ -99,6 +115,11 @@ public class RegistroCita extends javax.swing.JPanel {
         jButton3.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("REGISTRAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -215,6 +236,84 @@ public class RegistroCita extends javax.swing.JPanel {
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // Obtener los datos de los campos de la interfaz
+    String dniPaciente = jTextField2.getText();  // DNI del paciente
+    String nombreOdontologo = (String) jComboBox1.getSelectedItem();  // Nombre del odontólogo
+    // Obtener la fecha seleccionada como String
+    String fechaSeleccionada = dateButton.getText();  // Aquí obtenemos la fecha en formato "YYYY-MM-DD"
+
+    // Dividir el String por el guion "-"
+    String[] partesFecha = fechaSeleccionada.split("-");
+
+    // Extraer el año, mes y día
+    int anio = Integer.parseInt(partesFecha[0]);
+    int mes = Integer.parseInt(partesFecha[1]);
+    int dia = Integer.parseInt(partesFecha[2]);
+
+    // Crear el objeto Fecha con los valores obtenidos
+    Fecha fechaCita = new Fecha(dia, mes, anio);
+  // Fecha de la cita
+    int horaCita = Integer.parseInt((String) jComboBox2.getSelectedItem());  // Hora de la cita
+    int minutoCita = Integer.parseInt((String) jComboBox3.getSelectedItem());  // Minuto de la cita
+    String motivo = jTextField3.getText();  // Motivo de la cita
+
+    // Crear objeto Paciente y Odontologo
+    Paciente paciente = Paciente.buscarPacientePorDni(dniPaciente);  // Buscar al paciente
+    Odontologo odontologo = Odontologo.buscarOdontologoPorNombre(nombreOdontologo);  // Buscar al odontólogo
+
+    if (paciente == null) {
+        JOptionPane.showMessageDialog(this, "Paciente no encontrado.");
+        return;
+    }
+
+    if (odontologo == null) {
+        JOptionPane.showMessageDialog(this, "Odontólogo no encontrado.");
+        return;
+    }
+
+    // Crear una nueva cita
+    Stack<Cita> listaCitas = Cita.cargarCitas();  // Cargar las citas desde el archivo
+    int numero = listaCitas.size() + 1;
+    String id = String.valueOf(numero);  // Generar un nuevo ID para la cita
+
+    Cita nuevaCita = new Cita(id, paciente, odontologo, motivo, fechaCita, new Hora(horaCita, minutoCita), "Pendiente");
+
+    // Añadir la nueva cita a la lista de citas
+    try {
+        Cita.añadirCita(listaCitas, nuevaCita);  // Añadir la cita y guardar en el archivo
+
+        // Generar o actualizar el historial de citas para el paciente
+        HistorialCita historial = new HistorialCita();
+        historial.generarHistorialDeCitas(dniPaciente, listaCitas);
+        
+        JOptionPane.showMessageDialog(this, "Cita registrada correctamente.");
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(this, "Error al registrar la cita: " + e.getMessage());
+    }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // Cargar todos los odontólogos desde el archivo
+        Odontologo.cargarOdontologos();  // Cargar los odontólogos desde el archivo "odontologos.txt"
+    
+        // Crear un Set para almacenar los nombres de odontólogos sin duplicados
+        Set<String> nombresOdontologos = new HashSet<>();
+    
+        // Recorrer la lista de odontólogos y agregar sus nombres al Set
+        for (Odontologo odontologo : Odontologo.listaOdontologos) {
+            nombresOdontologos.add(odontologo.getNombres());  // Suponemos que Odontologo tiene el método getNombres()
+        }
+    
+        // Limpiar el JComboBox para agregar solo los nombres únicos
+        jComboBox1.removeAllItems();
+    
+        // Añadir los nombres únicos al JComboBox
+        for (String nombre : nombresOdontologos) {
+            jComboBox1.addItem(nombre);  // Agregar el nombre de odontólogo al JComboBox
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
