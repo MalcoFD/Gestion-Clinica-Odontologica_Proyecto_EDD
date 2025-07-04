@@ -16,7 +16,7 @@ import javax.swing.UIManager;
  * @author Juan
  */
 public class DashboardCitas extends javax.swing.JFrame {
-
+    private Dashboard dashboard;
     /**
      * Creates new form Dashboard
      */
@@ -183,6 +183,11 @@ public class DashboardCitas extends javax.swing.JFrame {
         jButton6.setBorderPainted(false);
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -319,6 +324,12 @@ public class DashboardCitas extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        dashboard = new Dashboard(); // Instancia tu dashboard
+        dashboard.setVisible(true);            // Lo muestras
+        this.dispose();// TODO add your handling code here:
+    }//GEN-LAST:event_jButton6MouseClicked
 
     /**
      * @param args the command line arguments

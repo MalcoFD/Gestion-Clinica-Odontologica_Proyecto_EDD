@@ -407,15 +407,8 @@ public class ActualizarPaciente extends javax.swing.JPanel {
 
 
     private void comprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprobarActionPerformed
-        LinkedList<Paciente> lista = Paciente.cargarDesdeArchivo();
-        Boolean encontrado ;
-        encontrado = false;
-        for (Paciente p : lista) {
-            if (p.getDni().equals(dni.getText())) {
-                encontrado = true; 
-            }
-        }
-        if (encontrado){
+
+        if (Paciente.buscarPacientePorDni(dni.getText())!=null){
             JOptionPane.showMessageDialog(this, "Paciente encontrado");
         }
         else{
@@ -426,14 +419,7 @@ public class ActualizarPaciente extends javax.swing.JPanel {
 
     private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
         LinkedList<Paciente> lista = Paciente.cargarDesdeArchivo();
-        Boolean encontrado ;
-        encontrado = false;
-        for (Paciente p : lista) {
-            if (p.getDni().equals(dni.getText())) {
-                encontrado = true; 
-            }
-        }
-        if (encontrado){
+       if (Paciente.buscarPacientePorDni(dni.getText())!=null){
             // Crear el nuevo paciente
             Paciente nuevo = new Paciente(
                 null,                                       // id_paciente
