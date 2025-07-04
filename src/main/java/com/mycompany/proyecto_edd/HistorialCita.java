@@ -62,7 +62,6 @@ public class HistorialCita {
                                 + cita.getMotivo() + "-"
                                 + cita.getFecha().fechaAbreviada() + "-"
                                 + cita.getHora().horaAbreviada() + "-"
-                                + cita.getAlergias() + "-"
                                 + cita.getEstadoCita());
                         System.out.println("Cita añadida al historial de " + dniPaciente);
                     } else {
