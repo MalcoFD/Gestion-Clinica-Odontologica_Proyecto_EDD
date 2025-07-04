@@ -192,7 +192,7 @@ public class Cita {
             String linea;
             while ((linea = br.readLine()) != null) {
                 String[] datos = linea.split("-");
-                if (datos.length == 9) {
+                if (datos.length == 8) {
                     String idCita = datos[0];
                     String dniPaciente = datos[1];
                     String nombrePaciente = datos[2];
@@ -200,8 +200,7 @@ public class Cita {
                     String motivo = datos[4];
                     String fechaAbreviada = datos[5];
                     String horaAbreviada = datos[6];
-                    String alergias = datos[7];
-                    String estado = datos[8];
+                    String estado = datos[7];
 
                     // Buscar el paciente y odontólogo correspondientes
                     Paciente paciente = buscarPacientePorDni(dniPaciente);
