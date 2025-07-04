@@ -2,6 +2,7 @@
 package com.mycompany.proyecto_edd.GUI;
 
 import com.mycompany.proyecto_edd.Cita;
+import com.mycompany.proyecto_edd.HistorialCita;
 import com.mycompany.proyecto_edd.Odontologo;
 import com.mycompany.proyecto_edd.Paciente;
 import com.mycompany.proyecto_edd.PanelConFondo;
@@ -20,13 +21,6 @@ public class CancelarCita extends javax.swing.JPanel {
     
     public CancelarCita() {
         initComponents();
-        // Crear el ActionListener para el botón Buscar
-        botonBuscarCita.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent evt) {
-            botonBuscarCitaActionPerformed(evt);
-        }
-    });
     }
 
     @SuppressWarnings("unchecked")
@@ -41,7 +35,7 @@ public class CancelarCita extends javax.swing.JPanel {
         jTextField1 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        botonCancelar = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
@@ -50,75 +44,64 @@ public class CancelarCita extends javax.swing.JPanel {
         botonBuscarCita = new javax.swing.JButton();
         btDate2 = new javax.swing.JTextField();
         btDate3 = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
 
         date.setForeground(new java.awt.Color(2, 69, 122));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Poppins SemiBold", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Poppins SemiBold", 1, 36)); // NOI18N
         jLabel1.setText("Cancelar cita");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jLabel11.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel11.setText("DNI del paciente");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 85, -1, -1));
 
-        jLabel12.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel12.setText("Doctor:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 85, -1, -1));
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 122, 133, -1));
 
-        jLabel13.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel13.setText("Alergias:");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 196, 133, -1));
+        jLabel13.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel13.setText("Estado:");
 
-        jLabel14.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel14.setText("Hora:");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 196, 138, -1));
 
-        jButton2.setBackground(new java.awt.Color(255, 0, 0));
-        jButton2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("CANCELAR");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonCancelar.setBackground(new java.awt.Color(255, 0, 0));
+        botonCancelar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        botonCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        botonCancelar.setText("CANCELAR");
+        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonCancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 144, 41));
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 122, 138, -1));
 
-        jLabel15.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel15.setText("Motivo:");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 85, -1, -1));
 
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 122, 138, -1));
 
-        jLabel16.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel16.setText("Fecha:");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 196, 133, -1));
-        jPanel1.add(btDate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 239, 133, -1));
 
         botonBuscarCita.setBackground(new java.awt.Color(0, 0, 255));
-        botonBuscarCita.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botonBuscarCita.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         botonBuscarCita.setForeground(new java.awt.Color(255, 255, 255));
         botonBuscarCita.setText("Buscar");
         botonBuscarCita.addActionListener(new java.awt.event.ActionListener() {
@@ -126,9 +109,118 @@ public class CancelarCita extends javax.swing.JPanel {
                 botonBuscarCitaActionPerformed(evt);
             }
         });
-        jPanel1.add(botonBuscarCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
-        jPanel1.add(btDate2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 239, 133, -1));
-        jPanel1.add(btDate3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 130, -1));
+
+        jLabel17.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel17.setText("Alergias:");
+
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(171, 171, 171))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                                .addGap(17, 17, 17))
+                            .addComponent(jTextField3)
+                            .addComponent(btDate1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(botonBuscarCita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(69, 69, 69))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(39, 39, 39))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField4)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGap(113, 113, 113))
+                                            .addComponent(jTextField1)
+                                            .addComponent(btDate2))
+                                        .addGap(37, 37, 37))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(71, 71, 71)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField2)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(113, 113, 113))
+                                    .addComponent(btDate3)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(72, 72, 72))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(160, 160, 160)
+                                .addComponent(botonCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(136, 136, 136)))))
+                .addGap(48, 48, 48))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botonBuscarCita, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(btDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(btDate3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(btDate2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(79, 79, 79))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -154,49 +246,80 @@ public class CancelarCita extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void botonBuscarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarCitaActionPerformed
+    private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         // Obtener el DNI ingresado por el usuario
-        /*
-        String dniPaciente = jTextField1.getText().trim();  // Obtener el DNI desde el campo de texto
+        String dniPaciente = jTextField3.getText().trim();  // Obtener el DNI desde el campo de texto
 
-        // Validar que el DNI no esté vacío
         if (dniPaciente.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, ingrese el DNI del paciente.");
             return;
         }
 
         // Cargar las citas desde el archivo
-        Cita.cargarCitas();  // Usamos el método estático de Cita para cargar las citas
+        Stack<Cita> listaCitas = Cita.cargarCitas();
+
         // Buscar la cita por el DNI ingresado
-        Cita cita = Cita.buscarCitaPorDni(dniPaciente);  // Usamos el método estático de Cita para buscar la cita por DNI
+        Cita cita = Cita.buscarCitaPorDni(listaCitas, dniPaciente);
+        // Cambiar el estado de la cita a "Cancelada"
+        cita.setEstadoCita("Cancelada");
+        
+        // Actualizar el estado en el JTextField correspondiente
+        jTextField4.setText("Cancelada");
+
+        try {
+            // Guardar las citas actualizadas en el archivo "citas.txt"
+            Cita.guardarCitas(listaCitas);
+            
+            // Actualizar el historial del paciente con los cambios reflejados
+            HistorialCita historial = new HistorialCita();
+            historial.generarHistorialDeCitas(dniPaciente, listaCitas);
+
+            JOptionPane.showMessageDialog(this, "La cita ha sido cancelada correctamente.");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error al actualizar la cita: " + e.getMessage());
+        }
+    }//GEN-LAST:event_botonCancelarActionPerformed
+
+    private void botonBuscarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarCitaActionPerformed
+            // Obtener el DNI ingresado por el usuario
+        String dniPaciente = jTextField3.getText().trim();  // Obtener el DNI desde el campo de texto
+        if (dniPaciente.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese el DNI del paciente.");
+            return;
+        }
+        // Cargar las citas desde el archivo
+        Stack<Cita> listaCitas = Cita.cargarCitas();
+
+        // Buscar la cita por el DNI ingresado
+        Cita cita = Cita.buscarCitaPorDni(listaCitas, dniPaciente);  
         // Si la cita fue encontrada, completar los campos
         if (cita != null) {
             // Completar los campos con los datos de la cita
-            jTextField3.setText(cita.getOdontologo().getNombres());  // Completar Doctor
-            jTextField2.setText(cita.getMotivo());  // Completar Motivo
-            
-            // Completar Fecha y Hora
-            btDate2.setText(cita.getFecha().fechaAbreviada());  // Completar Fecha
-            btDate3.setText(cita.getHora().horaAbreviada());  // Completar Hora
+            jTextField1.setText(cita.getOdontologo().getNombres());
+            jTextField2.setText(cita.getMotivo()); 
+            Paciente paciente = Paciente.buscarPacientePorDni(dniPaciente); 
+            btDate1.setText(paciente.getAlergia()); 
+            btDate2.setText(cita.getFecha().fechaAbreviada()); 
+            btDate3.setText(cita.getHora().horaAbreviada());
+            jTextField4.setText(cita.getEstadoCita());
         } else {
             // Si no se encuentra la cita, mostrar un mensaje de error
             JOptionPane.showMessageDialog(this, "No se encontró una cita con ese DNI.");
         }
-*/
     }//GEN-LAST:event_botonBuscarCitaActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonBuscarCita;
+    private javax.swing.JButton botonCancelar;
     private javax.swing.JTextField btDate1;
     private javax.swing.JTextField btDate2;
     private javax.swing.JTextField btDate3;
     private com.raven.datechooser.DateChooser date;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -204,9 +327,11 @@ public class CancelarCita extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }

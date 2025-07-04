@@ -162,7 +162,7 @@ public class Cita {
     }
 
     // Guardar todas las citas en el archivo
-    private static void guardarCitas(Stack<Cita> listaCitas) {
+    public static void guardarCitas(Stack<Cita> listaCitas) {
         try (PrintWriter pw = new PrintWriter(new FileWriter(ARCHIVO))) {
             for (Cita cita : listaCitas) {
                 pw.println(cita.getId() + "-" +
