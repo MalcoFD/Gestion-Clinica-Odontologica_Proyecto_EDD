@@ -50,7 +50,21 @@ private Stack<Cita> cargarCitasPorPaciente(Paciente paciente) {
     return resultado;
 }
 
+                    // Crear la cita
+                    Cita cita = new Cita(
+                        datos[0], p, o, datos[4], fecha, hora, datos[10], datos[11]
+                    );
 
+                    // Añadir la cita a la pila
+                    citas.push(cita);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    return citas;
+}
 
 
     /**
@@ -214,23 +228,12 @@ private Stack<Cita> cargarCitasPorPaciente(Paciente paciente) {
     }//GEN-LAST:event_comprobarActionPerformed
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
-        String dniBuscado = dni.getText().trim();
-        Paciente p = Paciente.buscarPacientePorDni(dniBuscado);
-        if (p == null) {
-            JOptionPane.showMessageDialog(this, "Paciente no encontrado");
-            id_paciente.setText("");
-            paciente_name.setText("");
-            DefaultTableModel modelo = (DefaultTableModel) tablaCitas.getModel();
-            modelo.setRowCount(0);
-        }
-        else{
-            JOptionPane.showMessageDialog(this, "Paciente encontrado");
-            // Mostrar datos del paciente
-            id_paciente.setText(p.getId_Paciente());
-            paciente_name.setText(p.getNombres() + " " + p.getApellidos());
+LinkedList<Paciente> lista = Paciente.cargarDesdeArchivo();
+    Boolean encontrado = false;
 
-            // Obtener citas desde la pila global
-            Stack<Cita> citasPaciente = cargarCitasPorPaciente(p);
+    // Limpiar la tabla antes de agregar nuevas filas
+    DefaultTableModel modelo = (DefaultTableModel) tablaCitas.getModel();
+    modelo.setRowCount(0);
 
             // Volcar en la tabla
             DefaultTableModel modelo = (DefaultTableModel) tablaCitas.getModel();
@@ -246,8 +249,19 @@ private Stack<Cita> cargarCitasPorPaciente(Paciente paciente) {
                     cita.getEstadoCita()
                 });
             }
+            break;
         }
-        
+    }
+
+    if (encontrado) {
+        JOptionPane.showMessageDialog(this, "Paciente encontrado");
+    } else {
+        JOptionPane.showMessageDialog(this, "Paciente no encontrado");
+        id_paciente.setText("");
+        paciente_name.setText("");
+    }
+
+
     }//GEN-LAST:event_buscarActionPerformed
 
     private void id_pacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_pacienteActionPerformed

@@ -4,11 +4,9 @@
  */
 package com.mycompany.proyecto_edd.GUI;
 
-import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMTMaterialLighterIJTheme;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Insets;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -382,10 +380,6 @@ public class Dashboard extends javax.swing.JFrame {
         UIManager.put("ScrollBar.trackInsets", new Insets(1, 1, 1, 1));
         UIManager.put("ScrollBar.trackArc", 8);
         UIManager.put("ScrollBar.showButtons", true);
-        UIManager.put("Label.foreground", new Color(30, 30, 30)); 
-        UIManager.put("Label.font", new Font("Poppins", Font.BOLD, 16)); 
-        
-        FlatLaf.updateUI();
         
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

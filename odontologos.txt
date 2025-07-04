@@ -1,0 +1,5 @@
+ID    | DNI      | Nombres  | Apellidos | Sexo      | Direccion             | Telefono | Nacimiento | Ciudad | Provincia | Nacionalidad | Especialidad
+------+----------+----------+-----------+-----------+-----------------------+----------+------------+--------+-----------+--------------+-------------
+OD001 | 234533   | pinguino | yamal     | Masculino | av nicolas ayllon 333 | 967868   | 03-08-2005 | lima   | lima      | peruana      | Prostodoncia
+OD002 | 234324   | kike     | diaz      | Masculino | av los olivos 444     | 999999   | 10-12-2004 | lima   | lima      | peruana      | Ortodoncia  
+OD003 | 23423422 | 3433     | 433       | Masculino | 345                   | 4235     | 02-07-2001 | 433333 | 3445      | 4233         | Ortodoncia  
