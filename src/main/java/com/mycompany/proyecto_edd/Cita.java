@@ -17,7 +17,6 @@ public class Cita {
     private Fecha fecha;
     private Hora hora;
     private String estadoCita;
-    private String alergias;
     private Paciente paciente;
     private Odontologo odontologo;
 
@@ -28,14 +27,13 @@ public class Cita {
 
     public Cita() {}
 
-    public Cita(String id, Paciente paciente, Odontologo odontologo, String motivo, Fecha fecha, Hora hora, String alergias, String estadoCita) {
+    public Cita(String id, Paciente paciente, Odontologo odontologo, String motivo, Fecha fecha, Hora hora, String estadoCita) {
         this.id = id;
         this.paciente = paciente;
         this.odontologo = odontologo;
         this.motivo = motivo;
         this.fecha = fecha;
         this.hora = hora;
-        this.alergias = alergias;
         this.estadoCita = estadoCita;
     }
 
@@ -70,12 +68,7 @@ public class Cita {
     public void setEstadoCita(String estadoCita) {
         this.estadoCita = estadoCita;
     }
-    public String getAlergias() {
-        return alergias;
-    }
-    public void setAlergias(String alergias) {
-        this.alergias = alergias;
-    }
+    
     public Paciente getPaciente() {
         return paciente;
     }
@@ -97,10 +90,10 @@ public class Cita {
     }
 
     // Añadir una nueva cita
-    public static void añadirCita(Paciente paciente, Odontologo odontologo, String motivo, Fecha fecha, Hora hora, String alergias) throws IOException {
+    public static void añadirCita(Paciente paciente, Odontologo odontologo, String motivo, Fecha fecha, Hora hora) throws IOException {
         String idCita = generarIdCita();  // Generar ID único
         String estado = "Pendiente";  // Estado por defecto
-        Cita nuevaCita = new Cita(idCita, paciente, odontologo, motivo, fecha, hora, alergias, estado);
+        Cita nuevaCita = new Cita(idCita, paciente, odontologo, motivo, fecha, hora, estado);
         listaCitas.push(nuevaCita);  // Añadir la cita al Stack
         guardarCitas();  // Guardar las citas en el archivo
 
@@ -185,7 +178,6 @@ public class Cita {
                         cita.getMotivo() + "-" +
                         cita.getFecha().fechaAbreviada() + "-" +
                         cita.getHora().horaAbreviada() + "-" +
-                        cita.getAlergias() + "-" +
                         cita.getEstadoCita());
             }
         } catch (IOException e) {
@@ -227,7 +219,7 @@ public class Cita {
                         int minutos = Integer.parseInt(partesHora[1]);
                         Hora hora = new Hora(horas, minutos);
 
-                        Cita cita = new Cita(idCita, paciente, odontologo, motivo, fecha, hora, alergias, estado);
+                        Cita cita = new Cita(idCita, paciente, odontologo, motivo, fecha, hora, estado);
                         listaCitas.push(cita);  // Usar Stack para agregar la cita
                     }
                 }

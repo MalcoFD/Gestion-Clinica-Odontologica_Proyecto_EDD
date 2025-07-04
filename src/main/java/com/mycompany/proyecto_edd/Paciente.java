@@ -187,7 +187,6 @@ public class Paciente extends Persona {
                 for (int i = 0; i < partes.length; i++) {
                     partes[i] = partes[i].trim();
                 }
-
                 Paciente p = new Paciente(
                     partes[0], partes[1], partes[2], Boolean.parseBoolean(partes[3]), partes[4],
                     partes[5], partes[6], partes[7], partes[8], partes[9],
@@ -210,7 +209,6 @@ public class Paciente extends Persona {
                 return p;  // Retorna el paciente si el DNI coincide
             }
         }
-
         return null;  // Retorna null si no se encuentra el paciente con el DNI
     }
 }
