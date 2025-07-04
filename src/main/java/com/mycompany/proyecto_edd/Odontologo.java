@@ -224,4 +224,13 @@ public class Odontologo extends Persona {
         }
         return data;
     }
+    public static Odontologo buscarOdontologoPorNombre(String nombre) {
+        // Recorremos la lista estática de odontólogos
+        for (Odontologo o : listaOdontologos) {
+            if (o.getNombres().equalsIgnoreCase(nombre)) {  // Si el nombre coincide (sin importar mayúsculas/minúsculas)
+                return o;  // Retorna el odontólogo encontrado
+            }
+        }
+        return null;  // Si no se encuentra, retorna null
+    }
 }

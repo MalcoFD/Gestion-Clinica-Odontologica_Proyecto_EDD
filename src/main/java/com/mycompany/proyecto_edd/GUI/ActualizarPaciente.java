@@ -115,6 +115,12 @@ public class ActualizarPaciente extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel5.setText("Apellidos:");
 
+        nombres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombresActionPerformed(evt);
+            }
+        });
+
         jLabel11.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel11.setText("Ciudad:");
 
@@ -457,6 +463,10 @@ public class ActualizarPaciente extends javax.swing.JPanel {
         
 // TODO add your handling code here:
     }//GEN-LAST:event_actualizarActionPerformed
+
+    private void nombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombresActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

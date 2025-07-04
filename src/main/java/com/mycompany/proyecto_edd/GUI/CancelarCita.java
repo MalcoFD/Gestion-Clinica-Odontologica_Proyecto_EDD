@@ -1,7 +1,16 @@
 
 package com.mycompany.proyecto_edd.GUI;
 
+import com.mycompany.proyecto_edd.Cita;
+import com.mycompany.proyecto_edd.Odontologo;
+import com.mycompany.proyecto_edd.Paciente;
 import com.mycompany.proyecto_edd.PanelConFondo;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.LinkedList;
+import java.util.Stack;
+import javax.swing.JOptionPane;
 
 
 
@@ -11,6 +20,13 @@ public class CancelarCita extends javax.swing.JPanel {
     
     public CancelarCita() {
         initComponents();
+        // Crear el ActionListener para el botón Buscar
+        botonBuscarCita.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            botonBuscarCitaActionPerformed(evt);
+        }
+    });
     }
 
     @SuppressWarnings("unchecked")
@@ -25,20 +41,17 @@ public class CancelarCita extends javax.swing.JPanel {
         jTextField1 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        btDate = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         btDate1 = new javax.swing.JTextField();
+        botonBuscarCita = new javax.swing.JButton();
+        btDate2 = new javax.swing.JTextField();
+        btDate3 = new javax.swing.JTextField();
 
         date.setForeground(new java.awt.Color(2, 69, 122));
-        date.setTextRefernce(btDate);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -69,24 +82,6 @@ public class CancelarCita extends javax.swing.JPanel {
         jLabel14.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel14.setText("Hora:");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 196, 138, -1));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
-        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 239, 66, -1));
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55" }));
-        jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 239, -1, -1));
-
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AM", "PM" }));
-        jPanel1.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(579, 239, 64, -1));
-        jPanel1.add(btDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 239, 133, -1));
-
-        jButton1.setText("...");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(361, 239, 32, -1));
 
         jButton2.setBackground(new java.awt.Color(255, 0, 0));
         jButton2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
@@ -122,6 +117,19 @@ public class CancelarCita extends javax.swing.JPanel {
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 196, 133, -1));
         jPanel1.add(btDate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 239, 133, -1));
 
+        botonBuscarCita.setBackground(new java.awt.Color(0, 0, 255));
+        botonBuscarCita.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botonBuscarCita.setForeground(new java.awt.Color(255, 255, 255));
+        botonBuscarCita.setText("Buscar");
+        botonBuscarCita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarCitaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonBuscarCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+        jPanel1.add(btDate2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 239, 133, -1));
+        jPanel1.add(btDate3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 130, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -138,10 +146,6 @@ public class CancelarCita extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        date.showPopup();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
@@ -154,16 +158,44 @@ public class CancelarCita extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void botonBuscarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarCitaActionPerformed
+        // Obtener el DNI ingresado por el usuario
+        String dniPaciente = jTextField1.getText().trim();  // Obtener el DNI desde el campo de texto
+
+        // Validar que el DNI no esté vacío
+        if (dniPaciente.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese el DNI del paciente.");
+            return;
+        }
+
+        // Cargar las citas desde el archivo
+        Cita.cargarCitas();  // Usamos el método estático de Cita para cargar las citas
+        // Buscar la cita por el DNI ingresado
+        Cita cita = Cita.buscarCitaPorDni(dniPaciente);  // Usamos el método estático de Cita para buscar la cita por DNI
+        // Si la cita fue encontrada, completar los campos
+        if (cita != null) {
+            // Completar los campos con los datos de la cita
+            jTextField3.setText(cita.getOdontologo().getNombres());  // Completar Doctor
+            jTextField2.setText(cita.getMotivo());  // Completar Motivo
+            btDate1.setText(cita.getAlergias());  // Completar Alergias
+            
+            // Completar Fecha y Hora
+            btDate2.setText(cita.getFecha().fechaAbreviada());  // Completar Fecha
+            btDate3.setText(cita.getHora().horaAbreviada());  // Completar Hora
+        } else {
+            // Si no se encuentra la cita, mostrar un mensaje de error
+            JOptionPane.showMessageDialog(this, "No se encontró una cita con ese DNI.");
+        }
+    }//GEN-LAST:event_botonBuscarCitaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField btDate;
+    private javax.swing.JButton botonBuscarCita;
     private javax.swing.JTextField btDate1;
+    private javax.swing.JTextField btDate2;
+    private javax.swing.JTextField btDate3;
     private com.raven.datechooser.DateChooser date;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

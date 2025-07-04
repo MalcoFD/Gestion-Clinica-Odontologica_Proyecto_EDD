@@ -200,4 +200,17 @@ public class Paciente extends Persona {
         }
         return lista;
     }
+    public static Paciente buscarPacientePorDni(String dni) {
+        // Cargar la lista de pacientes desde el archivo
+        LinkedList<Paciente> lista = cargarDesdeArchivo();
+
+        // Recorrer la lista de pacientes
+        for (Paciente p : lista) {
+            if (p.getDni().equals(dni)) {  // Compara el DNI del paciente con el DNI ingresado
+                return p;  // Retorna el paciente si el DNI coincide
+            }
+        }
+
+        return null;  // Retorna null si no se encuentra el paciente con el DNI
+    }
 }
