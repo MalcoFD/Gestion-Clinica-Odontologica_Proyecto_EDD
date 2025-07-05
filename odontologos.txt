@@ -1,6 +1,6 @@
-ID    | DNI      | Nombres   | Apellidos | Sexo      | Direccion                    | Telefono | Nacimiento | Ciudad | Provincia | Nacionalidad | Especialidad
-------+----------+-----------+-----------+-----------+------------------------------+----------+------------+--------+-----------+--------------+-------------
-OD001 | 32423434 | dfsdsffff | fdf       | Masculino | dsf4                         | 324344   | 04-07-2000 | fds    | dsffsdf   | ssfs         | Cirugía Oral
-OD002 | 43534    | dfdsf     | dsfdsf    | Femenino  | dfdf 4343                    | 444      | 02-01-1960 | sdf    | dsfsdfds  | dfdsf        | Prostodoncia
-OD003 | 324234   | artentoxx | morning   | Masculino | av san martin 333            | 999999   | 08-12-2005 | lima   | lima      | peruana      | Endodoncia  
-OD004 | 213212   | yamal     | kamer     | Masculino | av coronel leoncio prado 870 | 99999999 | 04-05-2004 | lima   | callao    | peruana      | Periodoncia 
+ID    | DNI    | Nombres   | Apellidos   | Sexo      | Direccion                    | Telefono | Nacimiento | Ciudad | Provincia | Nacionalidad | Especialidad
+------+--------+-----------+-------------+-----------+------------------------------+----------+------------+--------+-----------+--------------+-------------
+OD002 | 43534  | dfdsf     | dsfdsf      | Femenino  | dfdf 4343                    | 444      | 02-01-1960 | sdf    | dsfsdfds  | dfdsf        | Prostodoncia
+OD003 | 324234 | artentoxx | morning     | Masculino | av san martin 333            | 999999   | 08-12-2005 | lima   | lima      | peruana      | Endodoncia  
+OD004 | 213212 | yamal     | kamer       | Masculino | av coronel leoncio prado 870 | 99999999 | 04-05-2004 | lima   | callao    | peruana      | Periodoncia 
+OD005 | 4534   | gfdfgdf   | gdgdfgdddfg | Femenino  | dgdgdg                       | 4444     | 02-07-2000 | dgd    | gdfd      | gfdgd        | Endodoncia  
