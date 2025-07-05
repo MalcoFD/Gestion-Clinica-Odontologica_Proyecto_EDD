@@ -173,8 +173,8 @@ public class Odontologo extends Persona {
         Odontologo o = buscarOdontologoPorId(id);
         if (o != null) {
             listaOdontologos.remove(o);
-            // Elimina también su archivo de disponibilidad
-            File disp = new File(o.getIdOdontologo() + "_disp.txt");
+            // Elimina también su archivo de disponibilidad (en la carpeta)
+            File disp = new File("DisponibilidadOdontologos/" + o.getIdOdontologo() + "_disp.txt");
             if (disp.exists()) disp.delete();
             guardarEnArchivo(listaOdontologos);
             return true;
@@ -193,7 +193,12 @@ public class Odontologo extends Persona {
 
     // ==== Disponibilidad ====
     public void guardarDisponibilidad() {
-        try (PrintWriter pw = new PrintWriter(new FileWriter(idOdontologo + "_disp.txt"))) {
+        File folder = new File("DisponibilidadOdontologos");
+        if (!folder.exists()) {
+            folder.mkdirs(); // Crea la carpeta si no existe
+        }
+        String filename = "DisponibilidadOdontologos/" + idOdontologo + "_disp.txt";
+        try (PrintWriter pw = new PrintWriter(new FileWriter(filename))) {
             for (int i = 0; i < 15; i++) {
                 for (int j = 0; j < 6; j++) {
                     pw.print(disponibilidad[i][j] ? "1" : "0");
@@ -207,7 +212,8 @@ public class Odontologo extends Persona {
     }
 
     public void cargarDisponibilidad() {
-        try (BufferedReader br = new BufferedReader(new FileReader(idOdontologo + "_disp.txt"))) {
+        String filename = "DisponibilidadOdontologos/" + idOdontologo + "_disp.txt";
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String linea;
             int i = 0;
             while ((linea = br.readLine()) != null && i < 15) {
