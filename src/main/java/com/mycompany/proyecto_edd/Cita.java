@@ -81,30 +81,39 @@ public class Cita {
 
     // Añadir una nueva cita
     public static void añadirCita(Stack<Cita> citas, Cita citanueva) throws IOException {
+        boolean citaExistente = false;
+        HistorialCita historial = new HistorialCita();
+        // Verificar si el paciente ya tiene una cita pendiente
         for (Cita c : citas) {
-            if (c.getId().equals(citanueva.getId())) {
-                System.out.println("Error: Cita existente");
-                return;
+            if (c.getPaciente().getDni().equals(citanueva.getPaciente().getDni()) && c.getEstadoCita().equals("Pendiente")) {
+                // Si ya tiene una cita pendiente, cambiar el estado de la cita a "Terminado"
+                c.setEstadoCita("Terminado");
+                citaExistente = true;
+                
+                System.out.println("Cita anterior marcada como 'Terminado'");
+                break;
             }
         }
+        
         citas.push(citanueva);
-        guardarCitas(citas);
         System.out.println("Cita agregada correctamente.");
 
-        // Generar el historial de citas para el paciente
-        HistorialCita historial = new HistorialCita();
-        historial.generarHistorialDeCitas(citanueva.getPaciente().getDni(), citas);
+        // Guardar las citas en el archivo
+        guardarCitas(citas);
+        historial.actualizarHistorialDeCitas(citanueva.getPaciente().getDni(), citas);
         System.out.println("Cita añadida correctamente.");
     }
 
     // Buscar una cita por el DNI del paciente
     public static Cita buscarCitaPorDni(Stack<Cita> citas, String dniPaciente) {
-        for (Cita cita : citas) {
-            if (cita.getPaciente().getDni().equals(dniPaciente)) {
-                return cita;
+        // Recorrer la pila de citas desde la más reciente
+        for (int i = citas.size() - 1; i >= 0; i--) {
+            Cita cita = citas.get(i); // Obtener la cita en la posición i (de atrás hacia adelante)
+            if (cita.getPaciente().getDni().equals(dniPaciente) && cita.getEstadoCita().equals("Pendiente")) {
+                return cita;  // Devolver la cita pendiente más reciente
             }
         }
-        return null;
+        return null;  // No se encontró ninguna cita pendiente para ese paciente
     }
 
     // Actualizar una cita (fecha, hora, estado, etc.)
@@ -134,7 +143,7 @@ public class Cita {
             // Actualizar el historial del paciente con los cambios reflejados
             Paciente paciente = citas.peek().getPaciente();  // Obtener el paciente de la cita actualizada
             HistorialCita historial = new HistorialCita();
-            historial.generarHistorialDeCitas(paciente.getDni(), citas);
+            historial.actualizarHistorialDeCitas(paciente.getDni(), citas);
         } else {
             System.out.println("No se encontró una cita para el paciente con DNI: " + dniPaciente);
         }
@@ -153,7 +162,7 @@ public class Cita {
 
             // Actualizar el archivo del historial del paciente
             HistorialCita historial = new HistorialCita();
-            historial.generarHistorialDeCitas(dniPaciente, citas);
+            historial.actualizarHistorialDeCitas(dniPaciente, citas);
 
             System.out.println("Cita con DNI " + dniPaciente + " cancelada correctamente.");
         } else {

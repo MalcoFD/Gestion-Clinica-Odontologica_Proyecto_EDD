@@ -76,5 +76,26 @@ public class HistorialCita {
     public void generarHistorialDeCitas(String dniPaciente, Stack<Cita> citas) throws IOException {
         crearHistorial(dniPaciente, citas); // Crear o actualizar el historial de citas para el paciente
     }
+    public void actualizarHistorialDeCitas(String dniPaciente, Stack<Cita> citas) throws IOException {
+        String archivoHistorial = dniPaciente + "-citas.txt";
+        File archivo = new File(archivoHistorial);
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivoHistorial))) {
+            for (Cita cita : citas) {
+                if (cita.getPaciente().getDni().equals(dniPaciente)) {
+                    // Escribir la cita con el estado actualizado
+                    writer.write(cita.getId() + "-"
+                            + cita.getPaciente().getDni() + "-"
+                            + cita.getPaciente().getNombres() + "-"
+                            + cita.getOdontologo().getNombres() + "-"
+                            + cita.getMotivo() + "-"
+                            + cita.getFecha().fechaAbreviada() + "-"
+                            + cita.getHora().horaAbreviada() + "-"
+                            + cita.getEstadoCita());
+                    writer.newLine();
+                }
+            }
+        }
+    }
 }
 

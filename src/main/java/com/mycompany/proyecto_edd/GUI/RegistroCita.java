@@ -22,8 +22,28 @@ public class RegistroCita extends javax.swing.JPanel {
     
     public RegistroCita() {
         initComponents();
+        cargarOdontologosEnComboBox();
     }
+    private void cargarOdontologosEnComboBox() {
+        // Cargar todos los odontólogos desde el archivo
+        Odontologo.cargarEnArchivo();  // Cargar los odontólogos desde el archivo "odontologos.txt"
 
+        // Crear un Set para almacenar los nombres de odontólogos sin duplicados
+        Set<String> nombresOdontologos = new HashSet<>();
+
+        // Recorrer la lista de odontólogos y agregar sus nombres al Set
+        for (Odontologo odontologo : Odontologo.listaOdontologos) {
+            nombresOdontologos.add(odontologo.getNombres());  // Suponemos que Odontologo tiene el método getNombres()
+        }
+
+        // Limpiar el JComboBox para agregar solo los nombres únicos
+        jComboBox1.removeAllItems();
+
+        // Añadir los nombres únicos al JComboBox
+        for (String nombre : nombresOdontologos) {
+            jComboBox1.addItem(nombre);  // Agregar el nombre de odontólogo al JComboBox
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -234,79 +254,77 @@ public class RegistroCita extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // Obtener los datos de los campos de la interfaz
-    String dniPaciente = jTextField2.getText();  // DNI del paciente
-    String nombreOdontologo = (String) jComboBox1.getSelectedItem();  // Nombre del odontólogo
-    // Obtener la fecha seleccionada como String
-    String fechaSeleccionada = dateButton.getText();  // Aquí obtenemos la fecha en formato "YYYY-MM-DD"
+        String dniPaciente = jTextField2.getText();  // DNI del paciente
+        String nombreOdontologo = (String) jComboBox1.getSelectedItem();  // Nombre del odontólogo
+        // Obtener la fecha seleccionada como String
+        String fechaSeleccionada = dateButton.getText();  // Aquí obtenemos la fecha en formato "YYYY-MM-DD"
 
-    // Dividir el String por el guion "-"
-    String[] partesFecha = fechaSeleccionada.split("-");
+        // Dividir el String por el guion "-"
+        String[] partesFecha = fechaSeleccionada.split("-");
 
-    // Extraer el año, mes y día
-    int dia = Integer.parseInt(partesFecha[0]);
-    int mes = Integer.parseInt(partesFecha[1]);
-    int anio = Integer.parseInt(partesFecha[2]);
+        // Extraer el año, mes y día
+        int dia = Integer.parseInt(partesFecha[0]);
+        int mes = Integer.parseInt(partesFecha[1]);
+        int anio = Integer.parseInt(partesFecha[2]);
 
-    // Crear el objeto Fecha con los valores obtenidos
-    Fecha fechaCita = new Fecha(dia, mes, anio);
-  // Fecha de la cita
-    int horaCita = Integer.parseInt((String) jComboBox2.getSelectedItem());  // Hora de la cita
-    int minutoCita = Integer.parseInt((String) jComboBox3.getSelectedItem());  // Minuto de la cita
-    String motivo = jTextField3.getText();  // Motivo de la cita
+        // Crear el objeto Fecha con los valores obtenidos
+        Fecha fechaCita = new Fecha(dia, mes, anio);
+      // Fecha de la cita
+        int horaCita = Integer.parseInt((String) jComboBox2.getSelectedItem());  // Hora de la cita
+        int minutoCita = Integer.parseInt((String) jComboBox3.getSelectedItem());  // Minuto de la cita
+        String motivo = jTextField3.getText();  // Motivo de la cita
 
-    // Crear objeto Paciente y Odontologo
-    Paciente paciente = Paciente.buscarPacientePorDni(dniPaciente);  // Buscar al paciente
-    Odontologo odontologo = Odontologo.buscarOdontologoPorNombre(nombreOdontologo);  // Buscar al odontólogo
+        // Crear objeto Paciente y Odontologo
+        Paciente paciente = Paciente.buscarPacientePorDni(dniPaciente);  // Buscar al paciente
+        Odontologo odontologo = Odontologo.buscarOdontologoPorNombre(nombreOdontologo);  // Buscar al odontólogo
 
-    if (paciente == null) {
-        JOptionPane.showMessageDialog(this, "Paciente no encontrado.");
-        return;
-    }
+        if (paciente == null) {
+            JOptionPane.showMessageDialog(this, "Paciente no encontrado.");
+            return;
+        }
 
-    if (odontologo == null) {
-        JOptionPane.showMessageDialog(this, "Odontólogo no encontrado.");
-        return;
-    }
+        if (odontologo == null) {
+            JOptionPane.showMessageDialog(this, "Odontólogo no encontrado.");
+            return;
+        }
 
-    // Crear una nueva cita
-    Stack<Cita> listaCitas = Cita.cargarCitas();  // Cargar las citas desde el archivo
-    int numero = listaCitas.size() + 1;
-    String id = String.valueOf(numero);  // Generar un nuevo ID para la cita
+        // Crear una nueva cita
+        Stack<Cita> listaCitas = Cita.cargarCitas();  // Cargar las citas desde el archivo
+        int numero = listaCitas.size() + 1;
+        String id = String.valueOf(numero);  // Generar un nuevo ID para la cita
 
-    Cita nuevaCita = new Cita(id, paciente, odontologo, motivo, fechaCita, new Hora(horaCita, minutoCita), "Pendiente");
+        Cita nuevaCita = new Cita(id, paciente, odontologo, motivo, fechaCita, new Hora(horaCita, minutoCita), "Pendiente");
 
-    // Añadir la nueva cita a la lista de citas
-    try {
-        Cita.añadirCita(listaCitas, nuevaCita);  // Añadir la cita y guardar en el archivo
+        // Añadir la nueva cita a la lista de citas
+        try {
+            Cita.añadirCita(listaCitas, nuevaCita);  // Añadir la cita y guardar en el archivo
 
-        // Generar o actualizar el historial de citas para el paciente
-        HistorialCita historial = new HistorialCita();
-        historial.generarHistorialDeCitas(dniPaciente, listaCitas);
-        
-        JOptionPane.showMessageDialog(this, "Cita registrada correctamente.");
-    } catch (IOException e) {
-        JOptionPane.showMessageDialog(this, "Error al registrar la cita: " + e.getMessage());
-    }
+            // Generar o actualizar el historial de citas para el paciente
+            HistorialCita historial = new HistorialCita();
+            historial.generarHistorialDeCitas(dniPaciente, listaCitas);
+
+            JOptionPane.showMessageDialog(this, "Cita registrada correctamente.");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error al registrar la cita: " + e.getMessage());
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // Cargar todos los odontólogos desde el archivo
-        Odontologo.cargarEnArchivo();  // Cargar los odontólogos desde el archivo "odontologos.txt"
-    
-        // Crear un Set para almacenar los nombres de odontólogos sin duplicados
-        Set<String> nombresOdontologos = new HashSet<>();
-    
-        // Recorrer la lista de odontólogos y agregar sus nombres al Set
-        for (Odontologo odontologo : Odontologo.listaOdontologos) {
-            nombresOdontologos.add(odontologo.getNombres());  // Suponemos que Odontologo tiene el método getNombres()
-        }
-    
-        // Limpiar el JComboBox para agregar solo los nombres únicos
-        jComboBox1.removeAllItems();
-    
-        // Añadir los nombres únicos al JComboBox
-        for (String nombre : nombresOdontologos) {
-            jComboBox1.addItem(nombre);  // Agregar el nombre de odontólogo al JComboBox
+        // Obtener el nombre del odontólogo seleccionado en el JComboBox
+        String nombreOdontologoSeleccionado = (String) jComboBox1.getSelectedItem();
+
+        // Puedes usar este nombre para realizar alguna acción, como por ejemplo, mostrar el odontólogo seleccionado
+        System.out.println("Odontólogo seleccionado: " + nombreOdontologoSeleccionado);
+
+        // Aquí podrías hacer alguna validación o buscar más información sobre el odontólogo si lo deseas
+        Odontologo odontologoSeleccionado = Odontologo.buscarOdontologoPorNombre(nombreOdontologoSeleccionado);
+
+        if (odontologoSeleccionado != null) {
+            // Realizar alguna acción con el odontólogo seleccionado, como mostrar detalles en la interfaz
+            System.out.println("Odontólogo encontrado: " + odontologoSeleccionado.getNombres());
+        } else {
+            // Si no se encuentra, mostrar mensaje de error
+            System.out.println("Odontólogo no encontrado.");
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
