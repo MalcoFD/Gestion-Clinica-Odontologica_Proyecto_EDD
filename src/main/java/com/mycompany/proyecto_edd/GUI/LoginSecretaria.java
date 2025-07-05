@@ -8,6 +8,8 @@ import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.mycompany.proyecto_edd.Secretaria;
 import java.awt.Color;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -25,6 +27,18 @@ public class LoginSecretaria extends javax.swing.JFrame {
         SwingUtilities.invokeLater(() -> {
         background.requestFocusInWindow();
         });
+        
+        KeyAdapter enterKeyListener = new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                loginBtnMouseClicked(null); 
+                }
+            }
+        };
+
+userTxt.addKeyListener(enterKeyListener);
+passTxt.addKeyListener(enterKeyListener);
     }
 
     /**
