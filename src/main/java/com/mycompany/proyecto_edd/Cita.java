@@ -117,33 +117,35 @@ public class Cita {
     }
 
     // Actualizar una cita (fecha, hora, estado, etc.)
-    public static void actualizarCita(Stack<Cita> citas, String dniPaciente, Fecha nuevaFecha, Hora nuevaHora) throws IOException {
+    public static void actualizarCita(Stack<Cita> citas, String dniPaciente, Odontologo nuevoOdontologo, Fecha nuevaFecha, Hora nuevaHora) throws IOException {
         boolean citaActualizada = false;
+        Cita citaActualizarRef = null;
 
-        // Buscar la cita correspondiente al paciente
+        // Buscar la cita correspondiente al paciente más reciente
         for (Cita cita : citas) {
-            if (cita.getPaciente().getDni().equals(dniPaciente)) {
+            if (cita.getPaciente().getDni().equals(dniPaciente) && cita.getEstadoCita().equalsIgnoreCase("Pendiente")) {
                 // Actualizar solo la fecha y la hora
                 cita.setFecha(nuevaFecha);
                 cita.setHora(nuevaHora);
+                cita.setOdontologo(nuevoOdontologo);
 
                 // Mantenemos el estado como "Pendiente"
                 cita.setEstadoCita("Pendiente");
 
                 citaActualizada = true;
+                citaActualizarRef = cita;
                 System.out.println("Cita actualizada correctamente");
                 break;  // Salir del ciclo una vez que se actualizó la cita
             }
         }
 
         // Si la cita fue actualizada, guardar las citas en el archivo
-        if (citaActualizada) {
+        if (citaActualizada && citaActualizarRef != null) {
             guardarCitas(citas);  // Guardar las citas actualizadas en el archivo
 
             // Actualizar el historial del paciente con los cambios reflejados
-            Paciente paciente = citas.peek().getPaciente();  // Obtener el paciente de la cita actualizada
             HistorialCita historial = new HistorialCita();
-            historial.actualizarHistorialDeCitas(paciente.getDni(), citas);
+            historial.actualizarHistorialDeCitas(citaActualizarRef.getPaciente().getDni(), citas);
         } else {
             System.out.println("No se encontró una cita para el paciente con DNI: " + dniPaciente);
         }

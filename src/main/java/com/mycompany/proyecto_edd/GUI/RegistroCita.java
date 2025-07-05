@@ -9,7 +9,9 @@ import com.mycompany.proyecto_edd.Odontologo;
 import com.mycompany.proyecto_edd.Paciente;
 import com.mycompany.proyecto_edd.PanelConFondo;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 import javax.swing.JOptionPane;
@@ -24,24 +26,23 @@ public class RegistroCita extends javax.swing.JPanel {
         initComponents();
         cargarOdontologosEnComboBox();
     }
+    
+    private Map<String, Odontologo> mapOdontologos = new HashMap<>();
+    
     private void cargarOdontologosEnComboBox() {
         // Cargar todos los odontólogos desde el archivo
         Odontologo.cargarEnArchivo();  // Cargar los odontólogos desde el archivo "odontologos.txt"
-
-        // Crear un Set para almacenar los nombres de odontólogos sin duplicados
-        Set<String> nombresOdontologos = new HashSet<>();
-
-        // Recorrer la lista de odontólogos y agregar sus nombres al Set
-        for (Odontologo odontologo : Odontologo.listaOdontologos) {
-            nombresOdontologos.add(odontologo.getNombres());  // Suponemos que Odontologo tiene el método getNombres()
-        }
-
+        
         // Limpiar el JComboBox para agregar solo los nombres únicos
         jComboBox1.removeAllItems();
 
+        mapOdontologos.clear();
+        
         // Añadir los nombres únicos al JComboBox
-        for (String nombre : nombresOdontologos) {
-            jComboBox1.addItem(nombre);  // Agregar el nombre de odontólogo al JComboBox
+        for (Odontologo odontologo : Odontologo.listaOdontologos){
+            String clave = odontologo.getIdOdontologo()+ " - " + odontologo.getNombres();
+            mapOdontologos.put(clave, odontologo);
+            jComboBox1.addItem(clave);
         }
     }
     @SuppressWarnings("unchecked")
@@ -255,7 +256,7 @@ public class RegistroCita extends javax.swing.JPanel {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // Obtener los datos de los campos de la interfaz
         String dniPaciente = jTextField2.getText();  // DNI del paciente
-        String nombreOdontologo = (String) jComboBox1.getSelectedItem();  // Nombre del odontólogo
+        String claveOdontologo = (String) jComboBox1.getSelectedItem();  // Nombre del odontólogo
         // Obtener la fecha seleccionada como String
         String fechaSeleccionada = dateButton.getText();  // Aquí obtenemos la fecha en formato "YYYY-MM-DD"
 
@@ -276,7 +277,7 @@ public class RegistroCita extends javax.swing.JPanel {
 
         // Crear objeto Paciente y Odontologo
         Paciente paciente = Paciente.buscarPacientePorDni(dniPaciente);  // Buscar al paciente
-        Odontologo odontologo = Odontologo.buscarOdontologoPorNombre(nombreOdontologo);  // Buscar al odontólogo
+        Odontologo odontologo = mapOdontologos.get(claveOdontologo);  // Buscar al odontólogo
 
         if (paciente == null) {
             JOptionPane.showMessageDialog(this, "Paciente no encontrado.");
@@ -310,22 +311,7 @@ public class RegistroCita extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // Obtener el nombre del odontólogo seleccionado en el JComboBox
-        String nombreOdontologoSeleccionado = (String) jComboBox1.getSelectedItem();
-
-        // Puedes usar este nombre para realizar alguna acción, como por ejemplo, mostrar el odontólogo seleccionado
-        System.out.println("Odontólogo seleccionado: " + nombreOdontologoSeleccionado);
-
-        // Aquí podrías hacer alguna validación o buscar más información sobre el odontólogo si lo deseas
-        Odontologo odontologoSeleccionado = Odontologo.buscarOdontologoPorNombre(nombreOdontologoSeleccionado);
-
-        if (odontologoSeleccionado != null) {
-            // Realizar alguna acción con el odontólogo seleccionado, como mostrar detalles en la interfaz
-            System.out.println("Odontólogo encontrado: " + odontologoSeleccionado.getNombres());
-        } else {
-            // Si no se encuentra, mostrar mensaje de error
-            System.out.println("Odontólogo no encontrado.");
-        }
+     
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
 
