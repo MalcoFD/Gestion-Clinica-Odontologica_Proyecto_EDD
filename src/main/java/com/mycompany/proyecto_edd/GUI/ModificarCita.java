@@ -15,12 +15,10 @@ import java.util.Stack;
 import javax.swing.JOptionPane;
 
 
-
-
-public class RegistroCita extends javax.swing.JPanel {
+public class ModificarCita extends javax.swing.JPanel {
 
     
-    public RegistroCita() {
+    public ModificarCita() {
         initComponents();
     }
 
@@ -52,7 +50,7 @@ public class RegistroCita extends javax.swing.JPanel {
         jPanel1.setMinimumSize(new java.awt.Dimension(750, 500));
 
         jLabel1.setFont(new java.awt.Font("Poppins SemiBold", 1, 36)); // NOI18N
-        jLabel1.setText("Registro de cita:");
+        jLabel1.setText("Modificar cita:");
 
         jLabel11.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel11.setText("DNI del paciente:");
@@ -111,7 +109,7 @@ public class RegistroCita extends javax.swing.JPanel {
         jButton3.setBackground(new java.awt.Color(1, 36, 86));
         jButton3.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("REGISTRAR");
+        jButton3.setText("MODIFICAR");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -172,9 +170,9 @@ public class RegistroCita extends javax.swing.JPanel {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(14, 14, 14)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, Short.MAX_VALUE)
-                .addGap(40, 40, 40)
+                .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))

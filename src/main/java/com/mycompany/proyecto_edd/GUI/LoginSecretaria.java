@@ -9,6 +9,7 @@ import com.formdev.flatlaf.FlatLightLaf;
 import com.mycompany.proyecto_edd.Secretaria;
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
 
@@ -20,6 +21,10 @@ public class LoginSecretaria extends javax.swing.JFrame {
     public LoginSecretaria() {
         initComponents();
         setLocationRelativeTo(null);
+        
+        SwingUtilities.invokeLater(() -> {
+        background.requestFocusInWindow();
+        });
     }
 
     /**
@@ -153,7 +158,15 @@ public class LoginSecretaria extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void userTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTxtActionPerformed
-        // TODO add your handling code here:
+        if(userTxt.getText().equals("Ingrese su código de acceso")){
+           userTxt.setText("");
+           userTxt.setForeground(Color.black);
+       }
+       
+       if(String.valueOf(passTxt.getPassword()).isEmpty()){
+           passTxt.setText("********");
+           passTxt.setForeground(Color.gray);
+       }
     }//GEN-LAST:event_userTxtActionPerformed
 
     private void loginBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseEntered
