@@ -134,4 +134,13 @@ public class Fecha {
             i++;
         }
     }
+    public int compararFecha(Fecha otraFecha) {
+        if (this.anio != otraFecha.anio) {
+            return this.anio - otraFecha.anio;  // Compara por año
+        }
+        if (this.mes != otraFecha.mes) {
+            return this.mes - otraFecha.mes;  // Compara por mes
+        }
+        return this.dia - otraFecha.dia;  // Compara por día
+    }
 }
