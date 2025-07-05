@@ -4,9 +4,12 @@
  */
 package com.mycompany.proyecto_edd.GUI;
 
+import com.mycompany.proyecto_edd.Odontologo;
+import javax.swing.JOptionPane;
+
 /**
  *
- * @author Juan
+ * @author T0XHL
  */
 public class ModificarOdontologo extends javax.swing.JPanel {
 
@@ -40,38 +43,40 @@ public class ModificarOdontologo extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        dni = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        nombres = new javax.swing.JTextField();
+        apellidos = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        sexo = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        btDate = new javax.swing.JTextField();
+        fechanacimiento = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        ciudad = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        nacionalidad = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        telefono = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
-        jTextField13 = new javax.swing.JTextField();
+        provincia = new javax.swing.JTextField();
+        direccion = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton1.putClientProperty("JButton.arc", 25);
-        jTextField14 = new javax.swing.JTextField();
+        idodontologo = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
+        especialidad = new javax.swing.JComboBox<>();
+        jButton3 = new javax.swing.JButton();
+        jButton1.putClientProperty("JButton.arc", 25);
 
         jLabel10.setText("jLabel10");
 
         date.setForeground(new java.awt.Color(2, 69, 122));
-        date.setTextRefernce(btDate);
+        date.setTextRefernce(fechanacimiento);
 
         setMinimumSize(new java.awt.Dimension(745, 440));
 
@@ -114,9 +119,9 @@ public class ModificarOdontologo extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel3.setText("DNI:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        dni.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                dniActionPerformed(evt);
             }
         });
 
@@ -129,7 +134,7 @@ public class ModificarOdontologo extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel6.setText("Sexo:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
+        sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel7.setText("Fecha de nacimiento:");
@@ -168,9 +173,29 @@ public class ModificarOdontologo extends javax.swing.JPanel {
         jButton2.setBorder(null);
         jButton2.setBorderPainted(false);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel17.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel17.setText("ID Odontólogo:");
+
+        especialidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ortodoncia", "Endodoncia", "Periodoncia", "Prostodoncia", "Cirugía Oral" }));
+
+        jButton3.setBackground(new java.awt.Color(2, 69, 122));
+        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("BUSCAR");
+        jButton3.setBorder(null);
+        jButton3.setBorderPainted(false);
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout contenidoPanelLayout = new javax.swing.GroupLayout(contenidoPanel);
         contenidoPanel.setLayout(contenidoPanelLayout);
@@ -191,40 +216,38 @@ public class ModificarOdontologo extends javax.swing.JPanel {
                         .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(contenidoPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(107, 107, 107))
-                            .addComponent(jTextField13))
-                        .addGap(67, 67, 67)
+                                .addGap(174, 174, 174))
+                            .addGroup(contenidoPanelLayout.createSequentialGroup()
+                                .addComponent(especialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(188, 188, 188))
-                    .addGroup(contenidoPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(10, 10, 10))
                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                         .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(contenidoPanelLayout.createSequentialGroup()
                                 .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1)
+                                    .addComponent(dni)
                                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(109, 109, 109))
-                                    .addComponent(jTextField2)
+                                    .addComponent(nombres)
                                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(108, 108, 108))
-                                    .addComponent(jTextField3)
+                                    .addComponent(apellidos)
                                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(148, 148, 148))
                                     .addGroup(contenidoPanelLayout.createSequentialGroup()
-                                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(sexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(100, 100, 100))
                                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(36, 36, 36))
-                                    .addComponent(btDate))
-                                .addGap(11, 11, 11)
+                                    .addComponent(fechanacimiento))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(47, 47, 47))
+                                .addGap(52, 52, 52))
                             .addGroup(contenidoPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(189, 189, 189)))
@@ -233,31 +256,34 @@ public class ModificarOdontologo extends javax.swing.JPanel {
                                 .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(230, 230, 230))
                             .addGroup(contenidoPanelLayout.createSequentialGroup()
-                                .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField7)
-                                    .addGroup(contenidoPanelLayout.createSequentialGroup()
+                                .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(nacionalidad, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, contenidoPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(127, 127, 127))
-                                    .addComponent(jTextField6)
-                                    .addGroup(contenidoPanelLayout.createSequentialGroup()
+                                    .addComponent(ciudad, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, contenidoPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(107, 107, 107))
-                                    .addComponent(jTextField10)
-                                    .addGroup(contenidoPanelLayout.createSequentialGroup()
+                                    .addComponent(provincia, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, contenidoPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(107, 107, 107))
-                                    .addComponent(jTextField12)
-                                    .addGroup(contenidoPanelLayout.createSequentialGroup()
+                                    .addComponent(direccion, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, contenidoPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(176, 176, 176))
-                                    .addComponent(jTextField9))
+                                    .addComponent(telefono, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addGap(27, 27, 27)
-                                .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(contenidoPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(idodontologo, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(242, 242, 242)))
                 .addGap(17, 17, 17))
-            .addGroup(contenidoPanelLayout.createSequentialGroup()
-                .addGap(160, 160, 160)
-                .addComponent(jTextField14)
-                .addGap(421, 421, 421))
         );
         contenidoPanelLayout.setVerticalGroup(
             contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -267,66 +293,68 @@ public class ModificarOdontologo extends javax.swing.JPanel {
                 .addGap(9, 9, 9)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(23, 23, 23)
-                .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField14))
+                .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contenidoPanelLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(idodontologo)))
                 .addGap(17, 17, 17)
                 .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(8, 8, 8)
                 .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(contenidoPanelLayout.createSequentialGroup()
-                        .addGap(300, 300, 300)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                         .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(contenidoPanelLayout.createSequentialGroup()
-                                .addComponent(jTextField1)
+                                .addComponent(dni)
                                 .addGap(23, 23, 23)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(5, 5, 5)
-                                .addComponent(jTextField2)
+                                .addComponent(nombres)
                                 .addGap(13, 13, 13)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(5, 5, 5)
-                                .addComponent(jTextField3)
+                                .addComponent(apellidos)
                                 .addGap(23, 23, 23)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(5, 5, 5)
-                                .addComponent(jComboBox1)
+                                .addComponent(sexo)
                                 .addGap(13, 13, 13)
                                 .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(5, 5, 5)
-                                .addComponent(btDate))
+                                .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(fechanacimiento)
+                                    .addComponent(jButton1)))
                             .addGroup(contenidoPanelLayout.createSequentialGroup()
-                                .addComponent(jTextField7)
+                                .addComponent(nacionalidad)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(8, 8, 8)
-                                .addComponent(jTextField6)
+                                .addComponent(ciudad)
                                 .addGap(28, 28, 28)
                                 .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(8, 8, 8)
-                                .addComponent(jTextField10)
+                                .addComponent(provincia)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField12)
+                                .addComponent(direccion)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(8, 8, 8)
-                                .addComponent(jTextField9)))
+                                .addComponent(telefono)))
                         .addGap(9, 9, 9)))
                 .addGap(19, 19, 19)
                 .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(contenidoPanelLayout.createSequentialGroup()
                         .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(8, 8, 8)
-                        .addComponent(jTextField13)
-                        .addGap(8, 8, 8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(especialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10))
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(170, 170, 170))
         );
@@ -337,14 +365,13 @@ public class ModificarOdontologo extends javax.swing.JPanel {
         bg.setLayout(bgLayout);
         bgLayout.setHorizontalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(6, 6, 6)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -361,23 +388,108 @@ public class ModificarOdontologo extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void dniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dniActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_dniActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         date.showPopup();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String id = idodontologo.getText().trim();
+        Odontologo o = Odontologo.buscarOdontologoPorId(id);
+
+        if (o == null) {
+            JOptionPane.showMessageDialog(this, "Debe buscar un odontólogo existente primero.");
+            return;
+        }
+
+        // Actualiza los datos
+        o.setDni(dni.getText().trim());
+        o.setNombres(nombres.getText().trim());
+        o.setApellidos(apellidos.getText().trim());
+        o.setSexo(sexo.getSelectedItem().toString());
+        o.setFecha_nacimiento(fechanacimiento.getText().trim());
+        o.setNacionalidad(nacionalidad.getText().trim());
+        o.setCiudad(ciudad.getText().trim());
+        o.setProvincia(provincia.getText().trim());
+        o.setDireccion(direccion.getText().trim());
+        o.setTelefono(telefono.getText().trim());
+        o.setEspecialidad(especialidad.getSelectedItem().toString());
+
+        // Guarda en archivo todos los cambios
+        Odontologo.guardarEnArchivo(Odontologo.listaOdontologos);
+
+        JOptionPane.showMessageDialog(this, "Datos actualizados correctamente.");
+        idodontologo.setEnabled(true); // Permite nuevas búsquedas
+        limpiarCampos();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        String id = idodontologo.getText().trim();
+        if (id.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese el ID de odontólogo.");
+            return;
+        }
+
+        Odontologo o = Odontologo.buscarOdontologoPorId(id);
+
+        if (o != null) {
+            // Mostrar mensaje
+            JOptionPane.showMessageDialog(this, "Odontólogo encontrado. Puede modificar los datos.");
+            // Llenar todos los campos
+            dni.setText(o.getDni());
+            nombres.setText(o.getNombres());
+            apellidos.setText(o.getApellidos());
+            sexo.setSelectedItem(o.getSexo());
+            fechanacimiento.setText(o.getFecha_nacimiento());
+            nacionalidad.setText(o.getNacionalidad());
+            ciudad.setText(o.getCiudad());
+            provincia.setText(o.getProvincia());
+            direccion.setText(o.getDireccion());
+            telefono.setText(o.getTelefono());
+            especialidad.setSelectedItem(o.getEspecialidad());
+            // Puedes deshabilitar solo el campo ID si quieres evitar que lo cambien:
+            idodontologo.setEnabled(false);
+        }   else {
+            JOptionPane.showMessageDialog(this, "No existe odontólogo con ese ID.");
+            limpiarCampos();
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+    
+    private void especialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_especialidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_especialidadActionPerformed
+
+    private void limpiarCampos() {
+        dni.setText("");
+        nombres.setText("");
+        apellidos.setText("");
+        sexo.setSelectedIndex(0);
+        fechanacimiento.setText("");
+        nacionalidad.setText("");
+        ciudad.setText("");
+        provincia.setText("");
+        direccion.setText("");
+        telefono.setText("");
+        especialidad.setSelectedIndex(0);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField apellidos;
     private javax.swing.JPanel bg;
-    private javax.swing.JTextField btDate;
+    private javax.swing.JTextField ciudad;
     private javax.swing.JPanel contenidoPanel;
     private com.raven.datechooser.DateChooser date;
+    private javax.swing.JTextField direccion;
+    private javax.swing.JTextField dni;
+    private javax.swing.JComboBox<String> especialidad;
+    private javax.swing.JTextField fechanacimiento;
+    private javax.swing.JTextField idodontologo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -396,15 +508,10 @@ public class ModificarOdontologo extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField nacionalidad;
+    private javax.swing.JTextField nombres;
+    private javax.swing.JTextField provincia;
+    private javax.swing.JComboBox<String> sexo;
+    private javax.swing.JTextField telefono;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,9 +4,12 @@
  */
 package com.mycompany.proyecto_edd.GUI;
 
+import com.mycompany.proyecto_edd.Odontologo;
+import javax.swing.JOptionPane;
+
 /**
  *
- * @author Juan
+ * @author T0XHL
  */
 public class RegistroOdontologo extends javax.swing.JPanel {
 
@@ -40,36 +43,36 @@ public class RegistroOdontologo extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        dni = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        nombres = new javax.swing.JTextField();
+        apellidos = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        sexo = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        btDate = new javax.swing.JTextField();
+        fechanacimiento = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        ciudad = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        nacionalidad = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        telefono = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
-        jTextField13 = new javax.swing.JTextField();
+        provincia = new javax.swing.JTextField();
+        direccion = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton1.putClientProperty("JButton.arc", 25);
+        especialidad = new javax.swing.JComboBox<>();
 
         jLabel10.setText("jLabel10");
 
         date.setForeground(new java.awt.Color(2, 69, 122));
-        date.setTextRefernce(btDate);
+        date.setTextRefernce(fechanacimiento);
 
         setMinimumSize(new java.awt.Dimension(745, 440));
 
@@ -116,12 +119,12 @@ public class RegistroOdontologo extends javax.swing.JPanel {
         jLabel3.setText("DNI:");
         contenidoPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 101, 71, -1));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        dni.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                dniActionPerformed(evt);
             }
         });
-        contenidoPanel.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 131, 209, 27));
+        contenidoPanel.add(dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 131, 209, 27));
 
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel4.setText("Nombres:");
@@ -130,20 +133,20 @@ public class RegistroOdontologo extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel5.setText("Apellidos:");
         contenidoPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 252, 101, 25));
-        contenidoPanel.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 207, 209, 27));
-        contenidoPanel.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 283, 209, 27));
+        contenidoPanel.add(nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 207, 209, 27));
+        contenidoPanel.add(apellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 283, 209, 27));
 
         jLabel6.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel6.setText("Sexo:");
         contenidoPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 328, 61, 25));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
-        contenidoPanel.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 359, 109, 27));
+        sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
+        contenidoPanel.add(sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 359, 109, 27));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel7.setText("Fecha de nacimiento:");
         contenidoPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 404, -1, 25));
-        contenidoPanel.add(btDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 435, 209, -1));
+        contenidoPanel.add(fechanacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 435, 209, -1));
 
         jButton1.setText("...");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -156,12 +159,12 @@ public class RegistroOdontologo extends javax.swing.JPanel {
         jLabel8.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel8.setText("Nacionalidad:");
         contenidoPanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 101, 208, -1));
-        contenidoPanel.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 205, 253, -1));
+        contenidoPanel.add(ciudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 205, 253, -1));
 
         jLabel11.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel11.setText("Ciudad:");
         contenidoPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 175, 126, -1));
-        contenidoPanel.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 131, 253, -1));
+        contenidoPanel.add(nacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 131, 253, -1));
 
         jLabel12.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel12.setText("Provincia:");
@@ -170,7 +173,7 @@ public class RegistroOdontologo extends javax.swing.JPanel {
         jLabel13.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel13.setText("Dirección:");
         contenidoPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 323, 146, -1));
-        contenidoPanel.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 427, 253, -1));
+        contenidoPanel.add(telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 427, 253, -1));
 
         jLabel14.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel14.setText("Teléfono:");
@@ -178,9 +181,8 @@ public class RegistroOdontologo extends javax.swing.JPanel {
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LogoDatosPersonales.png"))); // NOI18N
         contenidoPanel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 130, -1, 331));
-        contenidoPanel.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 279, 253, -1));
-        contenidoPanel.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 359, 253, -1));
-        contenidoPanel.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, 253, -1));
+        contenidoPanel.add(provincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 279, 253, -1));
+        contenidoPanel.add(direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 359, 253, -1));
 
         jLabel16.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel16.setText("Especialidad");
@@ -193,7 +195,15 @@ public class RegistroOdontologo extends javax.swing.JPanel {
         jButton2.setBorder(null);
         jButton2.setBorderPainted(false);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         contenidoPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 470, 190, 60));
+
+        especialidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ortodoncia", "Endodoncia", "Periodoncia", "Prostodoncia", "Cirugía Oral" }));
+        contenidoPanel.add(especialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, 240, -1));
 
         jScrollPane2.setViewportView(contenidoPanel);
 
@@ -225,23 +235,85 @@ public class RegistroOdontologo extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void dniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dniActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_dniActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         date.showPopup();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // 1. Obtener datos de los campos
+        String dniR = dni.getText().trim();
+        String nombresR = nombres.getText().trim();
+        String apellidosR = apellidos.getText().trim();
+        String sexoR = sexo.getSelectedItem().toString();
+        String fechaNacimientoR = fechanacimiento.getText().trim(); // Si fechanacimiento es JTextField
+        String nacionalidadR = nacionalidad.getText().trim();
+        String ciudadR = ciudad.getText().trim();
+        String provinciaR = provincia.getText().trim();
+        String direccionR = direccion.getText().trim();
+        String telefonoR = telefono.getText().trim();
+        String especialidadR = especialidad.getSelectedItem().toString();
+
+        // 2. Validación básica
+        if (dniR.isEmpty() || nombresR.isEmpty() || apellidosR.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Debe llenar los campos obligatorios.");
+            return;
+        }
+
+        // 3. Crear odontólogo
+        Odontologo nuevo = new Odontologo(
+            nombresR, apellidosR, especialidadR, dniR, sexoR, direccionR, telefonoR,
+            fechaNacimientoR, ciudadR, provinciaR, nacionalidadR
+        );
+
+        // 4. Guardar
+        Odontologo.agregarOdontologoArchivo(nuevo);
+
+        javax.swing.JOptionPane.showMessageDialog(this, "Odontólogo registrado correctamente.\nID asignado: " + nuevo.getIdOdontologo());
+        limpiarCampos();
+    }//GEN-LAST:event_jButton2ActionPerformed
+    
+    private void especialidadActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        // TODO add your handling code here:
+    }                               
+
+    private void limpiarCampos() {
+        dni.setText("");
+        nombres.setText("");
+        apellidos.setText("");
+        sexo.setSelectedIndex(0);
+        fechanacimiento.setText(""); 
+        nacionalidad.setText("");
+        ciudad.setText("");
+        provincia.setText("");
+        direccion.setText("");
+        telefono.setText("");
+        especialidad.setSelectedIndex(0);
+    }
+
+    private void sexoActionPerformed(java.awt.event.ActionEvent evt) {                                     
+        // TODO add your handling code here:
+    }                                    
+
+    private void ciudadActionPerformed(java.awt.event.ActionEvent evt) {                                       
+        // TODO add your handling code here:
+    }                                      
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField apellidos;
     private javax.swing.JPanel bg;
-    private javax.swing.JTextField btDate;
+    private javax.swing.JTextField ciudad;
     private javax.swing.JPanel contenidoPanel;
     private com.raven.datechooser.DateChooser date;
+    private javax.swing.JTextField direccion;
+    private javax.swing.JTextField dni;
+    private javax.swing.JComboBox<String> especialidad;
+    private javax.swing.JTextField fechanacimiento;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -259,14 +331,10 @@ public class RegistroOdontologo extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField nacionalidad;
+    private javax.swing.JTextField nombres;
+    private javax.swing.JTextField provincia;
+    private javax.swing.JComboBox<String> sexo;
+    private javax.swing.JTextField telefono;
     // End of variables declaration//GEN-END:variables
 }

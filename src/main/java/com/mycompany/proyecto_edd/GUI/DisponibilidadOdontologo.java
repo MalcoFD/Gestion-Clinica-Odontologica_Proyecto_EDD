@@ -4,45 +4,49 @@
  */
 package com.mycompany.proyecto_edd.GUI;
 
+import com.mycompany.proyecto_edd.Odontologo;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
- * @author Juan
+ * @author T0XHL
  */
 public class DisponibilidadOdontologo extends javax.swing.JPanel {
     public DisponibilidadOdontologo() {
-    initComponents();  // Siempre primero
+        initComponents();  // Siempre primero
 
-    // Ahora: filas = horas, columnas = días
-    String[] columnas = {"Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"};
-    String[] horas = new String[15];
-    for (int i = 0; i < 15; i++) {
-        horas[i] = (8 + i) + ":00";
-    }
-    Object[][] datos = new Object[15][7]; // 15 filas, 1 col para la hora + 6 para días
-    for (int i = 0; i < 15; i++) {
-        datos[i][0] = horas[i]; // primera columna = hora
-        for (int j = 1; j < 7; j++)
-            datos[i][j] = false;
-    }
-    // Columnas para la tabla (1 para hora, 6 para días)
-    String[] columnasTabla = new String[7];
-    columnasTabla[0] = "Hora";
-    for (int i = 1; i < 7; i++) columnasTabla[i] = columnas[i - 1];
+        // Ahora: filas = horas, columnas = días
+        String[] columnas = {"Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"};
+        String[] horas = new String[15];
+        for (int i = 0; i < 15; i++) {
+            horas[i] = (8 + i) + ":00";
+        }
+        Object[][] datos = new Object[15][7]; // 15 filas, 1 col para la hora + 6 para días
+        for (int i = 0; i < 15; i++) {
+            datos[i][0] = horas[i]; // primera columna = hora
+            for (int j = 1; j < 7; j++)
+                datos[i][j] = false;
+        }
+        // Columnas para la tabla (1 para hora, 6 para días)
+        String[] columnasTabla = new String[7];
+        columnasTabla[0] = "Hora";
+        for (int i = 1; i < 7; i++) columnasTabla[i] = columnas[i - 1];
 
-    javax.swing.table.DefaultTableModel modelo = new javax.swing.table.DefaultTableModel(datos, columnasTabla) {
-        @Override
-        public Class<?> getColumnClass(int columnIndex) {
-            return columnIndex == 0 ? String.class : Boolean.class;
-        }
-        @Override
-        public boolean isCellEditable(int row, int column) {
-            return column != 0; // Solo los días son editables
-        }
-    };
-    jTable1.setModel(modelo);
-    jTable1.setRowHeight(30);
-    jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
-}
+        javax.swing.table.DefaultTableModel modelo = new javax.swing.table.DefaultTableModel(datos, columnasTabla) {
+            @Override
+            public Class<?> getColumnClass(int columnIndex) {
+                return columnIndex == 0 ? String.class : Boolean.class;
+            }
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return column != 0; // Solo los días son editables
+            }
+        };
+        jTable1.setModel(modelo);
+        jTable1.setRowHeight(30);
+        jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,7 +68,7 @@ public class DisponibilidadOdontologo extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton1.putClientProperty("JButton.arc", 25);
-        jTextField14 = new javax.swing.JTextField();
+        idodontologo = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -135,7 +139,7 @@ public class DisponibilidadOdontologo extends javax.swing.JPanel {
             }
         });
         contenidoPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 440, 150, 30));
-        contenidoPanel.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 440, 253, -1));
+        contenidoPanel.add(idodontologo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 440, 253, -1));
 
         jLabel17.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel17.setText("ID Odontólogo:");
@@ -181,7 +185,42 @@ public class DisponibilidadOdontologo extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        String id = idodontologo.getText().trim();
+        if (id.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor ingresa el ID del odontólogo.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        Odontologo od = Odontologo.buscarOdontologoPorId(id);
+        if (od == null) {
+            JOptionPane.showMessageDialog(this, "No se encontró un odontólogo con ese ID.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Obtén la tabla de disponibilidad del JTable
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        Boolean[][] tabla = new Boolean[15][6];
+        for (int i = 0; i < 15; i++) {
+            for (int j = 0; j < 6; j++) {
+                Object valor = modelo.getValueAt(i, j + 1);
+                tabla[i][j] = valor != null && (Boolean) valor;
+            }
+        }
+
+        // Actualiza el objeto odontólogo en memoria
+        od.actualizarDisponibilidadDesdeTabla(tabla);
+
+        // GUARDA EN ARCHIVO INDIVIDUAL (OD###_disp.txt)
+        od.guardarDisponibilidad();
+
+        JOptionPane.showMessageDialog(this, "Disponibilidad guardada correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+    
+        // Limpia todas las checkboxes
+        for (int i = 0; i < 15; i++) {
+            for (int j = 1; j <= 6; j++) {
+                modelo.setValueAt(false, i, j);
+            }
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -192,6 +231,7 @@ public class DisponibilidadOdontologo extends javax.swing.JPanel {
     private javax.swing.JPanel bg;
     private javax.swing.JPanel contenidoPanel;
     private com.raven.datechooser.DateChooser date;
+    private javax.swing.JTextField idodontologo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -202,6 +242,5 @@ public class DisponibilidadOdontologo extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField14;
     // End of variables declaration//GEN-END:variables
 }
