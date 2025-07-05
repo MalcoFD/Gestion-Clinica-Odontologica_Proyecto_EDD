@@ -4,20 +4,62 @@
  */
 package com.mycompany.proyecto_edd.GUI;
 
+import com.mycompany.proyecto_edd.Odontologo;
+import java.awt.BorderLayout;
+import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
- * @author Juan
+ * @author T0XHL
  */
 public class BuscarOdontologo extends javax.swing.JPanel {
-
     /**
      * Creates new form Principal
      */
     public BuscarOdontologo() {
-        initComponents();
-        
-        jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
+    initComponents();
+    DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+    modelo.setRowCount(0); // Limpiar la tabla
+
+    for (Odontologo o : Odontologo.listaOdontologos) {
+        modelo.addRow(new Object[]{
+            o.getIdOdontologo(),
+            o.getNombres(),
+            o.getApellidos(),
+            o.getEspecialidad(),
+            "Ver"
+        });
     }
+
+    // === AQUÍ AGREGA LOS RENDERERS Y EDITORS ===
+    jTable1.getColumn("Disponibilidad").setCellRenderer(new ButtonRenderer());
+    jTable1.getColumn("Disponibilidad").setCellEditor(new ButtonEditor(new JCheckBox(), jTable1, this));
+
+
+    // === MouseListener sigue igual, si quieres puedes dejarlo o quitarlo si usas el editor ===
+    /*
+    jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            int fila = jTable1.rowAtPoint(evt.getPoint());
+            int columna = jTable1.columnAtPoint(evt.getPoint());
+            if (columna == 4 && fila != -1) {
+                String id = (String) jTable1.getValueAt(fila, 0);
+                Odontologo o = Odontologo.buscarOdontologoPorId(id);
+                if (o != null) {
+                    o.cargarDisponibilidad();
+                    //mostrarVentanaMatrizDisponibilidad(o);
+                }
+            }
+        }
+    });
+    */
+
+    jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,7 +81,7 @@ public class BuscarOdontologo extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton1.putClientProperty("JButton.arc", 25);
-        jTextField14 = new javax.swing.JTextField();
+        idodontologo = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -110,7 +152,13 @@ public class BuscarOdontologo extends javax.swing.JPanel {
             }
         });
         contenidoPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 150, 30));
-        contenidoPanel.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 253, -1));
+
+        idodontologo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idodontologoActionPerformed(evt);
+            }
+        });
+        contenidoPanel.add(idodontologo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 253, -1));
 
         jLabel17.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel17.setText("ID Odontólogo:");
@@ -178,18 +226,50 @@ public class BuscarOdontologo extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        String id = idodontologo.getText().trim();
+    DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+    modelo.setRowCount(0); // Limpia la tabla
+
+    if (id.isEmpty()) {
+        // Si está vacío, puedes mostrar todos los odontólogos
+        for (Odontologo o : Odontologo.listaOdontologos) {
+            modelo.addRow(new Object[]{o.getIdOdontologo(), o.getNombres(), o.getApellidos(), o.getEspecialidad(), "Ver"});
+        }
+        return;
+    }
+
+    Odontologo od = Odontologo.buscarOdontologoPorId(id);
+    if (od != null) {
+        modelo.addRow(new Object[]{od.getIdOdontologo(), od.getNombres(), od.getApellidos(), od.getEspecialidad(), "Ver"});
+    } else {
+        JOptionPane.showMessageDialog(this, "No se encontró un odontólogo con ese ID.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void idodontologoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idodontologoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idodontologoActionPerformed
 
+    private void Showpanel(JPanel p){
+        p.setLocation(0,0);
+        
+        
+        bg.removeAll();
+        bg.setLayout(new BorderLayout());
+        bg.add(p, BorderLayout.CENTER);
+        bg.revalidate();  
+        bg.repaint();
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
     private javax.swing.JPanel contenidoPanel;
     private com.raven.datechooser.DateChooser date;
+    private javax.swing.JTextField idodontologo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -200,6 +280,59 @@ public class BuscarOdontologo extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField14;
     // End of variables declaration//GEN-END:variables
+    class ButtonRenderer extends javax.swing.JButton implements javax.swing.table.TableCellRenderer {
+    public ButtonRenderer() {
+        setOpaque(true);
+    }
+    public java.awt.Component getTableCellRendererComponent(javax.swing.JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+        setText((value == null) ? "" : value.toString());
+        return this;
+    }
 }
+
+class ButtonEditor extends javax.swing.DefaultCellEditor {
+    private javax.swing.JButton button;
+    private String label;
+    private boolean clicked;
+    private int selectedRow;
+    private javax.swing.JTable tableRef;
+    private BuscarOdontologo padre; // <-- tu panel de búsqueda
+
+    public ButtonEditor(javax.swing.JCheckBox checkBox, javax.swing.JTable table, BuscarOdontologo padre) {
+        super(checkBox);
+        button = new javax.swing.JButton();
+        button.setOpaque(true);
+        this.tableRef = table;
+        this.padre = padre;
+        button.addActionListener(e -> fireEditingStopped());
+    }
+
+    public java.awt.Component getTableCellEditorComponent(javax.swing.JTable table, Object value, boolean isSelected, int row, int column) {
+        label = (value == null) ? "" : value.toString();
+        button.setText(label);
+        clicked = true;
+        selectedRow = row;
+        return button;
+    }
+
+    public Object getCellEditorValue() {
+        if (clicked) {
+            String id = (String) tableRef.getModel().getValueAt(selectedRow, 0);
+            Odontologo o = Odontologo.buscarOdontologoPorId(id);
+            if (o != null) {
+                o.cargarDisponibilidad();
+                padre.Showpanel(new VerDisponibilidadEnBusqueda(o));
+            }
+        }
+        clicked = false;
+        return label;
+    }
+
+    public boolean stopCellEditing() {
+        clicked = false;
+        return super.stopCellEditing();
+    }
+}
+}
+

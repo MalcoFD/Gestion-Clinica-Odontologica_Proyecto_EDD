@@ -291,7 +291,7 @@ public class RegistroCita extends javax.swing.JPanel {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // Cargar todos los odontólogos desde el archivo
-        Odontologo.cargarOdontologos();  // Cargar los odontólogos desde el archivo "odontologos.txt"
+        Odontologo.cargarEnArchivo();  // Cargar los odontólogos desde el archivo "odontologos.txt"
     
         // Crear un Set para almacenar los nombres de odontólogos sin duplicados
         Set<String> nombresOdontologos = new HashSet<>();

@@ -5,22 +5,56 @@
 package com.mycompany.proyecto_edd.GUI;
 
 import com.mycompany.proyecto_edd.Odontologo;
+import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author T0XHL
  */
-public class EliminarOdontologo extends javax.swing.JPanel {
+public class VerDisponibilidadEnBusqueda extends javax.swing.JPanel {
+    public VerDisponibilidadEnBusqueda(Odontologo od) {
+    initComponents();
+    lblIdOdontologo.setText(od.getIdOdontologo());
 
-    /**
-     * Creates new form Principal
-     */
-    public EliminarOdontologo() {
-        initComponents();
-       
-        jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
+    // Cargar su disponibilidad
+    od.cargarDisponibilidad();
+    boolean[][] disponibilidad = od.getDisponibilidad();
+
+    // Configura columnas y filas igual que en tu código original
+    String[] columnas = {"Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"};
+    String[] horas = new String[15];
+    for (int i = 0; i < 15; i++) {
+        horas[i] = (8 + i) + ":00";
     }
+    Object[][] datos = new Object[15][7]; // 1ra columna hora + 6 días
+    for (int i = 0; i < 15; i++) {
+        datos[i][0] = horas[i];
+        for (int j = 1; j < 7; j++) {
+            datos[i][j] = disponibilidad[i][j - 1]; // j-1 porque la 0 es hora
+        }
+    }
+
+    String[] columnasTabla = new String[7];
+    columnasTabla[0] = "Hora";
+    for (int i = 1; i < 7; i++) columnasTabla[i] = columnas[i - 1];
+
+    DefaultTableModel modelo = new DefaultTableModel(datos, columnasTabla) {
+        @Override
+        public Class<?> getColumnClass(int columnIndex) {
+            return columnIndex == 0 ? String.class : Boolean.class;
+        }
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false; // ¡Todas las celdas NO editables!
+        }
+    };
+    jTable1.setModel(modelo);
+    jTable1.setRowHeight(30);
+    jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,16 +68,18 @@ public class EliminarOdontologo extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         date = new com.raven.datechooser.DateChooser();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         bg = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         contenidoPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton1.putClientProperty("JButton.arc", 25);
-        idodontologo = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        lblIdOdontologo = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         jLabel10.setText("jLabel10");
 
@@ -55,6 +91,9 @@ public class EliminarOdontologo extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        jLabel1.setFont(new java.awt.Font("Poppins SemiBold", 1, 24)); // NOI18N
+        jLabel1.setText("Ver disponibilidad del odontólogo:");
 
         setMinimumSize(new java.awt.Dimension(745, 440));
 
@@ -72,16 +111,12 @@ public class EliminarOdontologo extends javax.swing.JPanel {
         contenidoPanel.setPreferredSize(new java.awt.Dimension(745, 750));
         contenidoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Poppins SemiBold", 1, 24)); // NOI18N
-        jLabel1.setText("Eliminar odontólogo");
-        contenidoPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 14, 449, -1));
-
         jPanel1.setBackground(new java.awt.Color(9, 140, 239));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("DAR DE BAJA A UN ODONTÓLOGO");
+        jLabel2.setText("HORARIOS");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -99,9 +134,9 @@ public class EliminarOdontologo extends javax.swing.JPanel {
         contenidoPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 740, -1));
 
         jButton2.setBackground(new java.awt.Color(2, 69, 122));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("ELIMINAR");
+        jButton2.setText("REGRESAR");
         jButton2.setBorder(null);
         jButton2.setBorderPainted(false);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -110,18 +145,26 @@ public class EliminarOdontologo extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        contenidoPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 190, 60));
+        contenidoPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 440, 150, 30));
 
-        idodontologo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idodontologoActionPerformed(evt);
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
             }
-        });
-        contenidoPanel.add(idodontologo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 253, -1));
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
-        jLabel17.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel17.setText("ID Odontólogo:");
-        contenidoPanel.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 146, -1));
+        contenidoPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 660, 320));
+
+        lblIdOdontologo.setFont(new java.awt.Font("Poppins SemiBold", 1, 24)); // NOI18N
+        contenidoPanel.add(lblIdOdontologo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 180, 20));
+
+        jLabel5.setFont(new java.awt.Font("Poppins SemiBold", 1, 24)); // NOI18N
+        jLabel5.setText("Ver disponibilidad del odontólogo:");
+        contenidoPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 14, 449, -1));
 
         jScrollPane2.setViewportView(contenidoPanel);
 
@@ -133,10 +176,7 @@ public class EliminarOdontologo extends javax.swing.JPanel {
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -154,45 +194,39 @@ public class EliminarOdontologo extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String id = idodontologo.getText().trim(); // Suponiendo que tu campo se llama txtIdOdontologo
-
-        if (id.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor ingresa un ID de odontólogo.", "Aviso", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
-        boolean eliminado = Odontologo.eliminarOdontologoPorId(id);
-
-        if (eliminado) {
-            JOptionPane.showMessageDialog(this, "Odontólogo dado de baja correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            idodontologo.setText(""); // Limpia el campo si quieres
-        } else {
-            JOptionPane.showMessageDialog(this, "No se encontró un odontólogo con ese ID.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        Showpanel(new BuscarOdontologo());
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    
+    private void Showpanel(JPanel p){
+        p.setLocation(0,0);
+        
+        
+        bg.removeAll();
+        bg.setLayout(new BorderLayout());
+        bg.add(p, BorderLayout.CENTER);
+        bg.revalidate();  
+        bg.repaint();
+    }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void idodontologoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idodontologoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_idodontologoActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
     private javax.swing.JPanel contenidoPanel;
     private com.raven.datechooser.DateChooser date;
-    private javax.swing.JTextField idodontologo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblIdOdontologo;
     // End of variables declaration//GEN-END:variables
-
 }
+
