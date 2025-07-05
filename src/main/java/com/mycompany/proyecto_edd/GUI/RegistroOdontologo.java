@@ -89,11 +89,9 @@ public class RegistroOdontologo extends javax.swing.JPanel {
         contenidoPanel.setMinimumSize(new java.awt.Dimension(745, 700));
         contenidoPanel.setName(""); // NOI18N
         contenidoPanel.setPreferredSize(new java.awt.Dimension(745, 700));
-        contenidoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Poppins SemiBold", 1, 24)); // NOI18N
         jLabel1.setText("Registro de nuevo odontólogo");
-        contenidoPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 14, 449, -1));
 
         jPanel1.setBackground(new java.awt.Color(9, 140, 239));
 
@@ -106,47 +104,35 @@ public class RegistroOdontologo extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        contenidoPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 64, 660, -1));
-
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel3.setText("DNI:");
-        contenidoPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 101, 71, -1));
 
         dni.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dniActionPerformed(evt);
             }
         });
-        contenidoPanel.add(dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 131, 209, 27));
 
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel4.setText("Nombres:");
-        contenidoPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 176, 100, 25));
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel5.setText("Apellidos:");
-        contenidoPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 252, 101, 25));
-        contenidoPanel.add(nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 207, 209, 27));
-        contenidoPanel.add(apellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 283, 209, 27));
 
         jLabel6.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel6.setText("Sexo:");
-        contenidoPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 328, 61, 25));
 
         sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
-        contenidoPanel.add(sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 359, 109, 27));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel7.setText("Fecha de nacimiento:");
-        contenidoPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 404, -1, 25));
-        contenidoPanel.add(fechanacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 435, 209, -1));
 
         jButton1.setText("...");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -154,39 +140,26 @@ public class RegistroOdontologo extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        contenidoPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 435, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel8.setText("Nacionalidad:");
-        contenidoPanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 101, 208, -1));
-        contenidoPanel.add(ciudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 205, 253, -1));
 
         jLabel11.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel11.setText("Ciudad:");
-        contenidoPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 175, 126, -1));
-        contenidoPanel.add(nacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 131, 253, -1));
 
         jLabel12.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel12.setText("Provincia:");
-        contenidoPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 249, 146, -1));
 
         jLabel13.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel13.setText("Dirección:");
-        contenidoPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 323, 146, -1));
-        contenidoPanel.add(telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 427, 253, -1));
 
         jLabel14.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel14.setText("Teléfono:");
-        contenidoPanel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 397, -1, -1));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LogoDatosPersonales.png"))); // NOI18N
-        contenidoPanel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 130, -1, 331));
-        contenidoPanel.add(provincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 279, 253, -1));
-        contenidoPanel.add(direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 359, 253, -1));
 
         jLabel16.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel16.setText("Especialidad");
-        contenidoPanel.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 146, -1));
 
         jButton2.setBackground(new java.awt.Color(2, 69, 122));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -200,10 +173,158 @@ public class RegistroOdontologo extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        contenidoPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 470, 190, 60));
 
         especialidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ortodoncia", "Endodoncia", "Periodoncia", "Prostodoncia", "Cirugía Oral" }));
-        contenidoPanel.add(especialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, 240, -1));
+
+        javax.swing.GroupLayout contenidoPanelLayout = new javax.swing.GroupLayout(contenidoPanel);
+        contenidoPanel.setLayout(contenidoPanelLayout);
+        contenidoPanelLayout.setHorizontalGroup(
+            contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenidoPanelLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(263, 263, 263))
+            .addGroup(contenidoPanelLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(51, 51, 51))
+            .addGroup(contenidoPanelLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contenidoPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(94, 94, 94))
+                    .addComponent(especialidad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(90, 90, 90)
+                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(195, 195, 195))
+            .addGroup(contenidoPanelLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contenidoPanelLayout.createSequentialGroup()
+                        .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dni)
+                            .addGroup(contenidoPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(109, 109, 109))
+                            .addComponent(nombres)
+                            .addGroup(contenidoPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(108, 108, 108))
+                            .addComponent(apellidos)
+                            .addGroup(contenidoPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(148, 148, 148))
+                            .addGroup(contenidoPanelLayout.createSequentialGroup()
+                                .addComponent(sexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(100, 100, 100))
+                            .addGroup(contenidoPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(36, 36, 36))
+                            .addComponent(fechanacimiento))
+                        .addGap(6, 6, 6)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(53, 53, 53))
+                    .addGroup(contenidoPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(190, 190, 190)))
+                .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contenidoPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(243, 243, 243))
+                    .addGroup(contenidoPanelLayout.createSequentialGroup()
+                        .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nacionalidad)
+                            .addGroup(contenidoPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(127, 127, 127))
+                            .addComponent(ciudad)
+                            .addGroup(contenidoPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(107, 107, 107))
+                            .addComponent(provincia)
+                            .addGroup(contenidoPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(107, 107, 107))
+                            .addComponent(direccion)
+                            .addGroup(contenidoPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(176, 176, 176))
+                            .addComponent(telefono))
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(17, 17, 17))))
+        );
+        contenidoPanelLayout.setVerticalGroup(
+            contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenidoPanelLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(13, 13, 13)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
+                .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(7, 7, 7)
+                .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contenidoPanelLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(dni)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(6, 6, 6)
+                        .addComponent(nombres)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(6, 6, 6)
+                        .addComponent(apellidos)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(6, 6, 6)
+                        .addComponent(sexo)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(6, 6, 6)
+                        .addComponent(fechanacimiento)
+                        .addGap(4, 4, 4))
+                    .addGroup(contenidoPanelLayout.createSequentialGroup()
+                        .addGap(305, 305, 305)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(3, 3, 3))
+                    .addGroup(contenidoPanelLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(nacionalidad)
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(8, 8, 8)
+                        .addComponent(ciudad)
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(8, 8, 8)
+                        .addComponent(provincia)
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(14, 14, 14)
+                        .addComponent(direccion)
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(8, 8, 8)
+                        .addComponent(telefono)
+                        .addGap(12, 12, 12))
+                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(9, 9, 9)
+                .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contenidoPanelLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(8, 8, 8)
+                        .addComponent(especialidad))
+                    .addGroup(contenidoPanelLayout.createSequentialGroup()
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(2, 2, 2)))
+                .addGap(168, 168, 168))
+        );
 
         jScrollPane2.setViewportView(contenidoPanel);
 
@@ -217,8 +338,8 @@ public class RegistroOdontologo extends javax.swing.JPanel {
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

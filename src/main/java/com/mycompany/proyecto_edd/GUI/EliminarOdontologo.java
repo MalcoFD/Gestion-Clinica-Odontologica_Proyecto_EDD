@@ -70,11 +70,9 @@ public class EliminarOdontologo extends javax.swing.JPanel {
         contenidoPanel.setBackground(new java.awt.Color(255, 255, 255));
         contenidoPanel.setMinimumSize(new java.awt.Dimension(745, 500));
         contenidoPanel.setPreferredSize(new java.awt.Dimension(745, 750));
-        contenidoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Poppins SemiBold", 1, 24)); // NOI18N
         jLabel1.setText("Eliminar odontólogo");
-        contenidoPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 14, 449, -1));
 
         jPanel1.setBackground(new java.awt.Color(9, 140, 239));
 
@@ -96,9 +94,7 @@ public class EliminarOdontologo extends javax.swing.JPanel {
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        contenidoPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 740, -1));
-
-        jButton2.setBackground(new java.awt.Color(2, 69, 122));
+        jButton2.setBackground(new java.awt.Color(255, 51, 51));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("ELIMINAR");
@@ -110,18 +106,56 @@ public class EliminarOdontologo extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        contenidoPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 190, 60));
 
         idodontologo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 idodontologoActionPerformed(evt);
             }
         });
-        contenidoPanel.add(idodontologo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 253, -1));
 
         jLabel17.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel17.setText("ID Odontólogo:");
-        contenidoPanel.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 146, -1));
+
+        javax.swing.GroupLayout contenidoPanelLayout = new javax.swing.GroupLayout(contenidoPanel);
+        contenidoPanel.setLayout(contenidoPanelLayout);
+        contenidoPanelLayout.setHorizontalGroup(
+            contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenidoPanelLayout.createSequentialGroup()
+                .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contenidoPanelLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(230, 230, 230))
+                    .addGroup(contenidoPanelLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(contenidoPanelLayout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(idodontologo, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                        .addGap(257, 257, 257)))
+                .addGap(33, 33, 33))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenidoPanelLayout.createSequentialGroup()
+                .addGap(139, 139, 139)
+                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(170, 170, 170))
+        );
+        contenidoPanelLayout.setVerticalGroup(
+            contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenidoPanelLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(9, 9, 9)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(83, 83, 83)
+                .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(idodontologo))
+                .addGap(91, 91, 91)
+                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addGap(416, 416, 416))
+        );
 
         jScrollPane2.setViewportView(contenidoPanel);
 

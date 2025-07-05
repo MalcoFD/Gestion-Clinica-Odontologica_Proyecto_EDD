@@ -47,7 +47,7 @@ public class Principal extends javax.swing.JPanel {
         jLabel2.setText("Sistema de gestión de citas de la Clínica Odontólogica UNMSM ");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel3.setText("<html>\n\nEsta herramienta le permitirá llevar un control detallado y eficiente<br>\nde los servicios brindados. Tendrá acceso a funcionalidades<br>\nespecíficas para tareas como las siguientes:<br><br><br>\n\n- Registro de nuevos pacientes<br><br>\n- Modificar datos de pacientes<br><br>\n- Mostrar los pacientes registrados actualmente<br><br>\n- Buscar un paciente y mostrar su historial clínico<br><br>\n- Acceder a otros menús con más funcionalidades<br><br>\n</html>\n");
+        jLabel3.setText("<html>  Esta herramienta le permitirá llevar un control detallado y eficiente de los servicios brindados. <br> Tendrá acceso a funcionalidades específicas para tareas como las siguientes:<br><br><br>  - Registro de nuevos pacientes<br><br> - Modificar datos de pacientes<br><br> - Mostrar los pacientes registrados actualmente<br><br> - Buscar un paciente y mostrar su historial clínico<br><br> - Acceder a otros menús con más funcionalidades<br><br> </html> ");
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dientelogo.png"))); // NOI18N
 
@@ -60,17 +60,15 @@ public class Principal extends javax.swing.JPanel {
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(bgLayout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(575, 575, 575))
+                        .addGap(600, 600, 600))
                     .addGroup(bgLayout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(161, 161, 161))
+                        .addGap(186, 186, 186))
                     .addGroup(bgLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(240, 240, 240))
-                    .addGroup(bgLayout.createSequentialGroup()
-                        .addGap(440, 440, 440)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(25, 25, 25))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,13 +77,13 @@ public class Principal extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(25, 25, 25)
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(25, 25, 25)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
                     .addGroup(bgLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
-                        .addGap(50, 50, 50)))
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(bgLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)))
                 .addGap(10, 10, 10))
         );
 

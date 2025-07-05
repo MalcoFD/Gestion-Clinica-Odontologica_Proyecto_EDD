@@ -361,7 +361,7 @@ public class ModificarCita extends javax.swing.JPanel {
           
         }
         else{
-           JOptionPane.showMessageDialog(this, "El paciente no cuenta con citas registradas.");
+           JOptionPane.showMessageDialog(this, "El paciente no cuenta con citas pendientes.");
             limpiarCampos();
         }
     }//GEN-LAST:event_dniPacienteActionPerformed
