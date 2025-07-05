@@ -13,6 +13,7 @@ import java.awt.Insets;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
@@ -65,6 +66,17 @@ public class Dashboard extends javax.swing.JFrame {
         
         title.putClientProperty( "FlatLaf.style", "font: bold $h1.regular.font" );
         title.setForeground(Color.white);
+        
+        UIManager.put("Table.font", new Font("Poppins", Font.PLAIN, 13));
+        UIManager.put("Table.foreground", new Color(30, 30, 30)); // Gris oscuro
+        UIManager.put("Table.rowHeight", 28);
+        UIManager.put("Table.selectionBackground", new Color(179, 229, 252)); // Celeste selección
+        UIManager.put("Table.selectionForeground", Color.BLACK);
+        UIManager.put("Table.gridColor", new Color(220, 220, 220)); // Líneas suaves
+
+        UIManager.put("TableHeader.font", new Font("Poppins", Font.BOLD, 12));
+        UIManager.put("TableHeader.foreground", new Color(2, 75, 93));         // Azul
+        UIManager.put("TableHeader.background", new Color(198, 241, 237));     // Celeste claro
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -277,11 +289,12 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(headerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(navtext, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
+        content.setBackground(new java.awt.Color(255, 255, 255));
         content.setMinimumSize(new java.awt.Dimension(750, 500));
         content.setPreferredSize(new java.awt.Dimension(750, 500));
         content.setVerifyInputWhenFocusTarget(false);
@@ -384,6 +397,7 @@ public class Dashboard extends javax.swing.JFrame {
         UIManager.put("ScrollBar.showButtons", true);
         UIManager.put("Label.foreground", new Color(30, 30, 30)); 
         UIManager.put("Label.font", new Font("Poppins", Font.BOLD, 16)); 
+        
         
         FlatLaf.updateUI();
         

@@ -69,15 +69,13 @@ public class CitasOdontologo extends javax.swing.JPanel {
         contenidoPanel.setBackground(new java.awt.Color(255, 255, 255));
         contenidoPanel.setMinimumSize(new java.awt.Dimension(745, 500));
         contenidoPanel.setPreferredSize(new java.awt.Dimension(745, 750));
-        contenidoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Poppins SemiBold", 1, 24)); // NOI18N
         jLabel1.setText("Citas de un odontólogo");
-        contenidoPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 14, 449, -1));
 
         jPanel1.setBackground(new java.awt.Color(9, 140, 239));
 
-        jLabel2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Revisión de la lista de pacientes y sus citas");
@@ -92,10 +90,10 @@ public class CitasOdontologo extends javax.swing.JPanel {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
         );
-
-        contenidoPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 740, -1));
 
         jButton2.setBackground(new java.awt.Color(2, 69, 122));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -109,12 +107,9 @@ public class CitasOdontologo extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        contenidoPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 150, 30));
-        contenidoPanel.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 253, -1));
 
         jLabel17.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel17.setText("ID Odontólogo:");
-        contenidoPanel.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 146, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -145,7 +140,45 @@ public class CitasOdontologo extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        contenidoPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 690, 350));
+        javax.swing.GroupLayout contenidoPanelLayout = new javax.swing.GroupLayout(contenidoPanel);
+        contenidoPanel.setLayout(contenidoPanelLayout);
+        contenidoPanelLayout.setHorizontalGroup(
+            contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenidoPanelLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
+                .addGap(288, 288, 288))
+            .addGroup(contenidoPanelLayout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(jLabel17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextField14)
+                .addGap(142, 142, 142)
+                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(89, 89, 89))
+            .addGroup(contenidoPanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
+        );
+        contenidoPanelLayout.setVerticalGroup(
+            contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenidoPanelLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(9, 9, 9)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(6, 6, 6)
+                .addGroup(contenidoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField14)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
+                .addGap(270, 270, 270))
+        );
 
         jScrollPane2.setViewportView(contenidoPanel);
 
