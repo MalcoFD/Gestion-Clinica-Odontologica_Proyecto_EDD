@@ -34,12 +34,7 @@ public class HistorialCitasGeneral extends javax.swing.JPanel {
         DefaultTableModel modelo = (DefaultTableModel) tablaCitas.getModel();
         modelo.setRowCount(0);  // Limpiar la tabla antes de agregar nuevas filas
 
-        Stack<Cita> pilaInvertida = new Stack<>();
-        while (!listaCitas.isEmpty()) {
-            pilaInvertida.push(listaCitas.pop()); // Desapilamos y apilamos de nuevo
-        }
-
-        for (Cita cita : pilaInvertida) {
+        for (Cita cita : listaCitas) {
             Object[] fila = {
                 cita.getId(),
                 cita.getPaciente().getDni(),
@@ -145,9 +140,15 @@ public class HistorialCitasGeneral extends javax.swing.JPanel {
                 break;
             case "Estado Pendiente":
                 citasOrdenadas = ordenarPorEstado(citas, "Pendiente");
+                citasOrdenadas = ordenarPorId(citasOrdenadas);
                 break;
             case "Estado Cancelado":
-                citasOrdenadas = ordenarPorEstado(citas, "Cancelado");
+                citasOrdenadas = ordenarPorEstado(citas, "Cancelada");
+                citasOrdenadas = ordenarPorId(citasOrdenadas);
+                break;
+            case "Estado Terminado":
+                citasOrdenadas = ordenarPorEstado(citas,"Terminado");
+                citasOrdenadas = ordenarPorId(citasOrdenadas);
                 break;
             default:
                 citasOrdenadas = citas;  // No hace nada si no se selecciona una opción válida
@@ -173,7 +174,18 @@ public class HistorialCitasGeneral extends javax.swing.JPanel {
             modelo.addRow(fila);
         }
     }//GEN-LAST:event_ordenarPorActionPerformed
-
+    private Stack<Cita> ordenarPorId(Stack<Cita> citas) {
+        Stack<Cita> pilaOrdenada = new Stack<>();
+        while (!citas.isEmpty()) {
+            Cita citaActual = citas.pop();
+            // Insertar en la pila ordenada de manera que los IDs estén en orden ascendente
+            while (!pilaOrdenada.isEmpty() && Integer.parseInt(pilaOrdenada.peek().getId()) > Integer.parseInt(citaActual.getId())) {
+                citas.push(pilaOrdenada.pop());
+            }
+            pilaOrdenada.push(citaActual);
+        }
+        return pilaOrdenada;
+    }
     // Ordenar las citas por fecha ascendente
     private Stack<Cita> ordenarPorFechaAscendente(Stack<Cita> citas) {
         Stack<Cita> pilaOrdenada = new Stack<>();

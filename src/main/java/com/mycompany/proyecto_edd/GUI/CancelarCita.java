@@ -255,43 +255,47 @@ public class CancelarCita extends javax.swing.JPanel {
             return;
         }
 
-        // Cargar las citas desde el archivo
+
         Stack<Cita> listaCitas = Cita.cargarCitas();
 
-        // Buscar la cita por el DNI ingresado
+
         Cita cita = Cita.buscarCitaPorDni(listaCitas, dniPaciente);
-        // Cambiar el estado de la cita a "Cancelada"
-        cita.setEstadoCita("Cancelada");
-        
-        // Actualizar el estado en el JTextField correspondiente
-        jTextField4.setText("Cancelada");
 
-        try {
-            // Guardar las citas actualizadas en el archivo "citas.txt"
-            Cita.guardarCitas(listaCitas);
-            
-            // Actualizar el historial del paciente con los cambios reflejados
-            HistorialCita historial = new HistorialCita();
-            historial.generarHistorialDeCitas(dniPaciente, listaCitas);
+        if (cita != null) {
+            cita.setEstadoCita("Cancelada");
+            jTextField4.setText("Cancelada");
 
-            JOptionPane.showMessageDialog(this, "La cita ha sido cancelada correctamente.");
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Error al actualizar la cita: " + e.getMessage());
+            try {
+                // Guardar las citas actualizadas en el archivo "citas.txt"
+                Cita.guardarCitas(listaCitas);
+
+                // Actualizar el historial del paciente con los cambios reflejados
+                HistorialCita historial = new HistorialCita();
+                historial.actualizarHistorialDeCitas(dniPaciente, listaCitas);
+
+                JOptionPane.showMessageDialog(this, "La cita ha sido cancelada correctamente.");
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(this, "Error al actualizar la cita: " + e.getMessage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "No hay citas pendientes para este paciente.");
         }
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void botonBuscarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarCitaActionPerformed
-            // Obtener el DNI ingresado por el usuario
+        // Obtener el DNI ingresado por el usuario
         String dniPaciente = jTextField3.getText().trim();  // Obtener el DNI desde el campo de texto
         if (dniPaciente.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, ingrese el DNI del paciente.");
             return;
         }
+
         // Cargar las citas desde el archivo
         Stack<Cita> listaCitas = Cita.cargarCitas();
 
-        // Buscar la cita por el DNI ingresado
+        // Buscar la última cita registrada por el DNI ingresado
         Cita cita = Cita.buscarCitaPorDni(listaCitas, dniPaciente);  
+
         // Si la cita fue encontrada, completar los campos
         if (cita != null) {
             // Completar los campos con los datos de la cita
@@ -304,7 +308,7 @@ public class CancelarCita extends javax.swing.JPanel {
             jTextField4.setText(cita.getEstadoCita());
         } else {
             // Si no se encuentra la cita, mostrar un mensaje de error
-            JOptionPane.showMessageDialog(this, "No se encontró una cita con ese DNI.");
+            JOptionPane.showMessageDialog(this, "No se encontró una cita pendiente con ese DNI.");
         }
     }//GEN-LAST:event_botonBuscarCitaActionPerformed
 
