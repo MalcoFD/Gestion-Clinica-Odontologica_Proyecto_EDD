@@ -3,6 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.mycompany.proyecto_edd.GUI;
+import com.mycompany.proyecto_edd.Cita;
+import com.mycompany.proyecto_edd.Odontologo;
+import com.mycompany.proyecto_edd.Paciente;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Stack;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,7 +26,56 @@ public class CitasOdontologo extends javax.swing.JPanel {
         
         jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
     }
+      
+    private void buscarCitasPorOdontologo() {
+    String idIngresado = jTextField14.getText().trim();
 
+    if (idIngresado.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor ingresa el ID del odontologo.");
+        return;
+    }
+
+    Odontologo odontologo = Odontologo.buscarOdontologoPorId(idIngresado);
+    if (odontologo == null) {
+        JOptionPane.showMessageDialog(this, "No se encontró un odontólogo con ese ID.");
+        return;
+    }
+
+    Stack<Cita> citasTotales = Cita.cargarCitas();
+
+    List<Cita> citasFiltradas = new ArrayList<>();
+    for (Cita cita : citasTotales) {
+        if (cita.getOdontologo().getIdOdontologo().equalsIgnoreCase(idIngresado)) {
+            citasFiltradas.add(cita);
+            }
+        }
+
+        llenarTablaConCitas(citasFiltradas);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    private void llenarTablaConCitas(List<Cita> citas) {
+    DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+    modelo.setRowCount(0); // Limpiar filas anteriores
+
+    for (Cita cita : citas) {
+        modelo.addRow(new Object[]{
+            cita.getPaciente().getDni(),
+            cita.getPaciente().getNombres(),
+            cita.getPaciente().getApellidos(),
+            cita.getFecha().fechaAbreviada(),
+            cita.getHora().horaAbreviada(),
+            cita.getMotivo(),
+            cita.getEstadoCita()
+            });
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -210,8 +267,11 @@ public class CitasOdontologo extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    
+
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        buscarCitasPorOdontologo();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
