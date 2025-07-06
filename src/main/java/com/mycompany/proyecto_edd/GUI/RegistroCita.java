@@ -9,6 +9,7 @@ import com.mycompany.proyecto_edd.Odontologo;
 import com.mycompany.proyecto_edd.Paciente;
 import com.mycompany.proyecto_edd.PanelConFondo;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -254,7 +255,7 @@ public class RegistroCita extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-            // Obtener los datos de los campos de la interfaz
+        // Obtener los datos de los campos de la interfaz
         String dniPaciente = jTextField2.getText();  // DNI del paciente
         String claveOdontologo = (String) jComboBox1.getSelectedItem();  // Nombre del odontólogo
         // Obtener la fecha seleccionada como String
@@ -274,6 +275,16 @@ public class RegistroCita extends javax.swing.JPanel {
         int horaCita = Integer.parseInt((String) jComboBox2.getSelectedItem());  // Hora de la cita
         int minutoCita = Integer.parseInt((String) jComboBox3.getSelectedItem());  // Minuto de la cita
         String motivo = jTextField3.getText();  // Motivo de la cita
+
+        // Obtener la fecha actual
+        LocalDate fechaActual = LocalDate.now(); // Usamos la clase LocalDate para obtener la fecha actual
+        Fecha fechaActualObj = new Fecha(fechaActual.getDayOfMonth(), fechaActual.getMonthValue(), fechaActual.getYear());
+
+        // Verificar si la fecha de la nueva cita es anterior a la fecha actual
+        if (fechaCita.compararFecha(fechaActualObj) < 0) {
+            JOptionPane.showMessageDialog(this, "La fecha de la cita no puede ser anterior a la fecha actual.");
+            return;  // Detener el registro si la fecha es inválida
+        }
 
         // Crear objeto Paciente y Odontologo
         Paciente paciente = Paciente.buscarPacientePorDni(dniPaciente);  // Buscar al paciente
@@ -296,9 +307,22 @@ public class RegistroCita extends javax.swing.JPanel {
 
         Cita nuevaCita = new Cita(id, paciente, odontologo, motivo, fechaCita, new Hora(horaCita, minutoCita), "Pendiente");
 
+        // Verificar que la nueva cita tiene una fecha posterior a la última cita pendiente
+        Cita ultimaCitaPendiente = null;
+        for (Cita c : listaCitas) {
+            if (c.getPaciente().getDni().equals(dniPaciente) && c.getEstadoCita().equals("Pendiente")) {
+                ultimaCitaPendiente = c;
+                break;
+            }
+        }
+
+        if (ultimaCitaPendiente != null && nuevaCita.getFecha().compararFecha(ultimaCitaPendiente.getFecha()) <= 0) {
+            JOptionPane.showMessageDialog(this, "La nueva cita no puede tener una fecha anterior a la cita pendiente.");
+            return;  // Detenemos la ejecución del código si la fecha no es válida
+        }
+
         // Intentar añadir la nueva cita
         try {
-            // Añadir la cita y verificar que no haya error (si la fecha es válida, la cita será añadida)
             Cita.añadirCita(listaCitas, nuevaCita);  // Añadir la cita y guardar en el archivo
 
             // Si se llega hasta aquí, la cita se registró correctamente, entonces mostramos el mensaje

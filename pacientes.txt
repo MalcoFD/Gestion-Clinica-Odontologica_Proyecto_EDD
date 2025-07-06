@@ -1,3 +1,5 @@
-ID   | Alergia      | Grupo | Seguro | Facultad                                         | DNI      | Nombres     | Apellidos      | Sexo      | Dirección | Teléfono  | Nacimiento | Ciudad | Provincia | Nacionalidad
------+--------------+-------+--------+--------------------------------------------------+----------+-------------+----------------+-----------+-----------+-----------+------------+--------+-----------+-------------
-P001 | Clorhexidina | B     | true   | Facultad de Ingeniería de Sistemas e Informática | 77568942 | Yamil Josue | Durand Galindo | Masculino | Av. Perú  | 997788332 | 20-10-2005 | Lima   | Lima      | Peruano     
+ID   | Alergia      | Grupo | Seguro | Facultad                                         | DNI       | Nombres     | Apellidos      | Sexo      | Dirección  | Teléfono  | Nacimiento | Ciudad | Provincia | Nacionalidad
+-----+--------------+-------+--------+--------------------------------------------------+-----------+-------------+----------------+-----------+------------+-----------+------------+--------+-----------+-------------
+P001 | Clorhexidina | B     | true   | Facultad de Ingeniería de Sistemas e Informática | 77568942  | Yamil Josue | Durand Galindo | Masculino | Av. Perú   | 997788332 | 20-10-2005 | Lima   | Lima      | Peruano     
+P002 | Ninguna      | B     | true   | Facultad de Ingeniería de Sistemas e Informática | 12345678  | Adrian      | gonzales       | Masculino | olivos     | 997124754 | 03-02-2005 | lima   | olivos    | peruana     
+P003 | Ninguna      | B     | true   | Facultad de Ciencias Matemáticas                 | 789456123 | Malco       | Fernandez      | Masculino | Los olivos | 912784368 | 09-02-2005 | Lima   | Lima      | Peruana     

@@ -1,4 +1,2 @@
-1-12345678-Adrian-Eduardo-Caries-09/07/2025-19:00-Terminado
-2-12345678-Adrian-Andrea-Sarro-31/07/2025-19:00-Pendiente
 3-789456123-Malco-Andrea-Control-10/07/2025-19:00-Terminado
 4-789456123-Malco-Andrea-Cirugia-13/07/2025-19:00-Pendiente
