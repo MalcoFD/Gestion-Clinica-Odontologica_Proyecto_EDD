@@ -1,7 +1,12 @@
-ID    | DNI      | Nombres   | Apellidos   | Sexo      | Direccion                    | Telefono  | Nacimiento | Ciudad | Provincia | Nacionalidad | Especialidad
-------+----------+-----------+-------------+-----------+------------------------------+-----------+------------+--------+-----------+--------------+-------------
-OD002 | 43534    | dfdsf     | dsfdsf      | Femenino  | dfdf 4343                    | 444       | 02-01-1960 | sdf    | dsfsdfds  | dfdsf        | Prostodoncia
-OD003 | 324234   | artentoxx | morning     | Masculino | av san martin 333            | 999999    | 08-12-2005 | lima   | lima      | peruana      | Endodoncia  
-OD004 | 213212   | yamal     | kamer       | Masculino | av coronel leoncio prado 870 | 99999999  | 04-05-2004 | lima   | callao    | peruana      | Periodoncia 
-OD005 | 4534     | gfdfgdf   | gdgdfgdddfg | Femenino  | dgdgdg                       | 4444      | 02-07-2000 | dgd    | gdfd      | gfdgd        | Endodoncia  
-OD006 | 75544417 | yamal     | durand      | Masculino | mercedes                     | 926251883 | 05-07-2025 | lima   | lima      | peruana      | Ortodoncia  
+ID    | DNI      | Nombres    | Apellidos     | Sexo      | Direccion                    | Telefono  | Nacimiento | Ciudad   | Provincia | Nacionalidad | Especialidad
+------+----------+------------+---------------+-----------+------------------------------+-----------+------------+----------+-----------+--------------+--------------
+OD001 | 71234561 | Andrea     | Salas         | Femenino  | Av. Grau 123                 | 912345678 | 12-04-1985 | Lima     | Lima      | Peruana      | Endodoncia
+OD002 | 76325478 | Luis       | Mendoza       | Masculino | Calle Real 456               | 923456789 | 25-10-1979 | Cusco    | Cusco     | Peruano      | Ortodoncia
+OD003 | 75678901 | Camila     | Torres        | Femenino  | Jr. Junín 789                | 934567891 | 30-03-1992 | Arequipa | Arequipa  | Peruana      | Prostodoncia
+OD004 | 76543218 | Eduardo    | Gamarra       | Masculino | Av. Bolívar 202              | 945678912 | 08-11-1988 | Trujillo | La Libertad | Peruano    | Periodoncia
+OD005 | 75432678 | Mariana    | Contreras     | Femenino  | Calle Miraflores 121         | 956789123 | 17-06-1990 | Piura    | Piura     | Peruana      | Cirugía Bucal
+OD006 | 78901234 | Diego      | Huamán        | Masculino | Av. Tacna 1200               | 967891234 | 01-09-1983 | Ica      | Ica       | Peruano      | Endodoncia
+OD007 | 76891234 | Karla      | Ríos          | Femenino  | Jr. Ayacucho 456             | 978912345 | 22-12-1995 | Puno     | Puno      | Peruana      | Ortodoncia
+OD008 | 70123456 | Sebastián  | Aguilar       | Masculino | Calle Amazonas 900           | 989123456 | 14-05-1997 | Cajamarca| Cajamarca | Peruano      | Prostodoncia
+OD009 | 73216549 | Natalia    | Córdova       | Femenino  | Av. La Marina 303            | 990134567 | 05-08-1989 | Huancayo | Junín     | Peruana      | Periodoncia
+OD010 | 72015432 | Franco     | Luján         | Masculino | Av. Arequipa 710             | 901245678 | 20-02-1994 | Lima     | Lima      | Peruano      | Cirugía Bucal
