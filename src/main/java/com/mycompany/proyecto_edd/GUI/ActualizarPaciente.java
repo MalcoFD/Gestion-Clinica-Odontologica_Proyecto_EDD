@@ -407,9 +407,18 @@ public class ActualizarPaciente extends javax.swing.JPanel {
 
 
     private void comprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprobarActionPerformed
-
-        if (Paciente.buscarPacientePorDni(dni.getText())!=null){
+        
+        String dniPaciente = dni.getText();
+        Paciente p = Paciente.buscarPacientePorDni(dniPaciente);
+        
+        if (p!=null){
             JOptionPane.showMessageDialog(this, "Paciente encontrado");
+            nombres.setText(p.getNombres());
+            apellidos.setText(p.getApellidos());
+            provincia.setText(p.getProvincia());
+            ciudad.setText(p.getCiudad());
+            direccion.setText(p.getDireccion());
+            telefono.setText(p.getTelefono());
         }
         else{
             JOptionPane.showMessageDialog(this, "Paciente no encontrado");
