@@ -17,7 +17,7 @@ public class ActualizarPaciente extends javax.swing.JPanel {
      */
     public ActualizarPaciente() {
         initComponents();
-        
+
         jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
         
         otraAlergia.setVisible(false);
@@ -404,7 +404,6 @@ public class ActualizarPaciente extends javax.swing.JPanel {
             labelAlergia.setVisible(false);
         }
     }//GEN-LAST:event_alergiaActionPerformed
-
 
     private void comprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprobarActionPerformed
         
