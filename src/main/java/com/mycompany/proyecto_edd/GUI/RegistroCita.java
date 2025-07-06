@@ -254,7 +254,7 @@ public class RegistroCita extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // Obtener los datos de los campos de la interfaz
+            // Obtener los datos de los campos de la interfaz
         String dniPaciente = jTextField2.getText();  // DNI del paciente
         String claveOdontologo = (String) jComboBox1.getSelectedItem();  // Nombre del odontólogo
         // Obtener la fecha seleccionada como String
@@ -270,7 +270,7 @@ public class RegistroCita extends javax.swing.JPanel {
 
         // Crear el objeto Fecha con los valores obtenidos
         Fecha fechaCita = new Fecha(dia, mes, anio);
-      // Fecha de la cita
+        // Fecha de la cita
         int horaCita = Integer.parseInt((String) jComboBox2.getSelectedItem());  // Hora de la cita
         int minutoCita = Integer.parseInt((String) jComboBox3.getSelectedItem());  // Minuto de la cita
         String motivo = jTextField3.getText();  // Motivo de la cita
@@ -296,15 +296,18 @@ public class RegistroCita extends javax.swing.JPanel {
 
         Cita nuevaCita = new Cita(id, paciente, odontologo, motivo, fechaCita, new Hora(horaCita, minutoCita), "Pendiente");
 
-        // Añadir la nueva cita a la lista de citas
+        // Intentar añadir la nueva cita
         try {
+            // Añadir la cita y verificar que no haya error (si la fecha es válida, la cita será añadida)
             Cita.añadirCita(listaCitas, nuevaCita);  // Añadir la cita y guardar en el archivo
+
+            // Si se llega hasta aquí, la cita se registró correctamente, entonces mostramos el mensaje
+            JOptionPane.showMessageDialog(this, "Cita registrada correctamente.");
 
             // Generar o actualizar el historial de citas para el paciente
             HistorialCita historial = new HistorialCita();
             historial.generarHistorialDeCitas(dniPaciente, listaCitas);
 
-            JOptionPane.showMessageDialog(this, "Cita registrada correctamente.");
         } catch (IOException e) {
             JOptionPane.showMessageDialog(this, "Error al registrar la cita: " + e.getMessage());
         }
