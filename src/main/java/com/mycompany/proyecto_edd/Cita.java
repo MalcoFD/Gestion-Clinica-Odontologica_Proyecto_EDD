@@ -10,6 +10,7 @@ package com.mycompany.proyecto_edd;
  */
 import java.io.*;
 import java.util.Stack;
+import javax.swing.JOptionPane;
 
 public class Cita {
     private String id;
@@ -81,20 +82,30 @@ public class Cita {
 
     // Añadir una nueva cita
     public static void añadirCita(Stack<Cita> citas, Cita citanueva) throws IOException {
-        boolean citaExistente = false;
         HistorialCita historial = new HistorialCita();
-        // Verificar si el paciente ya tiene una cita pendiente
+        Cita ultimaCitaPendiente = null;
+
+        // Verificar la última cita pendiente del paciente
         for (Cita c : citas) {
             if (c.getPaciente().getDni().equals(citanueva.getPaciente().getDni()) && c.getEstadoCita().equals("Pendiente")) {
-                // Si ya tiene una cita pendiente, cambiar el estado de la cita a "Terminado"
-                c.setEstadoCita("Terminado");
-                citaExistente = true;
-                
-                System.out.println("Cita anterior marcada como 'Terminado'");
+                ultimaCitaPendiente = c;
                 break;
             }
         }
-        
+
+        // Si la nueva cita tiene una fecha anterior a la última cita pendiente, no la registramos
+        if (ultimaCitaPendiente != null && citanueva.getFecha().compararFecha(ultimaCitaPendiente.getFecha()) <= 0) {
+            JOptionPane.showMessageDialog(null, "La nueva cita no puede tener una fecha anterior a la cita pendiente.");
+            return;  // No registrar la cita, salimos del método aquí
+        }
+
+        // Cambiar el estado de la cita pendiente anterior a "Terminado" si la nueva cita tiene fecha posterior
+        if (ultimaCitaPendiente != null) {
+            ultimaCitaPendiente.setEstadoCita("Terminado");
+            System.out.println("Cita anterior marcada como 'Terminado'");
+        }
+
+        // Añadir la nueva cita a la lista
         citas.push(citanueva);
         System.out.println("Cita agregada correctamente.");
 
