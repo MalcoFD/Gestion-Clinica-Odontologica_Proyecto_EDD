@@ -93,12 +93,6 @@ public class Cita {
             }
         }
 
-        // Si la nueva cita tiene una fecha anterior a la última cita pendiente, no la registramos
-        if (ultimaCitaPendiente != null && citanueva.getFecha().compararFecha(ultimaCitaPendiente.getFecha()) <= 0) {
-            JOptionPane.showMessageDialog(null, "La nueva cita no puede tener una fecha anterior a la cita pendiente.");
-            return;  // No registrar la cita, salimos del método aquí
-        }
-
         // Cambiar el estado de la cita pendiente anterior a "Terminado" si la nueva cita tiene fecha posterior
         if (ultimaCitaPendiente != null) {
             ultimaCitaPendiente.setEstadoCita("Terminado");
